@@ -1,7 +1,7 @@
 package kim.eren.code_practices.abstractfactories;
 
 import kim.eren.code_practices.abstractfactories.enums.FactoryType;
-import kim.eren.code_practices.factorypatterns.ShapeFactory;
+import kim.eren.code_practices.factorypattern.ShapeFactory;
 
 public class FactoryProducer {
 	public static AbstractFactory getFactory(String factoryType) {

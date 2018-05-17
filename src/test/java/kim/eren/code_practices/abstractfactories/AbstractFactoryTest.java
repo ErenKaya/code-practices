@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import kim.eren.code_practices.abstractfactories.enums.FactoryType;
-import kim.eren.code_practices.factorypatterns.ShapeFactory;
+import kim.eren.code_practices.factorypattern.ShapeFactory;
 
 public class AbstractFactoryTest {
 

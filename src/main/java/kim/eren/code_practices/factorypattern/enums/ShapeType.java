@@ -1,4 +1,4 @@
-package kim.eren.code_practices.factorypatterns.enums;
+package kim.eren.code_practices.factorypattern.enums;
 
 public enum ShapeType {
 	SQUARE {

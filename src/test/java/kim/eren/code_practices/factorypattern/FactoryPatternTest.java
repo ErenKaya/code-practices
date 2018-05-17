@@ -5,12 +5,12 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import kim.eren.code_practices.factorypatterns.ShapeFactory;
-import kim.eren.code_practices.factorypatterns.entities.Circle;
-import kim.eren.code_practices.factorypatterns.entities.Rectangle;
-import kim.eren.code_practices.factorypatterns.entities.Square;
-import kim.eren.code_practices.factorypatterns.enums.ShapeType;
-import kim.eren.code_practices.factorypatterns.interfaces.Shape;
+import kim.eren.code_practices.factorypattern.ShapeFactory;
+import kim.eren.code_practices.factorypattern.entities.Circle;
+import kim.eren.code_practices.factorypattern.entities.Rectangle;
+import kim.eren.code_practices.factorypattern.entities.Square;
+import kim.eren.code_practices.factorypattern.enums.ShapeType;
+import kim.eren.code_practices.factorypattern.interfaces.Shape;
 
 public class FactoryPatternTest {
 	
