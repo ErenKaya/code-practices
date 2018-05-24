@@ -1,5 +1,7 @@
 package kim.eren.code_practices.filtercriteria;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +15,6 @@ import kim.eren.code_practices.filtercreteria.MaleCriteria;
 import kim.eren.code_practices.filtercreteria.OrCriteria;
 import kim.eren.code_practices.filtercreteria.SingleCriteria;
 import kim.eren.code_practices.filtercreteria.entity.Person;
-
 
 public class FilterDesignPatternTest {
 	List<Person> persons;
@@ -37,27 +38,68 @@ public class FilterDesignPatternTest {
 
 	@Test
 	public void test_single_male_persons() {
-		System.out.println("\nSingle Males: ");
-		printPersons(singleMale.meetCriteria(persons));
+		for (Person person : singleMale.meetCriteria(persons)) {
+			String result = "";
+			if (person.getGender().equals("MALE") & person.getMaritalStatus().equalsIgnoreCase("SINGLE")) {
+				result = "correct";
+			} else {
+				result = "wrong";
+			}
+			assertEquals(result, "correct");
+		}
+
 	}
 
 	@Test
-	public void test_male_persons() {
-		System.out.println("Males: ");
-		printPersons(male.meetCriteria(persons));
+	public void test_male_person() {
+		for (Person person : male.meetCriteria(persons)) {
+			assertEquals(person.getGender(), "MALE");
+		}
 	}
 
 	@Test
 	public void test_female_persons() {
+		for (Person person : female.meetCriteria(persons)) {
+			assertEquals(person.getGender(), "FEMALE");
+		}
+	}
+
+	@Test
+	public void test_single_or_female_persons() {
+		for (Person person : singleOrFamale.meetCriteria(persons)) {
+			String result;
+			if (person.getGender().equalsIgnoreCase("Female") | person.getMaritalStatus().equalsIgnoreCase("SINGLE")) {
+				result = "correct";
+			} else {
+				result = "wrong";
+			}
+			assertEquals(result, "correct");
+		}
+	}
+
+	@Test
+	public void print_single_or_female_persons() {
+
+		System.out.println("\nSingle Or Females: ");
+		printPersons(singleOrFamale.meetCriteria(persons));
+	}
+
+	@Test
+	public void print_female_persons() {
 		System.out.println("\nFemales: ");
 		printPersons(female.meetCriteria(persons));
 	}
 
 	@Test
-	public void test_single_or_female_persons() {
+	public void print_male_persons() {
+		System.out.println("Males: ");
+		printPersons(male.meetCriteria(persons));
+	}
 
-		System.out.println("\nSingle Or Females: ");
-		printPersons(singleOrFamale.meetCriteria(persons));
+	@Test
+	public void print_single_male_persons() {
+		System.out.println("\nSingle Males: ");
+		printPersons(singleMale.meetCriteria(persons));
 	}
 
 	public void printPersons(List<Person> persons) {
