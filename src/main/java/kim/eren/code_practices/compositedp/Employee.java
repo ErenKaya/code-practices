@@ -7,21 +7,23 @@ public class Employee {
 
 	private String name;
 	private String surname;
+	private String department;
 	private double salary;
 	private List<Employee> subordinates;
 
-	public Employee(String name, String surname, double salary) {
+	public Employee(String name, String surname, String department, double salary) {
 		super();
 		this.name = name;
 		this.surname = surname;
+		this.department = department;
 		this.salary = salary;
 		this.subordinates = new ArrayList<Employee>();
 	}
-	
+
 	public void addEmployee(Employee e) {
 		subordinates.add(e);
 	}
-	
+
 	public void removeEmployee(Employee e) {
 		subordinates.remove(e);
 	}
@@ -46,7 +48,6 @@ public class Employee {
 		return subordinates;
 	}
 
-
 	public String getSurname() {
 		return surname;
 	}
@@ -54,7 +55,13 @@ public class Employee {
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
-	
-	 
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
 
 }
