@@ -32,36 +32,16 @@ public class Employee {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public double getSalary() {
-		return salary;
-	}
-
-	public void setSalary(double salary) {
-		this.salary = salary;
-	}
 
 	public List<Employee> getSubordinates() {
 		return subordinates;
 	}
 
-	public String getSurname() {
-		return surname;
-	}
 
-	public void setSurname(String surname) {
-		this.surname = surname;
-	}
 
 	public String getDepartment() {
 		return department;
 	}
 
-	public void setDepartment(String department) {
-		this.department = department;
-	}
 
 }
