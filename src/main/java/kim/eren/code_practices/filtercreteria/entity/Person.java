@@ -25,9 +25,6 @@ public class Person {
 
 
 
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
 
 
 
@@ -37,19 +34,13 @@ public class Person {
 
 
 
-	public void setMaritalStatus(String maritalStatus) {
-		this.maritalStatus = maritalStatus;
-	}
-
 
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
+	
 
 
 
