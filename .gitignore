@@ -6,3 +6,8 @@
 /oca-8-certificate/target/*
 /oca-8-certificate/.classpath
 /oca-8-certificate/.project
+/bin/
+/design-patterns/.settings/
+/design-patterns/target/*
+/design-patterns/.classpath
+/design-patterns/.project

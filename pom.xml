@@ -24,5 +24,6 @@
   </dependencies>
   <modules>
     <module>oca-8-certificate</module>
+    <module>design-patterns</module>
   </modules>
 </project>
