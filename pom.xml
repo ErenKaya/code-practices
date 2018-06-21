@@ -25,5 +25,7 @@
   <modules>
     <module>oca-8-certificate</module>
     <module>design-patterns</module>
+    <module>cave-of-programming</module>
+    <module>herbert-scjp6</module>
   </modules>
 </project>
