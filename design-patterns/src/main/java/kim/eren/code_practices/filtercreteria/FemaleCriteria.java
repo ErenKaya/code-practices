@@ -9,7 +9,7 @@ public class FemaleCriteria implements Criteria{
 	
 	
 	public List<Person> meetCriteria(List<Person> persons) {
-		List<Person> filteredPersons = new ArrayList();
+		List<Person> filteredPersons = new ArrayList<>();
 		
 		for(Person person : persons) {
 			if(person.getGender().equalsIgnoreCase("FEMALE")) {
