@@ -1,9 +1,13 @@
-package kim.eren.oca_8_certificate.lambda.tutorialspoint;
+package kim.eren.oca_8_certificate.lambda.tutorialspoint.expressions;
+
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import kim.eren.oca_8_certificate.lambda.tutorialspoint.expressions.Java8;
+import kim.eren.oca_8_certificate.lambda.tutorialspoint.expressions.MathOperation;
 
 public class LambdaTest {
 
