@@ -10,12 +10,17 @@ public class LambdaMethodTest {
 	@Before
 	public void init() {
 		methodIns = new LambdaMethod();
+		methodIns.names.add("Eren");
+		methodIns.names.add("İbrahim");
+		methodIns.names.add("Muzo");
+		methodIns.names.add("Aydın");
+		methodIns.names.add("Eren");
 	}
 	
 	
 	@Test
 	public void test_lambda_method() {
-		
+		methodIns.names.forEach(System.out::println);
 	}
 
 }
