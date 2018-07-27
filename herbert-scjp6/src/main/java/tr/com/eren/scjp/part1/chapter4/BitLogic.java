@@ -13,7 +13,7 @@ public class BitLogic {
         int f = (~a & b) | (a & ~b);
         int g = ~a & 0x0f;
         System.out.println("a  " + binary[a]);
-        System.out.println("b \t" + binary[b]);
+        System.out.println("b  " + binary[b]);
         System.out.println("c = a & b " + binary[c]);
         System.out.println("d = a | b " + binary[d]);
         System.out.println("e = a ^ b  " + binary[e]);
