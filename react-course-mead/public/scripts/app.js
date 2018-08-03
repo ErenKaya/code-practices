@@ -36,6 +36,48 @@ var IndecisionApp = function (_React$Component) {
       });
     }
   }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      /**
+       * Component created!
+       */
+      console.log('fetching data');
+    }
+  }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      /**
+       * First executed!
+       */
+      console.log('componentWillMount');
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate(prevProps, prevState) {
+      /**
+       * Component getting an object and updated
+       */
+      console.log('saving data');
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps() {
+      /**
+       * i couldn't try.
+       */
+      console.log('componentWillReceiveProps');
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      /**
+       * you should type console of browser.
+       * ReactDOM.render(React.createElement('p'),document.getElementById('app')); 
+       */
+
+      console.log('componentwillunmount');
+    }
+  }, {
     key: 'handlePick',
     value: function handlePick() {
       var randNum = Math.floor(Math.random() * this.state.options.length);

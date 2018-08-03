@@ -13,6 +13,43 @@ class IndecisionApp extends React.Component {
     this.setState(() => ({ options: [] }));
   }
 
+  componentDidMount() {
+    /**
+     * Component created!
+     */
+    console.log('fetching data');
+  }
+
+  componentWillMount() {
+    /**
+     * First executed!
+     */
+    console.log('componentWillMount');
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    /**
+     * Component getting an object and updated
+     */
+    console.log('saving data');
+  }
+
+  componentWillReceiveProps() {
+    /**
+     * i couldn't try.
+     */
+    console.log('componentWillReceiveProps')
+  }
+
+  componentWillUnmount() {
+    /**
+     * you should type console of browser.
+     * ReactDOM.render(React.createElement('p'),document.getElementById('app')); 
+     */
+
+    console.log('componentwillunmount');
+  }
+
   handlePick() {
     const randNum = Math.floor(Math.random() * this.state.options.length);
     const option = this.state.options[randNum];
@@ -28,7 +65,7 @@ class IndecisionApp extends React.Component {
   handleAddOption(e) {
     e.preventDefault();
     const option = e.target.elements.option.value.trim();
-    if (option ) {
+    if (option) {
       this.setState((prevState) => ({ options: [...prevState.options, option] }))
     }
   }
