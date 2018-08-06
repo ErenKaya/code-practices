@@ -14,10 +14,14 @@ class IndecisionApp extends React.Component {
   }
 
   componentDidMount() {
-    /**
-     * Component created!
-     */
-    console.log('fetching data');
+    try {
+      const json = localStorage.getItem('options');
+      const options = JSON.parse(json);
+      this.setState(() => ({ options }));
+    } catch (e) {
+      console.log('Bir Hata oluştu.');
+    }
+
   }
 
   componentWillMount() {
@@ -31,6 +35,10 @@ class IndecisionApp extends React.Component {
     /**
      * Component getting an object and updated
      */
+    if (prevState.options.length !== this.state.options.length) {
+      const json = JSON.stringify(this.state.options);
+      localStorage.setItem("options", json);
+    }
     console.log('saving data');
   }
 
