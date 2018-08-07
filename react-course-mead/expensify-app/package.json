@@ -1,5 +1,5 @@
 {
-  "name": "indecision-app",
+  "name": "expencify-app",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Eren Kaya",
@@ -7,7 +7,7 @@
   "scripts": {
     "serve": "live-server public --port=4200",
     "build": "webpack --watch",
-    "dev-server": "webpack-dev-server"
+    "dev-server": "webpack-dev-server --port=4200"
   },
   "dependencies": {
     "babel-cli": "6.24.1",
@@ -20,6 +20,7 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-modal": "2.2.2",
+    "react-router-dom": "4.2.2",
     "validator": "^10.0.0",
     "webpack": "^3.1.0",
     "webpack-dev-server": "2.5.1"
