@@ -13,5 +13,5 @@ const OptionModal = (props) => {
             <button onClick={props.handleModalOkay}>Okay</button>
         </Modal>
     )
-}; 
+};
 export default OptionModal;
