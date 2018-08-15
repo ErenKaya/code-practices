@@ -19,7 +19,7 @@
     "babel-preset-react": "6.24.1",
     "css-loader": "^1.0.0",
     "live-server": "^1.2.0",
-    "moment": "2.18.1",
+    "moment": "2.19.3",
     "node-sass": "^4.9.3",
     "react": "^16.4.2",
     "react-addons-shallow-compare": "15.6.0",
