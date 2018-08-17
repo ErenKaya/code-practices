@@ -10,29 +10,48 @@ public class Application {
 	 * 
 	 * @return
 	 */
-	public /* you can delete the syncronized keyword and watch the program behavior */
+	private /* you can delete the syncronized keyword and watch the program behavior */
 	synchronized void incrementCount() {
 		++count;
 	}
 
-	public void doCount() {
+	private void incrementCountWithoutSync() {
+		++count;
+	}
+
+	/**
+	 * that method execute two thread with your one parameter which is maxValue two
+	 * thread have a loop which is increments count to your maxValue;
+	 * 
+	 * @param maxValue
+	 */
+	public void doCount(int maxValue, boolean synchronizedOff) {
 
 		Thread firstThread = new Thread(new Runnable() {
 
 			@Override
 			public void run() {
-				for (int i = 0; i < 10000; i++) {
-					incrementCount();
+				for (int i = 0; i < maxValue; i++) {
+					if (synchronizedOff) {
+						incrementCount();
+					} else {
+						incrementCountWithoutSync();
+					}
 				}
 
 			}
+
 		});
 
 		Thread secondThread = new Thread(new Runnable() {
 			@Override
 			public void run() {
-				for (int i = 0; i < 10000; i++) {
-					incrementCount();
+				for (int i = 0; i < maxValue; i++) {
+					if (synchronizedOff) {
+						incrementCount();
+					} else {
+						incrementCountWithoutSync();
+					}
 				}
 			}
 		});
@@ -47,5 +66,9 @@ public class Application {
 		}
 		System.out.println("Threads started! count: " + count);
 
+	}
+
+	public int getCount() {
+		return count;
 	}
 }
