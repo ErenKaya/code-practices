@@ -1,17 +1,22 @@
-var nameVar = 'Eren';
+var nameVar = 'Andrew';
 var nameVar = 'Mike';
 console.log('nameVar', nameVar);
 
-let nameLet = 'eren 2';
-nameLet = 'mike 2';
+let nameLet = 'Jen';
+nameLet = 'Julie';
 console.log('nameLet', nameLet);
 
-const nameIf = "Julia Roberts";
-let nameFirst;
+const nameConst = 'Frank';
+console.log('nameConst', nameConst);
 
-if (nameIf) {
-    nameFirst = nameIf.split(" ")[0];
-    console.log(nameFirst);
+// Block scoping
+
+const fullName = 'Jen Mead';
+let firstName;
+
+if (fullName) {
+  firstName = fullName.split(' ')[0];
+  console.log(firstName);
 }
 
-console.log(nameFirst);
+console.log(firstName);
