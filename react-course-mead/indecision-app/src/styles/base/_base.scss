@@ -3,6 +3,18 @@ html{
 }
 
 body{
+    background: $dark-blue;
     font-family: 'Courier New', Courier, monospace;
-    font-size:1.6rem;
+    font-size:$m-size;
+
+}
+
+button{
+    cursor: pointer;
+}
+
+
+button:disabled{
+    cursor: default;
+
 }
