@@ -3,7 +3,7 @@ package kim.eren.code_practices.tpoint.mediatordp;
 import java.util.ArrayList;
 import java.util.List;
 
-import kim.eren.code_practices.tpoint.CodePracticeResult;
+import kim.eren.code_practices.CodePracticeResult;
 import kim.eren.code_practices.tpoint.mediatordp.entity.Colleague;
 
 public class ApplicationMediator implements Mediator {

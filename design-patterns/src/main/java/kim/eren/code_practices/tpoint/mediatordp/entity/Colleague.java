@@ -1,6 +1,6 @@
 package kim.eren.code_practices.tpoint.mediatordp.entity;
 
-import kim.eren.code_practices.tpoint.CodePracticeResult;
+import kim.eren.code_practices.CodePracticeResult;
 import kim.eren.code_practices.tpoint.mediatordp.Mediator;
 
 public abstract class Colleague {

@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import kim.eren.code_practices.tpoint.CodePracticeResult;
+import kim.eren.code_practices.CodePracticeResult;
 import kim.eren.code_practices.tpoint.flyweightdp.ShapeFactory;
 import kim.eren.code_practices.tpoint.flyweightdp.entity.Circle;
 

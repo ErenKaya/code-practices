@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import kim.eren.code_practices.tpoint.CodePracticeResult;
+import kim.eren.code_practices.CodePracticeResult;
 import kim.eren.code_practices.tpoint.cordp.AbstractLogger;
 import kim.eren.code_practices.tpoint.cordp.ConsoleLogger;
 import kim.eren.code_practices.tpoint.cordp.ErrorLogger;

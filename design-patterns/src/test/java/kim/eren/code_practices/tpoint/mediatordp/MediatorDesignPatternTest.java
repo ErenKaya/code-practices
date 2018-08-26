@@ -6,7 +6,7 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Before;
 import org.junit.Test;
 
-import kim.eren.code_practices.tpoint.CodePracticeResult;
+import kim.eren.code_practices.CodePracticeResult;
 import kim.eren.code_practices.tpoint.mediatordp.ApplicationMediator;
 import kim.eren.code_practices.tpoint.mediatordp.entity.Colleague;
 import kim.eren.code_practices.tpoint.mediatordp.entity.ConcreteColleague;

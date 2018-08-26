@@ -1,6 +1,6 @@
 package kim.eren.code_practices.tpoint.cordp;
 
-import kim.eren.code_practices.tpoint.CodePracticeResult;
+import kim.eren.code_practices.CodePracticeResult;
 
 public abstract class AbstractLogger {
 

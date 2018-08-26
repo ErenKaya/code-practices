@@ -1,4 +1,4 @@
-package kim.eren.code_practices.tpoint;
+package kim.eren.code_practices;
 
 public class CodePracticeResult {
 
