@@ -15,4 +15,17 @@ public class Maze {
 		roomList.add(room);
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder sBuilder = new StringBuilder();
+		if (!roomList.isEmpty()) {
+
+			for (Room room : roomList) {
+				sBuilder.append(room.toString()).append("\r");
+			}
+			return sBuilder.toString().substring(0, sBuilder.toString().length() - 2);
+		}
+		return null;
+	}
+
 }

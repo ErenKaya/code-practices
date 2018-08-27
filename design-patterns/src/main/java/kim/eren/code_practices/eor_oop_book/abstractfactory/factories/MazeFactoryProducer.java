@@ -8,7 +8,7 @@ public class MazeFactoryProducer {
 		if (factoryType != null) {
 			if (FactoryType.ENCHANTED.toString().equals(factoryType)) {
 				return new EnchantedMazeFactory();
-			} else if (FactoryType.ENCHANTED.toString().equals(factoryType)) {
+			} else if (FactoryType.NORMAL.toString().equals(factoryType)) {
 				return new MazeFactory();
 			} else {
 				return null;

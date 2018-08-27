@@ -58,12 +58,13 @@ public class Room {
 		this.west = west;
 	}
 
-	public int getRoomNumber() {
-		return roomNumber;
+	@Override
+	public String toString() {
+		StringBuilder sBuilder = new StringBuilder();
+		sBuilder.append("West:").append(getWest().getInfo()).append("\r");
+		sBuilder.append("South:").append(getSouth().getInfo()).append("\r");
+		sBuilder.append("North:").append(getNorth().getInfo()).append("\r");
+		sBuilder.append("East:").append(getEast().getInfo()).append("\r");
+		return sBuilder.toString();
 	}
-
-	public void setRoomNumber(int roomNumber) {
-		this.roomNumber = roomNumber;
-	}
-
 }
