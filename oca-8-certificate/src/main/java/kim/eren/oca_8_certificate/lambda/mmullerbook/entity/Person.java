@@ -1,9 +1,9 @@
-package kim.eren.oca_8_certificate.lambda.mmullerbook.chapter_3.entity;
+package kim.eren.oca_8_certificate.lambda.mmullerbook.entity;
 
 import java.util.List;
 
 public class Person {
-	enum Gender {
+	public enum Gender {
 		MALE, FAMALE
 	}
 
