@@ -15,7 +15,7 @@ public class Room {
 	}
 
 	public Room(int roomNumber) {
-
+		this.roomNumber = roomNumber;
 	}
 
 	public Room(Side north, Side east, Side west, Side south) {
