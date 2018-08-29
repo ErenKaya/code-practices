@@ -1,30 +1,12 @@
-/target/
-/.settings/
-/.classpath
+*/target/
+*/.settings/
+*/.classpath
+*/.project
+*/bin/
+
 /.project
-/bin/
-
-
-/oca-8-certificate/.settings/
-/oca-8-certificate/target/*
-/oca-8-certificate/.classpath
-/oca-8-certificate/.project
-
-/design-patterns/.settings/
-/design-patterns/target/*
-/design-patterns/.classpath
-/design-patterns/.project
-
-/herbert-scjp6/.settings/
-/herbert-scjp6/target/*
-/herbert-scjp6/.classpath
-/herbert-scjp6/.project
-
-/cave-of-programming/.settings/
-/cave-of-programming/target/*
-/cave-of-programming/.classpath
-/cave-of-programming/.project
-
+/.classpath
+/.settings
 
 # Created by https://www.gitignore.io/api/node,visualstudiocode
 

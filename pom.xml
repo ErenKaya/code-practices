@@ -19,6 +19,7 @@
     <module>design-patterns</module>
     <module>cave-of-programming</module>
     <module>herbert-scjp6</module>
+    <module>refactoring</module>
   </modules>
   <dependencies>
   	<dependency>
