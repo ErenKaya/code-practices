@@ -1,4 +1,4 @@
-package org.refactoring;
+package kim.eren.refactoring.mfbook.chapter_1;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
