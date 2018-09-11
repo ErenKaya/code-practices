@@ -5,8 +5,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import kim.eren.code_practices.tpoint.abstractfactories.AbstractFactory;
-import kim.eren.code_practices.tpoint.abstractfactories.FactoryProducer;
 import kim.eren.code_practices.tpoint.abstractfactories.enums.FactoryType;
 import kim.eren.code_practices.tpoint.factorypattern.ShapeFactory;
 
