@@ -6,6 +6,7 @@ import org.junit.Test;
 /**
  * Static blocks always executed only one time.
  * instance block always executed every instance created.
+ * static block not allow to use this keyword but you can use in instance block
  * @author eren
  *
  */

@@ -1,4 +1,4 @@
-package kim.eren.oca_8_certificate.oca_study_guide.package_declaration_p9;
+package kim.eren.oca_8_certificate.oca_study_guide.chapter1;
 
 // Ubuntu textfile
 import java.util.Random;
