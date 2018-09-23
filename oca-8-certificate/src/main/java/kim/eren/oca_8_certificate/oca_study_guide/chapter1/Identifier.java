@@ -20,6 +20,7 @@ public class Identifier {
 	// class $Some{
 	//
 	// }
+	static int i;
 
 	public static void main(String[] args) {
 		Identifier fi = new Identifier();
