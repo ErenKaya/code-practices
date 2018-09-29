@@ -6,6 +6,10 @@ import configureStore from "./store/configureStore";
 import { addExpense } from "./actions/expenses";
 import getVisibleExpenses from "./selectors/expenses";
 import FormValidationApp from "./components/FormValidationApp.jsx";
+import App from "./playground/redux-thunk-test-youtube/App.jsx";
+import Store from './playground/redux-thunk-test-youtube/store'
+
+let storeInstance = Store()
 
 const store = configureStore();
 
@@ -19,9 +23,9 @@ const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
 console.log(visibleExpenses);
 
 const jsx = (
-  <Provider store={store}>
-    <AppRouter />
+  <Provider store={storeInstance}>
+    <App />
   </Provider>
 );
 
-ReactDOM.render(<FormValidationApp />, document.getElementById("app"));
+ReactDOM.render(jsx, document.getElementById("app"));
