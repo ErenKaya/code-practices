@@ -1,0 +1,6 @@
+git log
+
+-n parametresi ile count girebiliyoruz
+--stat parametresi ile ise logtaki değişen satırları görebiliyoruz
+--oneline ile logları ayrıntısız liste halinde listeleyebiliyoruz
+
