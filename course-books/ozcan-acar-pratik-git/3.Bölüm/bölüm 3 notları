@@ -1,0 +1,29 @@
+Dal Yönetimi
+
+// Notlar
+ 
+
+/**
+*Yeni dal oluşturma
+*git branch branch-a
+**/
+
+
+/**
+*branch listesi
+*git branch
+**/
+
+/** Branch-a dalı siliniyor
+*git branch -d branch-a
+**/
+
+Dalların budanması
+
+Budanmayan dalların sürekli ayakta kalması master dalıyla rekabet halinde olan bir dal yaratmak anlamına gelir. uzun süreli olarak bu dalı ayakta tutmamalıyız
+
+İlk işlem: git merge
+/**
+* git merge branch-a
+* git merge <dal adi>
+**/
