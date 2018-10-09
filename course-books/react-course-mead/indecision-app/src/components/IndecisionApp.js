@@ -87,6 +87,7 @@ export default class IndecisionApp extends React.Component {
                     selectedOption={this.state.selectedOption}
                     handleClearSelectedOption={this.handleClearSelectedOption}
                 />
+                <p>new file</p>
             </div>
         );
     }
