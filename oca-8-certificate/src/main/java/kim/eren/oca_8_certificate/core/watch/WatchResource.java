@@ -5,9 +5,13 @@ import static java.nio.file.StandardWatchEventKinds.ENTRY_MODIFY;
 import static java.nio.file.StandardWatchEventKinds.OVERFLOW;
 
 import java.io.IOException;
+import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.nio.file.WatchEvent;
 import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
@@ -28,7 +32,7 @@ public class WatchResource {
 	/**
 	 * Process all events for the key queued to the watcher.
 	 */
-	public void processEvents() {
+	public void processEvents(Path target) {
 		for (;;) {
 
 			// wait for key to be signaled
@@ -51,7 +55,19 @@ public class WatchResource {
 				Path filename = ev.context();
 				if (filename.toString().contains("bundle")) {
 					System.err.format("New file '%s' is not a plain text file.%n", filename);
-
+					String strDir = Paths.get(dir.toUri()).toString();
+					String strTarget = Paths.get(target.toUri()).toString();
+					try {
+						Files.copy(Paths.get(strDir, "bundle.js"), Paths.get(strTarget, "bundle.js"),
+								StandardCopyOption.REPLACE_EXISTING);
+					} catch (NoSuchFileException x) {
+						System.err.format("%s: no such" + " file or directory%n", strDir);
+					} catch (DirectoryNotEmptyException x) {
+						System.err.format("%s not empty%n", strDir);
+					} catch (IOException x) {
+						// File permission problems are caught here.
+						System.err.println(x);
+					}
 				}
 				continue;
 
@@ -68,7 +84,7 @@ public class WatchResource {
 	}
 
 	static void usage() {
-		System.err.println("usage: java WatchResource dir");
+		System.err.println("usage: java WatchResource dir target");
 		System.exit(-1);
 	}
 
@@ -79,6 +95,7 @@ public class WatchResource {
 
 		// register directory and process its events
 		Path dir = Paths.get(args[0]);
-		new WatchResource(dir).processEvents();
+		Path target = Paths.get(args[1]);
+		new WatchResource(dir).processEvents(target);
 	}
 }
