@@ -1,0 +1,8 @@
+"git remote -v": ile git'e eklenen bağlantı listeleyebiliriz
+"git remote": ile git'e bağlı bağlantılarını isimlerini görebiliriz
+"git checkout -b branch-a": branch oluşturup depoya "git push <bağlantı adı> <branch adı>"gönderdiğimizde yeni dalı remote sunucusuna da yüklemiş oluyoruz
+"git merge <bağlantı adı ex:origin>/<branch-adı>": bu komutla localde şuan içerisinde bulunduğun
+branch ile bağlantı adı branch adı vererek yereldeki branchle birleştirip remote'da bulunan o branchin tüm dosyalarına sahip olabiliriz. 
+"git rebase <bağlantı adı>":locali servera döndürür.
+ "git push origin <branch-ismi>": komutu ile yazılan branche değişikleri gönderir
+
