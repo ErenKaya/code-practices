@@ -1,0 +1,9 @@
+Pull Request bitBucket github gibi sağlayıcılarda bulunan bir özelliktir burada sağlanan
+bu özelliğin amacı geliştirdiğin yeniliğin depo sahibi tarafından görüntülenip ana dala veya
+yaptığınız değişiklik dalına onu review edip koda dahil edip etmeyeceğini tayin ettiği
+terimdir
+
+Git flow 
+Bu yöntem ile "feature" dallarında yapılan değişiklikler development dalına aktarılır bu dalda yapılan değişiklikleri master dalıyla birleştirmek riskli olduğu için arada "release" dalı içerisinde master based bu dalda <development> dalından gelen değişiklikler birleştirilip hem master hemde development dalına aktarılır böylece iki dalda güncel tutulmuş olur bu arada featurelar devam edebilir yeni gelen özelliklerde müşteride bug yakalanırsa etiketlemiş olduğumuz yer olan hem development dalı hemde master dalı için birleştirdiğimiz release dalının etiketine dönülerek oradan bir dal daha oluşturulup ismi hotfix olan bu dalda buglar resolve edilip hem mastere hemde developmenta aktarılır
+
+örneği yarım kaldı
