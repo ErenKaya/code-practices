@@ -16,6 +16,9 @@ import java.nio.file.WatchEvent;
 import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
 
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 public class WatchResource {
 	private final WatchService watcher;
 	private final Path dir;
@@ -25,7 +28,7 @@ public class WatchResource {
 	 */
 	public WatchResource(Path dir) throws IOException {
 		this.watcher = FileSystems.getDefault().newWatchService();
-		dir.register(watcher, ENTRY_CREATE, ENTRY_MODIFY);
+		dir.register(watcher,  ENTRY_MODIFY);
 		this.dir = dir;
 	}
 
@@ -45,7 +48,7 @@ public class WatchResource {
 
 			for (WatchEvent<?> event : key.pollEvents()) {
 				WatchEvent.Kind kind = event.kind();
-
+				System.out.println(kind.name());
 				if (kind == OVERFLOW) {
 					continue;
 				}
@@ -54,9 +57,14 @@ public class WatchResource {
 				WatchEvent<Path> ev = (WatchEvent<Path>) event;
 				Path filename = ev.context();
 				if (filename.toString().contains("bundle")) {
-					System.err.format("New file '%s' is not a plain text file.%n", filename);
 					String strDir = Paths.get(dir.toUri()).toString();
 					String strTarget = Paths.get(target.toUri()).toString();
+					JOptionPane optionPane = new JOptionPane();
+					optionPane.setMessage("new");
+					JDialog dialog =optionPane.createDialog(null, "Info");
+					dialog.setModal(false);
+					dialog.setAlwaysOnTop(true);
+					dialog.show();
 					try {
 						Files.copy(Paths.get(strDir, "bundle.js"), Paths.get(strTarget, "bundle.js"),
 								StandardCopyOption.REPLACE_EXISTING);
@@ -90,12 +98,12 @@ public class WatchResource {
 
 	public static void main(String[] args) throws IOException {
 		// parse arguments
-		if (args.length < 1)
-			usage();
+//		if (args.length < 1)
+//			usage();
 
 		// register directory and process its events
-		Path dir = Paths.get(args[0]);
-		Path target = Paths.get(args[1]);
+		Path dir = Paths.get("C:\\Users\\EREN\\Pictures\\Saved Pictures\\selam");
+		Path target = Paths.get("C:\\Users\\EREN\\Pictures\\Saved Pictures\\selam1");
 		new WatchResource(dir).processEvents(target);
 	}
 }
