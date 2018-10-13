@@ -7,3 +7,21 @@ Git flow
 Bu yöntem ile "feature" dallarında yapılan değişiklikler development dalına aktarılır bu dalda yapılan değişiklikleri master dalıyla birleştirmek riskli olduğu için arada "release" dalı içerisinde master based bu dalda <development> dalından gelen değişiklikler birleştirilip hem master hemde development dalına aktarılır böylece iki dalda güncel tutulmuş olur bu arada featurelar devam edebilir yeni gelen özelliklerde müşteride bug yakalanırsa etiketlemiş olduğumuz yer olan hem development dalı hemde master dalı için birleştirdiğimiz release dalının etiketine dönülerek oradan bir dal daha oluşturulup ismi hotfix olan bu dalda buglar resolve edilip hem mastere hemde developmenta aktarılır
 
 örneği yarım kaldı
+---- Devam
+
+git flow örneği için yeni bir git-flow adında repo oluşturduk buradan git-flow-clone'u oluşturup oraya sırasıyla işlemleri uyguladık
+*master dalına bir commit yolladık
+*master dalını baz alan develop adında bir dal oluşturduk ve oluşturduğumuz dala baz alan f1 f2 isimli iki dal daha oluşturduk.
+*f1 dalında bir özellik oluşmuş gibi develop ile merge işlemi yaptık bu işlemi yaparken "--no-ff" parametresiyle fast-forward yapmayıp mergelenen yer için yeni bir commit oluşturmasını sağladık.
+
+*develop ile birleştirdikten sonra f1 branchini sildik "git branch -d <f1> "
+*develop için geliştirilen özellikle ilgili bir sürüm çıkmak istiyorsak bu dalı baz alan bir version adıyla branch oluşturuyoruz.
+*master dalına geçip yerelde sildiğimiz f1 branchini silmek için f1 dalında yaptığımız değişikliği yani silindi işlemini mastere pushlamak gerekiyor bunun için "git push origin :f1" ":" olayını anlamadım.
+*master dalında v1.0.0 olarak taglediğimiz version numaralı değişiklikleri develop dalına da aktarmalıyız.
+------------Buraya kadar release olayı gerçekleşti hem develop dalında hemde master dalında gerekli değişiklikler yapıldı. Yapılan release dolayısıyla bir hata oluştuğu durumda hotfix dalı adı altında yapılacak işlemler:
+*version numarası ve hotfix adı birleşimiyle bir dal oluşturuyoruz
+*"git checkout -b hotfix-v1.0.1 tags/v1.0.0" tags/v1.0.0 tagı altında yer alan tüm dosyaları yeni oluşturduğumuz branche taşıyoruz.
+*oluşturduğumuz taglerin hangi commit'de geçerli olduğunu görmek için "git rev-list <tag adi> | head -n 1" komutuyla görüntüleyebiliriz.
+
+
+
