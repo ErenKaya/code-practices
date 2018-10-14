@@ -1,0 +1,36 @@
+
+Kişiler ve iletişim, süreç ve araçlardan önce gelir
+çalışrı durumda olan kod dökümantasyondan önemlidir
+müşteri ile beraber çalışmak sözleşmelerin ve kontratların üstündedir
+değişikliklere ayak uydurmak bir planı takip etmekten önemlidir.
+Agile Prencibles
+1-En önemli öncelik erken ve sürekli müşteriye gösterilenebilecek programlar oluşturabilmek.
+2-Mimari implemantasyon öncesi hazırlanır fakat müşteri ile iletişimde olup isteği doğrultusunda hemen cevap verebilecek şekilde devam edilebilmelidir.
+3-Bir kaç haftan veya birkaç aydan önce çalışabilir sürüm ve program ortaya koymak önemli. Programın tamamını belli parçalara bölüp sürenin belli bölümlerinde program parçaları gösterilmelidir.
+4-Müşteri ve programcı birlikte çalışırlar böylece müşteri hangi implemantasyonun öncelikli olduğuna karar verebilir ve programcınn elinde daha somut deliller olabilir.
+5-Projelerin motivasyonu yüksek bireyler tarafından yapılmasını sağlayıp onlara ihtiyaç duydukları ortamı ve desteği sağlamak gerekir ve işi bitirebileceklerine inanmak böylece programcının motivasyonu artar 
+6- Programcının yüzyüze konuşması fakat bu yöntem uzaktan çalışmanın bu maddeyi baltaladığını söyleyebiliriz.
+7-Çalışan program en önemli ölçüttür.
+8-Çevik süreçler etkili yazılım yöntemlerini destekler müşteri ve programcılar sabit tempoda beraber çalışabilmelidir.
+9-Teknik mükemmellik tasarım çevikliğini kuvvetlendirir bu noktada bulunan hatalar hızlıca refactor edilebilir.
+10-Sadelik esastır programcı impl. esnasında sadece kendisinden beklenen işi yapması gereken kodu yaszarlar buda sadeliği artırır.
+11-En iyi tasarımlar ve mimariler kendi kendine organize olan ekiplerden gelir
+12-Sürekli öğrenme belirli zaman aralıklarıyla takımın biraraya gelip bilgi alışverişinde bulunması edinilen tecrübelerin adapte edilmesi gibi.
+
+XP
+Xp değerleri
+XP dört değer üzerine kuruludur: Basitlik (Simplicity),
+(Communication), Geri Bildirim (Feedback) ve Cesaret (Courage).
+İletişim
+
+*Programcı kaliteyi yazdığı testten geri bildirim alarak sağlar.
+*En önemli bir diğer madde ise iletişim eğer takım içerisinde iletişim çok kuvvetli olursa takım için dökümantasyon gibi uzun sürecek şeylerle ilgilenme ihtiyacı kalmaz.
+*geri bildirim gibi şeyler için cesaret gereklidir.
+
+
+TeachLearning - Öğrenmeyi Öğret
+xp programcı takımlarında tertipçilik ve kidem farkı yoktur tecrübeli yazılımcılar bilgilerini daha az bilgili prgramcılara aktararak hem bilginin çoğalmasını sağlar hemde takım arkadaşlarıyla bilgide aynı seviyeye geleblirler
+
+Projede belli görevler bir kişiye vermek yerine belirli görevlerden seçmesini beklemek onu daha fazla motivasyonla o işe adapte olmasını sağlayabilir kendi seçmediği görevde fail etme gibi korkularla motivasyonu düşebilir.
+
+
