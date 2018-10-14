@@ -1,0 +1,7 @@
+
+Birbirlerine bağımlılığı olan depoları Git submodül tekniğini kullanarak, bir depo bünyesinde
+bir araya getirmek mümkündür. Bu teknik bir araya getirilen depolardan fiziksel yeni bir depo
+oluşturmaz. Daha ziyada submodüller birbirlerinden bağımsızdırlar ve kendi depo geçmişlerini
+korurlar.
+Subtree yönteminde mevcut bir depo başka bir depoya fiziksel olarak dahil (import) edilir. Bu
+iki deponun aynı depo geçmişine sahip olacağı anlamına gelmektedir.
