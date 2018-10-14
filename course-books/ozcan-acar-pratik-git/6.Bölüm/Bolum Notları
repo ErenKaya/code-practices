@@ -1,0 +1,4 @@
+'cat-file' komutu ile commitin nesne yapısını görüntüleyebiliriz Notları
+
+git cat-file commit <commit hash>
+
