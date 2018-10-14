@@ -1,0 +1,18 @@
+Git Stash
+stashlenen verileri baz alan yeni bir dal oluşturmak mümkün 
+"git stash branch feature-2" ama verilerin stashlenmiş olması şart
+Git interaktif
+git add -i komutuyla intekratif interface açılıyor ve buradan bazı işlemler hızlıca gerçekleştirilebiliyor.
+status: İndexin yapısını gösterir.
+update: Değişikliğe uğrayan dosyaların indexe eklenmesini mümkün kılar.
+revert: İndexe eklenen dosyaların geri alınması sağlar.
+add untracked: Yeni dosyların indexe eklenmesini sağlar.
+patch: Yapılan tüm değişikliklerin index ekleme işlemi öncesinde tekrar gözden geçirilmesi ve
+seçilmesini mümkün kılar.
+diff: İndex ile son commit arasıdaki farklılıkları gösterir.
+quit: İnteraktif oturumu sonlandırır.
+help: Yardım sayfasına yönlendirir.
+
+Pratik Bilgi ve işlemler
+"git status --short " kısa status almak için
+
