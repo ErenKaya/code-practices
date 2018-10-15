@@ -1,0 +1,5 @@
+Proje Planlama
+Programcı Tahmin Eder->
+Planlama Pokeri oyunu:
+Bu oyunda her programcı poker kağıdı setine sahiptir. Moderator müşteri tarafından yazılan kullanıcı hikayesini okur ve her programcı bu hikaye için bir kart puanı gösterir ve verdikleri puan süreyi ifade eder bu süreyi neden verdiklerini en az ve en çok süreyi veren  programcı neden bu puanı verdiğini açıklar.
+xPlanner programı ile planlama işlerini halledebiliriz fakat program depreceted olmuş
