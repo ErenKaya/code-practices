@@ -1,0 +1,8 @@
+İletişim:
+Her gün sabah en fazla 15 dakikalık standup toplantısı yapılır bu toplantıda katılımcılar şu soruların cevabını verir;
+1-Dünden beri ne yaptım?
+2-Ne gibi sorunlarla karşılaştım?
+3-Yarına kadar ne yapıyorum?
+Bu toplantılarda teknik detaylar konuşulmaz.
+Bu toplantılarda ayakta durmak önemlidir çünkü katılımcı hemen işe geri dönmek ister.
+
