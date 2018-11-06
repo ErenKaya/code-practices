@@ -1,19 +1,19 @@
-package kim.eren.code_practices.eor_oop_book.abstractfactory;
+package kim.eren.code_practices.eor_oop_book.creational.abstractfactory;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import kim.eren.code_practices.eor_oop_book.abstractfactory.abstracts.AbsMazeFactory;
-import kim.eren.code_practices.eor_oop_book.abstractfactory.entities.Door;
-import kim.eren.code_practices.eor_oop_book.abstractfactory.entities.Maze;
-import kim.eren.code_practices.eor_oop_book.abstractfactory.entities.Room;
-import kim.eren.code_practices.eor_oop_book.abstractfactory.entities.Wall;
-import kim.eren.code_practices.eor_oop_book.abstractfactory.enums.FactoryType;
-import kim.eren.code_practices.eor_oop_book.abstractfactory.factories.EnchantedMazeFactory;
-import kim.eren.code_practices.eor_oop_book.abstractfactory.factories.MazeFactory;
-import kim.eren.code_practices.eor_oop_book.abstractfactory.factories.MazeFactoryProducer;
+import kim.eren.code_practices.eor_oop_book.creational.abstractfactory.abstracts.AbsMazeFactory;
+import kim.eren.code_practices.eor_oop_book.creational.abstractfactory.entities.Door;
+import kim.eren.code_practices.eor_oop_book.creational.abstractfactory.entities.Maze;
+import kim.eren.code_practices.eor_oop_book.creational.abstractfactory.entities.Room;
+import kim.eren.code_practices.eor_oop_book.creational.abstractfactory.entities.Wall;
+import kim.eren.code_practices.eor_oop_book.creational.abstractfactory.enums.FactoryType;
+import kim.eren.code_practices.eor_oop_book.creational.abstractfactory.factories.EnchantedMazeFactory;
+import kim.eren.code_practices.eor_oop_book.creational.abstractfactory.factories.MazeFactory;
+import kim.eren.code_practices.eor_oop_book.creational.abstractfactory.factories.MazeFactoryProducer;
 
 public class MazeFactoryTest {
 

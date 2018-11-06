@@ -1,7 +1,7 @@
-package kim.eren.code_practices.eor_oop_book.abstractfactory.factories;
+package kim.eren.code_practices.eor_oop_book.creational.abstractfactory.factories;
 
-import kim.eren.code_practices.eor_oop_book.abstractfactory.abstracts.AbsMazeFactory;
-import kim.eren.code_practices.eor_oop_book.abstractfactory.enums.FactoryType;
+import kim.eren.code_practices.eor_oop_book.creational.abstractfactory.abstracts.AbsMazeFactory;
+import kim.eren.code_practices.eor_oop_book.creational.abstractfactory.enums.FactoryType;
 
 public class MazeFactoryProducer {
 	public static AbsMazeFactory getFactory(String factoryType) {

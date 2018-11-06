@@ -1,6 +1,6 @@
-package kim.eren.code_practices.eor_oop_book.abstractfactory.entities;
+package kim.eren.code_practices.eor_oop_book.creational.abstractfactory.entities;
 
-import kim.eren.code_practices.eor_oop_book.abstractfactory.abstracts.Side;
+import kim.eren.code_practices.eor_oop_book.creational.abstractfactory.abstracts.Side;
 
 public class Room {
 	private Side north;
