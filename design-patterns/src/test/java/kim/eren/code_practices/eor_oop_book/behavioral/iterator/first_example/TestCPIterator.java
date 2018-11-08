@@ -7,6 +7,23 @@ public class TestCPIterator {
 	CPAbstractList<CPEmployee> employeeList;
 	CPIterator<CPEmployee> employeeIterator;
 
+	static String method() {
+		return "a";
+	}
+
+	static {
+		System.out.println(method());
+
+	}
+
+	TestCPIterator() {
+		System.out.println("v");
+	}
+
+	public static void main(String[] args) {
+		TestCPIterator t = new TestCPIterator();
+	}
+
 	@Before
 	public void init() {
 		employeeIterator = employeeList.createIterator();

@@ -7,6 +7,7 @@ public class CPArrayList<T> extends CPAbstractList<T> {
 
 	public CPArrayList() {
 		super();
+		super.createIterator();
 		this.employee = (T[]) DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
 	}
 
@@ -21,5 +22,8 @@ public class CPArrayList<T> extends CPAbstractList<T> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
+	
 
 }
