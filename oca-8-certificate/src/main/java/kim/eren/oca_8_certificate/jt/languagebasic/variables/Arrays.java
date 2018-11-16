@@ -1,4 +1,4 @@
-package kim.eren.oca_8_certificate.core.jt.languagebasic.variables;
+package kim.eren.oca_8_certificate.jt.languagebasic.variables;
 
 /**
  * <ul>
@@ -34,6 +34,8 @@ public class Arrays extends Variables {
 		char[] copyTo = java.util.Arrays.copyOfRange(copyFrom, 2, 9);
 
 		System.out.println(new String(copyTo));
+		java.lang.System.out.println("asd");
+	
 	}
 
 }

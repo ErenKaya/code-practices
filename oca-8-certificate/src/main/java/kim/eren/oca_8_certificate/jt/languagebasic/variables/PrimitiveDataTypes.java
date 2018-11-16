@@ -1,4 +1,4 @@
-package kim.eren.oca_8_certificate.core.jt.languagebasic.variables;
+package kim.eren.oca_8_certificate.jt.languagebasic.variables;
 
 /**
  * * Primitive Data Types
