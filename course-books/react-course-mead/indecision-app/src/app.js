@@ -6,5 +6,6 @@ import "./styles/styles.scss";
 import Test from "./components/Test";
 import Counter from "./playground/counter-example-default";
 import "nprogress/nprogress.css";
+import TableFilterTest from "./components/TableFilterTest";
 
-ReactDOM.render(<Counter />, document.getElementById("app"));
+ReactDOM.render(<TableFilterTest />, document.getElementById("app"));
