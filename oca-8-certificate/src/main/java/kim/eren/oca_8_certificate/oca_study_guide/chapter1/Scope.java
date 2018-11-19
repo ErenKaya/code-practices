@@ -4,6 +4,8 @@ public class Scope {
 	static int MAX_LENGTH = 5;
 	/**
 	 * if the global primitive variables not initiliaze default value is 0
+	 * package declaration have to top of imports
+	 * import declration have to top of class declaration
 	 */
 	int length;
 

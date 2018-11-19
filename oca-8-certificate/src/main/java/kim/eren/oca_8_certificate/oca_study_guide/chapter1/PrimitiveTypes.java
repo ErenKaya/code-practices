@@ -15,6 +15,8 @@ public class PrimitiveTypes {
 
 	public static void main(String[] args) {
 		PrimitiveTypes types = new PrimitiveTypes();
+		PrimitiveTypes pT = new PrimitiveTypes();
+		System.out.println(pT.today);
 		System.out.println(types.million1);
 	}
 
