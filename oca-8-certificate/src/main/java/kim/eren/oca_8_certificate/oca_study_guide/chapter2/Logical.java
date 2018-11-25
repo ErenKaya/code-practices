@@ -33,6 +33,14 @@ public class Logical {
 		 * Because x >= 6 is true , the increment operator on the right-hand side of the
 		 * expression is never evaluated, so the output is 6 .
 		 */
+		int xB = 0;
+		for (long yB = 0, z = 4; xB < 5 && yB < 10; xB++, yB++) {
+			System.out.print(xB + " ");
+			System.out.print(yB + " ");
+		}
+
+		System.out.println();
+		System.out.println(x);
 	}
 
 	private static A getA() {

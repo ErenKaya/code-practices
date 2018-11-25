@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import org.junit.Before;
 
-public class TestAbstractInterface {
+public class TestAbstractInterface extends TestInterfaceMethod implements TestInterface {
 	AbsFood cheetos;
 	Collection<String> collection;
 
