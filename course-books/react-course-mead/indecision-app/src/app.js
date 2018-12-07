@@ -8,4 +8,4 @@ import Counter from "./playground/counter-example-default";
 import "nprogress/nprogress.css";
 import TableFilterTest from "./components/TableFilterTest";
 
-ReactDOM.render(<TableFilterTest />, document.getElementById("app"));
+ReactDOM.render(<Test />, document.getElementById("app"));

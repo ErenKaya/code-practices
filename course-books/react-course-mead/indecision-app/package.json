@@ -19,6 +19,8 @@
     "babel-preset-react": "6.24.1",
     "css-loader": "0.28.4",
     "live-server": "^1.2.0",
+    "mxgraph": "^3.9.11",
+    "mxgraph-js": "^1.0.1",
     "node-sass": "4.5.3",
     "normalize.css": "7.0.0",
     "nprogress": "^0.2.0",
