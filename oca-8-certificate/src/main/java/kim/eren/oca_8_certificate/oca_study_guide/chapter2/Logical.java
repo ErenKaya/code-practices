@@ -41,6 +41,46 @@ public class Logical {
 
 		System.out.println();
 		System.out.println(x);
+		if (12 > 10)
+			System.out.println("To Low");
+		else
+			System.out.println("asdffhg");
+		/**
+		 * that line doesn't compile
+		 */
+		// else System.out.println("asdfg");
+		boolean xBx = true, zBx = false;
+		int yBx = 20;
+		int xBx2;
+		xBx = (yBx != 10) ^ (zBx = false);
+		System.out.println(xBx + " " + yBx + "" + zBx);
+		int xx = 5 * 4 % 3;
+		System.out.println(xx);
+
+		if (zBx = true)
+			System.out.println("succs");
+		else
+			System.out.println("failure");
+		/**
+		 * that 3 while line will not compile because variable out of scope
+		 */
+		// do {
+		// int yWhile = 1;
+		// System.out.print(yWhile++ + " ");
+		// } while (yWhile <= 10);
+
+		int count = 0;
+		ROW_LOOP: for (int row = 1; row <= 3; row++)
+
+			for (int col = 1; col <= 2; col++) {
+
+				if (row * col % 2 == 0)
+					continue ROW_LOOP;
+
+				count++;
+
+			}
+		System.out.println("count" + count);
 	}
 
 	private static A getA() {
