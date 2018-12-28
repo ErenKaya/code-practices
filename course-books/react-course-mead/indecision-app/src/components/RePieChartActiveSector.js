@@ -25,10 +25,10 @@ const renderActiveShape = props => {
   } = props;
   const sin = Math.sin(-RADIAN * midAngle);
   const cos = Math.cos(-RADIAN * midAngle);
-  const sx = cx + (10 + 10) * cos;
-  const sy = cy + (10 + 10) * sin;
-  const mx = cx + 10 * cos;
-  const my = cy + 10 * sin;
+  const sx = cx + (outerRadius / 7 + 10) * cos;
+  const sy = cy + (outerRadius / 7 + 10) * sin;
+  const mx = cx + (outerRadius / 7) * cos;
+  const my = cy + (outerRadius / 7) * sin;
   const ex = mx + (cos >= 0 ? 1 : -1) * 22;
   const ey = my;
   const textAnchor = cos >= 0 ? "start" : "end";
