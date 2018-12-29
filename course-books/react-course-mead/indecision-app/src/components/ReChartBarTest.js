@@ -1,4 +1,6 @@
 import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, LabelList, Legend} from 'recharts';
+import React from 'react'
+
 const data = [
       {name: 'Page A', uv: 4000, pv: 2400, amt: 2400,trv: 1398},
       {name: 'Page B', uv: 3000, pv: 1398, amt: 2210,trv: 2000},
