@@ -4,6 +4,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import RePieChartActiveSector from "./components/RePieChartActiveSector";
 import "./styles/styles.scss";
-import ReComposedChart from "./components/ReComposedChart";
 
-ReactDOM.render(<ReComposedChart />, document.getElementById("app"));
+import ReChartBarTest from "./components/ReChartBarTest";
+
+ReactDOM.render(<ReChartBarTest />, document.getElementById("app"));
