@@ -6,5 +6,6 @@ import RePieChartActiveSector from "./components/RePieChartActiveSector";
 import "./styles/styles.scss";
 
 import ReChartBarTest from "./components/ReChartBarTest";
+import ReComposedChart from "./components/ReComposedChart";
 
-ReactDOM.render(<ReChartBarTest />, document.getElementById("app"));
+ReactDOM.render(<ReComposedChart />, document.getElementById("app"));
