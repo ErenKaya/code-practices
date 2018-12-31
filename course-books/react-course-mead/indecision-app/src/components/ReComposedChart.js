@@ -1,14 +1,15 @@
+import React from "react";
 import {
-  ComposedChart,
   Area,
-  Line,
   Bar,
+  CartesianGrid,
+  ComposedChart,
+  Legend,
+  Line,
+  Scatter,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  Scatter,
   ZAxis
 } from "recharts";
 const data = [
@@ -56,13 +57,9 @@ const data = [
   }
 ];
 
-import React from "react";
-import ScatterChart from "recharts/lib/chart/ScatterChart";
-
 class ReComposedChart extends React.Component {
   render() {
     const scatterDat = data.map(entry => {
-      console.log(entry.prd);
       return entry.prd;
     });
     return (
@@ -73,10 +70,17 @@ class ReComposedChart extends React.Component {
         <Tooltip />
         <Legend />
         <CartesianGrid stroke="#f5f5f5" />
-        <Area type="monotone" dataKey="amt" fill="#8884d8" stroke="#8884d8" />
+        <Area
+          type="monotone"
+          dataKey="amt"
+          fill="#8884d8"
+          stroke="#8884d8"
+          isAnimationActive={false}
+        />
         <Bar dataKey="pv" barSize={20} fill="#413ea0" />
         <Line type="monotone" dataKey="uv" stroke="#ff7300" />
         <Scatter
+          isAnimationActive={false}
           key="start1"
           data={scatterDat}
           name="start"
