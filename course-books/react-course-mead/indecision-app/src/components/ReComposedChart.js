@@ -10,8 +10,10 @@ import {
   Tooltip,
   XAxis,
   YAxis,
-  ZAxis
+  ZAxis,
+  Rectangle
 } from "recharts";
+import Sector from "recharts/lib/shape/Sector";
 const data = [
   {
     x: "Page A",
@@ -78,6 +80,30 @@ const data = [
   }
 ];
 
+const CustomHorizontalLine = props => {
+  return (
+    <line
+      x1={props.cx - props.size / 50}
+      y1={props.cy}
+      x2={props.cx + props.size / 50}
+      y2={props.cy}
+      style={{ stroke: "rgb(255, 0, 0)", strokeWidth: 2 }}
+    />
+  );
+};
+
+const CustomVerticalLine = props => {
+  console.log(props);
+  return (
+    <line
+      x1={props.cx}
+      y1={props.cy - props.size / 50}
+      x2={props.cx}
+      y2={props.cy + props.size / 50}
+      style={{ stroke: "rgb(255, 0, 0)", strokeWidth: 2 }}
+    />
+  );
+};
 class ReComposedChart extends React.Component {
   render() {
     const scatterDat = data.map(entry => {
@@ -142,7 +168,7 @@ class ReComposedChart extends React.Component {
           key="start1"
           data={scatterDat}
           name="start"
-          shape="star"
+          shape={<CustomHorizontalLine />}
           stroke="#dddd"
         />
       </ComposedChart>
