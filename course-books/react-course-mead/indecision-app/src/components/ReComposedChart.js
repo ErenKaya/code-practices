@@ -10,10 +10,8 @@ import {
   Tooltip,
   XAxis,
   YAxis,
-  ZAxis,
-  Rectangle
+  ZAxis
 } from "recharts";
-import Sector from "recharts/lib/shape/Sector";
 const data = [
   {
     x: "Page A",
@@ -92,8 +90,35 @@ const CustomHorizontalLine = props => {
   );
 };
 
+const CustomRectangle = props => {
+  const scatterSize = props.size / 70;
+  const leftBottom = [props.cx - scatterSize, props.cy - scatterSize];
+  const rightBottom = [props.cx + scatterSize, props.cy - scatterSize];
+  const rightTop = [props.cx + scatterSize, props.cy + scatterSize];
+  const leftTop = [props.cx - scatterSize, props.cy + scatterSize];
+  return (
+    <polygon
+      points={[leftBottom, rightBottom, rightTop, leftTop]}
+      style={{ fill: "none", strokeWidth: 1, stroke: "black" }}
+    />
+  );
+};
+
+const CustomDiamond = props => {
+  const scatterSize = props.size / 70;
+  const bottom = [props.cx, props.cy - scatterSize];
+  const right = [props.cx + scatterSize, props.cy];
+  const top = [props.cx, props.cy + scatterSize];
+  const left = [props.cx - scatterSize, props.cy];
+  return (
+    <polygon
+      points={[bottom, right, top, left]}
+      style={{ fill: "none", strokeWidth: 1, stroke: "black", fill: "black" }}
+    />
+  );
+};
+
 const CustomVerticalLine = props => {
-  console.log(props);
   return (
     <line
       x1={props.cx}
@@ -128,7 +153,7 @@ class ReComposedChart extends React.Component {
       )
     ];
     console.log("Recomposed>>render");
-    console.log(dataX + " " + dataY);
+    console.log(dataX + " " + dataY + "");
     return (
       <ComposedChart
         width={600}
@@ -168,7 +193,7 @@ class ReComposedChart extends React.Component {
           key="start1"
           data={scatterDat}
           name="start"
-          shape={<CustomHorizontalLine />}
+          shape={false ? <CustomHorizontalLine /> : <CustomDiamond />}
           stroke="#dddd"
         />
       </ComposedChart>
