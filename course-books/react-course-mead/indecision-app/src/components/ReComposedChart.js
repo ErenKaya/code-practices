@@ -179,7 +179,7 @@ class ReComposedChart extends React.Component {
           stroke="#8884d8"
           isAnimationActive={false}
         />
-        <Bar data={barData} dataKey={"value"} barSize={20} fill="#c0000" />
+        <Bar dataKey={"value"} barSize={20} fill="#c0000" />
         <Line
           data={data.map(entry => {
             return { name: "g", value: entry.y };
