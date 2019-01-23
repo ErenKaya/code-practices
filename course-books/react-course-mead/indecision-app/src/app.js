@@ -7,5 +7,7 @@ import "./styles/styles.scss";
 
 import ReChartBarTest from "./components/ReChartBarTest";
 import ReComposedChart from "./components/ReComposedChart";
+import ReactWindowLazyTest from "./components/ReactWindowLazyTest";
+import ReComposedChartForBar from "./components/ReComposedChartForBar";
 
-ReactDOM.render(<ReComposedChart />, document.getElementById("app"));
+ReactDOM.render(<ReComposedChartForBar />, document.getElementById("app"));
