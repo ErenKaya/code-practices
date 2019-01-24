@@ -157,6 +157,7 @@ class ReComposedChartForBar extends React.Component {
         height={400}
         margin={{ top: 90 }}
         data={dummyIasData}
+        layout={"horizontal"}
       >
         <XAxis dataKey={"x"} allowDuplicatedCategory={false} />
         <YAxis dataKey={"y"} />
@@ -169,9 +170,17 @@ class ReComposedChartForBar extends React.Component {
         <Bar dataKey={"y12"} barSize={13} fill="gray" />
         <Bar dataKey={"y13"} barSize={12} fill="green" />
         <Bar dataKey={"y14"} barSize={13} fill="black" />
-        <Bar dataKey={"y15"} barSize={13} fill="purple" />
+        <Bar
+          data={dummyIasData.map(data => {
+            return data.y15;
+          })}
+          dataKey={"y15"}
+          barSize={13}
+          fill="purple"
+        />
         <Bar dataKey={"y16"} barSize={13} fill="pink" />
         <Bar dataKey={"y20"} barSize={13} fill="blue" />
+        <Line dataKey={"y20"} fill="blue" />
       </ComposedChart>
     );
   }
