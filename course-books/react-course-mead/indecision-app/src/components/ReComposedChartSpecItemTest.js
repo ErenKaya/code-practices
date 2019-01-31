@@ -21,14 +21,6 @@ const data = [
   },
   {
     x: 40,
-    y: 555,
-    y10: 525,
-    y11: 0,
-    y12: 500,
-    y20: 475
-  },
-  {
-    x: 40,
     y: 444,
     y10: 0,
     y11: 414,
@@ -47,7 +39,7 @@ const data = [
     x: 80,
     y: 222,
     y10: 252,
-    y11: 192,
+    y11: 0,
     y12: 170,
     y20: 125
   },
@@ -58,60 +50,65 @@ const data = [
     y11: 80,
     y12: 70,
     y20: 178
+  },
+  {
+    x: 92,
+    y: 0,
+    y10: 0,
+    y11: 0,
+    y12: 0,
+    y20: 0
+  },
+  {
+    x: 102,
+    y: 0,
+    y10: 0,
+    y11: 0,
+    y12: 0,
+    y20: 0
   }
 ];
 
 const lineData = [
   {
     x: 50,
-    y: 98
+    lineSet10: 98
   },
   {
     x: 40,
-    y: 70
+    lineSet10: 70
   },
   {
     x: 80,
-    y: 66
+    lineSet10: 66
   },
   {
     x: 40,
-    y: 90
+    lineSet10: 90
   },
   {
     x: 55,
-    y: 125
+    lineSet10: 125
   },
   {
     x: 75,
-    y: 60
+    lineSet10: 60
   }
 ];
 
 const lineData2 = [
   {
-    x: 50,
-    y: 45
-  },
-  {
-    x: 40,
-    y: 35
-  },
-  {
     x: 80,
-    y: 25
+    lineSet20: 25
+  },
+
+  {
+    x: 92,
+    lineSet20: 78
   },
   {
-    x: 40,
-    y: 15
-  },
-  {
-    x: 55,
-    y: 35
-  },
-  {
-    x: 75,
-    y: 78
+    x: 102,
+    lineSet20: 78
   }
 ];
 
@@ -147,8 +144,8 @@ class ReComposedChartSpecItemTest extends React.Component {
         <Bar dataKey={"y14"} barSize={13} fill="black" />
         <Bar dataKey={"y16"} barSize={13} fill="pink" />
         <Bar dataKey={"y20"} barSize={13} fill="blue" />
-        <Line dataKey={"y"} data={sortedLineData} fill="red" />
-        <Line dataKey={"y"} data={sortedLineData2} fill="blue" />
+        <Line dataKey={"lineSet10"} data={sortedLineData} fill="red" />
+        <Line dataKey={"lineSet20"} data={sortedLineData2} fill="blue" />
       </ComposedChart>
     );
   }
