@@ -8,64 +8,78 @@ import {
   Tooltip,
   XAxis,
   YAxis,
-  ZAxis
+  ZAxis,
+  Area
 } from "recharts";
+import Scatter from "recharts/lib/cartesian/Scatter";
+
 const data = [
   {
+    x: 30,
+    y10: 0,
+    y11: 0,
+    y12: 0,
+    y20: 0,
+    lineSet20: 70,
+    bubbleSet30: 30
+  },
+  {
     x: 50,
-    y: 231,
     y10: 261,
     y11: 201,
     y12: 170,
-    y20: 250
+    y20: 250,
+    bubbleSet30: 40
   },
   {
     x: 40,
-    y: 444,
     y10: 0,
     y11: 414,
     y12: 375,
-    y20: 100
+    y20: 100,
+    bubbleSet30: 50
   },
   {
     x: 55,
-    y: 333,
     y10: 383,
     y11: 300,
     y12: 0,
-    y20: 150
+    y20: 150,
+    bubbleSet30: 60
   },
   {
     x: 80,
-    y: 222,
     y10: 252,
     y11: 0,
     y12: 170,
-    y20: 125
+    y20: 125,
+    bubbleSet30: 70
   },
   {
     x: 75,
-    y: 111,
     y10: 144,
     y11: 80,
     y12: 70,
-    y20: 178
+    y20: 178,
+    bubbleSet30: 20
   },
   {
     x: 92,
-    y: 0,
     y10: 0,
     y11: 0,
     y12: 0,
-    y20: 0
+    y20: 0,
+    lineSet20: 78,
+    bubbleSet30: 10
   },
   {
     x: 102,
-    y: 0,
     y10: 0,
     y11: 0,
     y12: 0,
-    y20: 0
+    y20: 0,
+    lineSet20: 55,
+    bubbleSet30: 55
   }
 ];
 
@@ -98,17 +112,34 @@ const lineData = [
 
 const lineData2 = [
   {
-    x: 80,
-    lineSet20: 25
+    x: 40
   },
-
+  {
+    x: 80
+  },
+  {
+    x: 75
+  },
+  {
+    x: 55
+  },
+  {
+    x: 50
+  },
   {
     x: 92,
-    lineSet20: 78
+    y: 44,
+    bubbleSet30: 55
   },
   {
     x: 102,
-    lineSet20: 78
+    y: 23,
+    bubbleSet30: 32
+  },
+  {
+    x: 30,
+    y: 55,
+    bubbleSet30: 300
   }
 ];
 
@@ -123,6 +154,7 @@ class ReComposedChartSpecItemTest extends React.Component {
     const sortedLineData2 = lineData2.sort((a, b) => {
       return a.x - b.x;
     });
+    console.log(sortedComposedData);
     return (
       <ComposedChart
         width={600}
@@ -132,11 +164,12 @@ class ReComposedChartSpecItemTest extends React.Component {
         layout={"horizontal"}
       >
         <XAxis dataKey={"x"} allowDuplicatedCategory={false} />
-        <YAxis dataKey={"y"} domain={[0, 600]} />
-        <ZAxis type="number" range={[200, 1800]} dataKey={"z"} />
+        <YAxis dataKey={"y"} domain={[0, 500]} />
+        <ZAxis type="number" range={[200, 800]} dataKey={"bubbleSet30"} />
         <Tooltip />
         <Legend />
         <CartesianGrid stroke="#f5f5f5" />
+        <Area dataKey={"lineSet20"} fill="blue" connectNulls={true} />
         <Bar dataKey={"y10"} barSize={13} fill="#f5f5f5f5" />
         <Bar dataKey={"y11"} barSize={12} fill="red" />
         <Bar dataKey={"y12"} barSize={13} fill="gray" />
@@ -144,8 +177,7 @@ class ReComposedChartSpecItemTest extends React.Component {
         <Bar dataKey={"y14"} barSize={13} fill="black" />
         <Bar dataKey={"y16"} barSize={13} fill="pink" />
         <Bar dataKey={"y20"} barSize={13} fill="blue" />
-        <Line dataKey={"lineSet10"} data={sortedLineData} fill="red" />
-        <Line dataKey={"lineSet20"} data={sortedLineData2} fill="blue" />
+        <Scatter data={lineData2} dataKey={"bubbleSet30"} fill="yellow" />
       </ComposedChart>
     );
   }
