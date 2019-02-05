@@ -110,7 +110,7 @@ const lineData = [
   }
 ];
 
-const lineData2 = [
+const bubbleData2 = [
   {
     x: 40
   },
@@ -143,6 +143,39 @@ const lineData2 = [
   }
 ];
 
+const bubbleData3 = [
+  {
+    x: 40,
+    y: 12,
+    bubbleSet30: 200
+  },
+  {
+    x: 80
+  },
+  {
+    x: 75,
+    y: 85,
+    bubbleSet30: 90
+  },
+  {
+    x: 55
+  },
+  {
+    x: 50,
+    y: 120,
+    bubbleSet30: 150
+  },
+  {
+    x: 92
+  },
+  {
+    x: 102
+  },
+  {
+    x: 30
+  }
+];
+
 class ReComposedChartSpecItemTest extends React.Component {
   render() {
     const sortedComposedData = data.sort((a, b) => {
@@ -151,7 +184,7 @@ class ReComposedChartSpecItemTest extends React.Component {
     const sortedLineData = lineData.sort((a, b) => {
       return a.x - b.x;
     });
-    const sortedLineData2 = lineData2.sort((a, b) => {
+    const sortedLineData2 = bubbleData2.sort((a, b) => {
       return a.x - b.x;
     });
     console.log(sortedComposedData);
@@ -177,7 +210,8 @@ class ReComposedChartSpecItemTest extends React.Component {
         <Bar dataKey={"y14"} barSize={13} fill="black" />
         <Bar dataKey={"y16"} barSize={13} fill="pink" />
         <Bar dataKey={"y20"} barSize={13} fill="blue" />
-        <Scatter data={lineData2} dataKey={"bubbleSet30"} fill="yellow" />
+        <Scatter data={bubbleData2} dataKey={"bubbleSet30"} fill="yellow" />
+        <Scatter data={bubbleData3} dataKey={"bubbleSet30"} fill="red" />
       </ComposedChart>
     );
   }
