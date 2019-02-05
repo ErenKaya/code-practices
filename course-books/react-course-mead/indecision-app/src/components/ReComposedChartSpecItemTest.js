@@ -190,6 +190,8 @@ class ReComposedChartSpecItemTest extends React.Component {
     });
     console.log(sortedComposedData);
     console.log(A.default.sum2(4,5));
+    console.log(A.default.A);
+    console.log(A.default.sum3);
     return (
       <ComposedChart
         width={600}
