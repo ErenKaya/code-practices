@@ -12,6 +12,7 @@ import {
   Area
 } from "recharts";
 import Scatter from "recharts/lib/cartesian/Scatter";
+import * as A from "../playground/Utility";
 
 const data = [
   {
@@ -188,6 +189,7 @@ class ReComposedChartSpecItemTest extends React.Component {
       return a.x - b.x;
     });
     console.log(sortedComposedData);
+    console.log(A.default.sum2(4,5));
     return (
       <ComposedChart
         width={600}
