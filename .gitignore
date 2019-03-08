@@ -7,6 +7,8 @@
 /.project
 /.classpath
 /.settings
+
+/course-books/react-course-mead/indecision-app/public/scripts/bundle.js
 	
 # Created by https://www.gitignore.io/api/node,visualstudiocode
 

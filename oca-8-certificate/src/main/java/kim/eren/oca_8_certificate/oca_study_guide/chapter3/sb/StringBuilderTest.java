@@ -1,6 +1,9 @@
 package kim.eren.oca_8_certificate.oca_study_guide.chapter3.sb;
 
 public class StringBuilderTest {
+	
+	
+
 	public static void main(String[] args) {
 		/*
 		 * Did you say both print "abcdefg" ? Good. There’s only one StringBuilder
