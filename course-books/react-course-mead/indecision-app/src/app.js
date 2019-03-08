@@ -10,7 +10,4 @@ import ReComposedChart from "./components/ReComposedChart";
 import ReComposedChartForBar from "./components/ReComposedChartForBar";
 import ReComposedChartSpecItemTest from "./components/ReComposedChartSpecItemTest";
 
-ReactDOM.render(
-  <ReComposedChartSpecItemTest />,
-  document.getElementById("app")
-);
+ReactDOM.render(<ReChartBarTest />, document.getElementById("app"));
