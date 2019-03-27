@@ -10,5 +10,6 @@ import ReComposedChartForBar from "./components/ReComposedChartForBar";
 import ReComposedChartSpecItemTest from "./components/ReComposedChartSpecItemTest";
 import EggbotForm from "./playground/formtest/src/EggbotForm";
 import "react-image-picker/dist/index.css";
+import "./playground/formtest/src/button.css"
 
 ReactDOM.render(<EggbotForm />, document.getElementById("app"));

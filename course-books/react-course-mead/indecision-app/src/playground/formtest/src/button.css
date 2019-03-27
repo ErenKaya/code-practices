@@ -1,0 +1,13 @@
+.example_c {
+    color: #ffffff !important;
+    text-transform: uppercase;
+    background: #002e4f;
+    border: 2px solid #494949 !important;
+    border-radius: 6px;
+    }
+    .example_c:hover {
+        color:#ffffff !important;
+        background: #fab807;
+        border-color: #fab807 !important;
+        transition: all 0.4s ease 0s;
+        }

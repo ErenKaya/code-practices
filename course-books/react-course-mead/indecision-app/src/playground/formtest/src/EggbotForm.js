@@ -208,17 +208,23 @@ class EggbotForm extends React.Component {
             <IasInput
               onChange={this.onChange}
               type="text"
+              autoComplete={"off"}
               placeholder={Config.inputPlaceHolder}
               name={"name"}
             />
             </div>
+
             
+            
+            <div className="button_cont" align="center" style={{ marginTop: "1.6rem" }}>
             <input
+            className="example_c"
               type="button"
               value={"select"}
-              style={{ marginTop: "1.6rem" }}
               onClick={this.onSubmit}
+              style={{height:"43px",width:"100%"}}
             />
+            </div>
           </div>
         </div>
         <Footer />
