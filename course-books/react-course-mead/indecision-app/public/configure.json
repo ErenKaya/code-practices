@@ -1,0 +1,15 @@
+{
+  "username": "erenkaya",
+  "password": "1",
+  "appserver": "192.168.0.7/502",
+  "client": "00",
+  "dbserver": "CANIAS",
+  "database": "IAS604",
+  "language": "E",
+  "baseUri": "http://192.168.0.14:8080/caniasWS604",
+  "wsdlUrl": "/services/iasWebService?wsdl",
+  "projectName": "",
+  "buttonName": "SEND",
+  "headerTitle": "Welcome Eggbot Print Screen",
+  "footerTitle": "Copyright 2019 - Industrial Application Software - All Rights Reserved."
+}

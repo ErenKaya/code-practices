@@ -9,5 +9,7 @@ import ReChartBarTest from "./components/ReChartBarTest";
 import ReComposedChart from "./components/ReComposedChart";
 import ReComposedChartForBar from "./components/ReComposedChartForBar";
 import ReComposedChartSpecItemTest from "./components/ReComposedChartSpecItemTest";
+import EggbotForm from "./playground/formtest/src/EggbotForm";
+import "react-image-picker/dist/index.css";
 
-ReactDOM.render(<ReChartBarTest />, document.getElementById("app"));
+ReactDOM.render(<EggbotForm />, document.getElementById("app"));
