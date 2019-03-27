@@ -27,9 +27,9 @@ class Footer extends React.Component {
           }}
         >
           <div>
-            <p style={{ fontSize: "12px" }}>{Config.footerTitle}</p>
+            <p style={{ fontSize: "12px",position: "relative" }}>{Config.footerTitle}</p>
           </div>
-          <div>
+          <div style={{marginTop:"10px"}}>
             <img src="./images/ias-logo.png" width="100px" height="40px" />
           </div>
         </div>

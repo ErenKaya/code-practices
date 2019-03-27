@@ -3,6 +3,7 @@ import ImagePicker from "react-image-picker";
 import Header from "./Header";
 import Footer from "./Footer";
 import axios from "axios";
+import IasInput from "./IasInput";
 
 const imgSrcList = [
   { src: "images/eggbot_1.png", id: "eggbot_1" },
@@ -22,7 +23,8 @@ class EggbotForm extends React.Component {
       loginObject: {
         sessionId: "",
         securityKey: ""
-      }
+      },
+      placeHolder:""
     };
   }
   componentWillMount = () => {
@@ -35,6 +37,8 @@ class EggbotForm extends React.Component {
       .then(res => {
         console.log(res.data);
         Config = res.data;
+        document.getElementById("title").textContent = Config.title
+        this.setState({placeHolder:Config.inputPlaceHolder})
       })
       .catch(err => {
         console.log(err);
@@ -200,13 +204,15 @@ class EggbotForm extends React.Component {
               display: "flex",
               flexDirection: "column"
             }}
-          >
-            <input
+          ><div style={{ marginTop: "1.6rem" }}>
+            <IasInput
               onChange={this.onChange}
               type="text"
-              style={{ marginTop: "1.6rem" }}
+              placeholder={Config.inputPlaceHolder}
               name={"name"}
             />
+            </div>
+            
             <input
               type="button"
               value={"select"}

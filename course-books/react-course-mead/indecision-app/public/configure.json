@@ -8,7 +8,8 @@
   "language": "E",
   "baseUri": "http://192.168.0.14:8080/caniasWS604",
   "wsdlUrl": "/services/iasWebService?wsdl",
-  "projectName": "",
+  "title": "Selam",
+  "inputPlaceHolder":"Name",
   "buttonName": "SEND",
   "headerTitle": "Welcome Eggbot Print Screen",
   "footerTitle": "Copyright 2019 - Industrial Application Software - All Rights Reserved."
