@@ -1,10 +1,10 @@
 package kim.eren.code_practices.tpoint.observerdp;
 
-import java.util.List;
+import java.util.Map;
 
 public class OctalObserver extends Observer {
 
-	public OctalObserver(List<String> messageList, Subject subject) {
+	public OctalObserver(Map<ObserverType, String> messageList, Subject subject) {
 		super();
 		super.subject = subject;
 		super.subject.attach(this);
@@ -13,7 +13,7 @@ public class OctalObserver extends Observer {
 
 	@Override
 	public void update() {
-		messageList.add(Integer.toOctalString(subject.getState()));
+		messageList.put(ObserverType.OCTAL, Integer.toOctalString(subject.getState()));
 	}
 
 }
