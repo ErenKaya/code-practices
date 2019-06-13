@@ -5,7 +5,7 @@ class ChartViewConfigToolbar extends React.Component {
     super();
   }
   render() {
-    return <div>ChartViewConfigToolbar</div>;
+    return <div className={"cv-config-toolbar"}>ChartViewConfigToolbar</div>;
   }
 }
 

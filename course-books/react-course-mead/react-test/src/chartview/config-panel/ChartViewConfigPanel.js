@@ -9,7 +9,7 @@ class ChartViewConfigPanel extends React.Component {
   }
   render() {
     return (
-      <div style={{ display: "flex", flexDirection: "column" }}>
+      <div className={"cv-config-panel"}>
         <ChartViewConfigHeader />
         <ChartViewConfigItemContainer />
         <ChartViewConfigToolbar />

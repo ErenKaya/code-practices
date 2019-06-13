@@ -5,7 +5,7 @@ class ChartViewConfigItemContainer extends React.Component {
     super();
   }
   render() {
-    return <div>ChartViewConfigItemContainer</div>;
+    return <div className={"cv-config-item-container"}>ChartViewConfigItemContainer</div>;
   }
 }
 
