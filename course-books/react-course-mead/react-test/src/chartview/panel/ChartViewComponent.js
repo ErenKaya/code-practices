@@ -8,13 +8,24 @@ class ChartViewComponent extends React.Component {
     return (
       <div
         key={this.props.key}
-        style={this.props.style}
-        x={this.props.x}
-        y={this.props.y}
-        h={this.props.h}
-        w={this.props.w}
-        static={this.props.static}
-      />
+        style={{
+          ...this.props.style,
+          display: "flex",
+          flexDirection: "column"
+        }}
+      >
+        <div class={"header"} style={{ display: "flex" }}>
+          <span>Header</span>
+          <button
+            onClick={e => {
+              this.props.itemCancelClicked(e, this.props.index);
+            }}
+          >
+            x
+          </button>
+          <button onClick={this.props.itemFullScreen}>+</button>
+        </div>
+      </div>
     );
   }
 }
