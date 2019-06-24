@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "serve": "live-server public/",
-    "build": "webpack --config webpack.prod.js",
+    "build": "webpack --env.MODE=production --config webpack.prod.js --watch",
     "dev-server": "webpack-dev-server --open --config webpack.dev.js"
   },
   "dependencies": {
@@ -39,5 +39,8 @@
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.7.2",
     "webpack-merge": "^4.2.1"
+  },
+  "devDependencies": {
+    "dotenv-webpack": "^1.7.0"
   }
 }
