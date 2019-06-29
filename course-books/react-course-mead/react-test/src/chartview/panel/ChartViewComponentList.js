@@ -10,6 +10,8 @@ class ChartViewComponentList extends React.Component {
     this.state = {
       layouts: []
     };
+    this.clickCount = 0;
+    this.timeoutFunction = null;
   }
 
   generateLayout = () => {
@@ -39,6 +41,25 @@ class ChartViewComponentList extends React.Component {
 
   itemFullScreen = () => {};
 
+  doubleclick = (e, onsingle, ondouble, timeout) => {
+    console.log("e", e);
+    this.clickCount++;
+    if (this.clickCount === 1) {
+      timeoutFunction = setTimeout(() => {
+        this.clickCount = 0;
+        onsingle(e);
+      }, timeout || 300);
+    } else if (this.clickCount === 2) {
+      clearTimeout(timeoutFunction);
+      this.clickCount = 0;
+      ondouble(e);
+    }
+  };
+
+  doubleClickAction = () => {
+    console.log("dc");
+  };
+
   render() {
     const divStyle = {
       border: "solid 1px red",
@@ -50,7 +71,14 @@ class ChartViewComponentList extends React.Component {
     console.log("layout", this.state.layouts);
     return (
       <div className={"cv-component-list"}>
-        <button onClick={this.generateLayout}>Generate</button>
+        <label
+          onClick={e => {
+            this.doubleclick(e, this.generateLayout, this.doubleClickAction);
+          }}
+        >
+          Generate
+        </label>
+        <input className={"transform"} type={"text"} />
         <ResponsiveReactGridLayout
           className={"layout"}
           layout={this.state.layouts}

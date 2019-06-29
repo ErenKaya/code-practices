@@ -1,0 +1,5 @@
+*Reference types can be assigned to another object of the same type;
+Clazz c  = new Clazz();
+Clazz cz = c;
+*Reference types can be assigned to new object using the new Keyword;
+Clazz c = new Clazz();
