@@ -1,0 +1,49 @@
+From Page 28;
+Local Variables:
+{
+    *Local variables must be initialized before use.
+
+}
+Instance and Class Variables:{
+    boolean                   ->    false
+    byte , short , int , long ->    0 (in the type’s bit-length)
+    float , double            ->    0.0 (in the type’s bit-length)
+    char                      ->    '\u0000' (NUL) 
+    *You have to memorize this chart because of exam questions has that knowledge.
+
+}
+Understanding Variable Scope:{
+     If primitive types are local variable they have to initialized but
+     if they globals they don't need to initialize because they are already 
+     default values.
+
+}
+Ordering Elements in a Class:{
+
+Element                  Example         Required?           Where does it go?
+Package declaration -    package abc;        No             First line in the file
+Import statements        import java.util.*; No             Immediately after the package
+Class declaration        public class C      Yes            Immediately after the import
+Field declarations       int value;          No             Anywhere inside a class
+Method declarations      void method()       No             Anywhere inside a class
+*If you use two classes in same file you have to declare as public one of class that must be
+ 
+
+}
+
+Destroying Objects:{
+    *all java objects stored in memory heap
+
+}
+Garbage Collection:{
+    *You do need to know that System.gc() is not guaranteed to run
+    An object is no longer reachable one of two situation occurs:{
+        *the object no longer has any references point to it
+        *all references to object have gone out of scope.
+    }
+    you have know about differences between objects and references;
+    references are all same size but object are stored in heap and all object size diffrent
+    each others.
+    *Remember, finalize() is only run when the object is eligible for garbage collection.
+    
+}
