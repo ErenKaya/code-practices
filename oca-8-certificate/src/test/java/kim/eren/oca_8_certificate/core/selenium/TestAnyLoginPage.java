@@ -44,7 +44,7 @@ public class TestAnyLoginPage {
 	}
 
 	@Test
-	public void testIasLogin() {
+	public void testAnyLogin() {
 		for (FirefoxDriver driver : driverList) {
 			driver.get(url);
 			driver.findElement(By.xpath(USERNAME_INPUT)).sendKeys(username);
