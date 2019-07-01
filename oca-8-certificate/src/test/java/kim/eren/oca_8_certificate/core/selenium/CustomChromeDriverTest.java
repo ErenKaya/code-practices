@@ -14,9 +14,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class CustomChromeDriverTest {
 
 	FirefoxDriver driver;
-	String driverPath = System.getProperty("user.dir") + File.separator + "src" + File.separator + "resources"
-			+ File.separator + "geckodriver";
-	private static final String DEPARTURE_PLACE = "IST";
+	String driverPath = Constants.DRIVER_PATH;
+	static final String DEPARTURE_PLACE = "IST";
 	private static final String LANDING_PLACE = "LON";
 	private static final LocalDate DEPARTURE_DATE = LocalDate.now().plusDays(2);
 	private static final LocalDate RETURN_DATE = LocalDate.now().plusDays(4);
