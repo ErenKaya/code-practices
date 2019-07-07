@@ -4,7 +4,16 @@ public class Casting {
 
 	short x = 10;
 	short y = 3;
+	byte xx = 1;
+	byte yy = 2;
+
+	int xxyy = xx + yy;
+	long xxyyl = xx + yy;
+	double xxyyd = xx + yy;
+
+	byte bbxx = (byte) (xx + yy);
 	// short z = x * y; // DOES NOT COMPILE
+
 	/**
 	 * that line of 6 doesn't compile why ? because if you multiplicate two smaller
 	 * type that types promote to int so that result type will be int but we are

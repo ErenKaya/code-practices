@@ -13,7 +13,10 @@ public class Logical {
 	public static void main(String[] args) {
 		A xA = getA();
 		boolean result = false;
-		
+
+		testSwitchStatement();
+		testForStatmentBlocks();
+
 		Integer negativeIntegerPoint = Integer.MAX_VALUE + 1;
 		System.out.println("Logical.main() positive int value " + Integer.MAX_VALUE);
 		System.out.println("Logical.main() negative int value " + negativeIntegerPoint);
@@ -85,6 +88,37 @@ public class Logical {
 
 			}
 		System.out.println("count" + count);
+	}
+
+	private static void testSwitchStatement() {
+		final String x = "eren", y = "ahmet", z = "mehmet", w = "fatih", q = "can";
+		switch (x) {
+		case 3 > 4 ? y : x:
+			System.out.println("Logical.testSwitchStatement()case 1 ex");
+		}
+	}
+
+	private static void testForStatmentBlocks() {
+		final String x = "eren", y = "ahmet", z = "mehmet", w = "fatih", q = "can";
+		// compile error check
+		for (int i = y.equals("ahmet") ? 0 : 5; x.equals("eren") && i < 5; i = q.equals("can") ? i++ : i--) {
+			System.out.println("Logical.testForStatmentBlocks() " + i);
+		}
+
+	}
+
+	private static void testSingleLineIfStatement() {
+		int yo = 0;
+		if (yo < 10)
+			System.out.println("Too Low");
+		else
+			System.out.println("Just right");
+
+	}
+
+	private static void testWhileSingleLine() {
+		// while 1>5 // that is compile error
+
 	}
 
 	private static A getA() {

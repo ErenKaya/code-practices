@@ -128,7 +128,6 @@ because it runs inside a virtual machine
      +                 Indicates a number is positive, although numbers are assumed
                        to be positive in Java unless accompanied by a negative unary operator.
      -                 Indicates a literal number is negative or negates an expression.
-
  }
  Logical Complement and Negation Operators:{
      keep an eye with boolean data type like other programming languages accepts 0 or 1 to boolean but
@@ -160,6 +159,7 @@ because it runs inside a virtual machine
         the assignment operator = in the middle of an expression and using the value of the assignment as part
         of a more complex expression.
         */
+       
      },
      Relational Operators:{
          < Strictly less than
@@ -182,6 +182,16 @@ because it runs inside a virtual machine
      The if-then Statement:{
          if(booleanExpression) ->left to right if keyword/expression paranthesis require/booleanExpression
          {}-> if you statement single you have not to add this braces but if it multiple you have to
+         {
+             		int yo = 0;
+		if (yo < 10)
+			System.out.println("Too Low");
+		else
+			System.out.println("Just right");
+        
+
+        //that code compiles correctly
+         }
      }
      switch statement:{
          Data types supported by switch statements include the following:
@@ -194,6 +204,23 @@ because it runs inside a virtual machine
            ■ enum values
     For the exam, we recommend you memorize this list. Note that boolean and long, and their associated wrapper classes,
      are not supported by switch statements.
+     // you can use ternary statement in case section but you have to sure about in process variables constant
+     so if it changing dynamically switch statement will occurs compile error.
+     The exam creators are fond of switch examples that are missing break statements! 
+     },
+     The Basic for Statement: for loop:{
+         5-Using Loop Variables Outside the Loop for(long y = 0, x = 4; x < 5 && y < 10; x++, y++)
+          {  System.out.print(y + " "); } System.out.print(x);  // DOES NOT COMPILE
+         4-Using Incompatible Data Types in the Initialization Block 
+         for(long y = 0, int x = 4; x < 5 && y<10; x++, y++) {   // DOES NOT COMPILE 
+          System.out.print(x + " "); }
+         3- Redeclaring a Variable in the Initialization Block int x = 0; for(long y = 0, x = 4; x < 5 && y < 10; x++, y++)
+         {   // DOES NOT COMPILE  System.out.print(x + " "); } 
+         2-Adding Multiple Terms to the for Statement int x = 0; for(long y = 0, z = 4; x < 5 && y < 10; x++, y++)
+          {  System.out.print(y + " "); } System.out.print(x);
+         1- Creating an Infinite Loop
+            for( ; ; ) {  System.out.println("Hello World"); 
+        }
      }
 
  }
