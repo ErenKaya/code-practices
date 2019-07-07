@@ -13,6 +13,10 @@ public class Logical {
 	public static void main(String[] args) {
 		A xA = getA();
 		boolean result = false;
+		
+		Integer negativeIntegerPoint = Integer.MAX_VALUE + 1;
+		System.out.println("Logical.main() positive int value " + Integer.MAX_VALUE);
+		System.out.println("Logical.main() negative int value " + negativeIntegerPoint);
 		/**
 		 * if you choose shortcruit logical exp. you never get a nullpointerexception if
 		 * a object == null then but you can create a object but you can not assign any

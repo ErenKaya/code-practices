@@ -10,7 +10,7 @@ public class Casting {
 	 * type that types promote to int so that result type will be int but we are
 	 * declare as a short we should cast to smaller data
 	 */
-	short z = (short) (x * y);
+	int z = (x * y);
 	/**
 	 * that line doesn't compile
 	 */

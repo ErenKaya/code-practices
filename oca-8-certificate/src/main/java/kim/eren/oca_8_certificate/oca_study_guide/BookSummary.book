@@ -42,7 +42,7 @@ Garbage Collection:{
         *all references to object have gone out of scope.
     }
     you have know about differences between objects and references;
-    references are all same size but object are stored in heap and all object size diffrent
+    references are all same size but object are stored in heap and all objects size different
     each others.
     *Remember, finalize() is only run when the object is eligible for garbage collection.
 
@@ -90,3 +90,111 @@ allow classes to encapsulate data. Java is platform independent, compiling to by
 robust and simple by not providing pointers or operator overloading. Finally, Java is secure
 because it runs inside a virtual machine
 }
+
+/////////////////////////////CHAPTER 2/////////////////////////////////
+* Using Operators and Decision Constructs
+ *Using Loop Constructs
+ 
+
+ Understanding Java Operators:{
+     Three favors of operators are avaible in java -> Ternary,Binary,Unary
+     
+ },
+ Numeric Promotion:{
+     Numeric Promotion Rules:{
+         1-if two data types have diffrent types Java will automatically promote one of data type to larger one data type,
+         2-if one of the data values integral other one is floating-point Java will automatically promote integral data to 
+         floating-point
+         3-Smaller data types such as byte,chart,short are first promoted to int any time they're used in 
+         Java binary arithmetic even if neither of the operands is int,
+         4-After all promoting operatation done have the same data type the resulting value will show prometed data type
+         (short+short)=(int){
+             	short x = 10;
+	            short y = 3;
+	            // short z = x * y; // DOES NOT COMPILE
+	            /**
+	             * that line of 6 doesn't compile why ? because if you multiplicate two smaller
+	             * type that types promote to int so that result type will be int but we are
+	             * declare as a short we should cast to smaller data
+	             */
+	            int z = (x * y);
+	            /**
+         }
+         Java automatically promoted to floating data types to double
+     }
+ }
+ Working with Unary Operators:{
+     Unary operator    Description
+     +                 Indicates a number is positive, although numbers are assumed
+                       to be positive in Java unless accompanied by a negative unary operator.
+     -                 Indicates a literal number is negative or negates an expression.
+
+ }
+ Logical Complement and Negation Operators:{
+     keep an eye with boolean data type like other programming languages accepts 0 or 1 to boolean but
+     java doesn't accept that literals.
+ }
+ Increment and Decrement Operators:{
+     ex:int x = 3; int y = ++x * 5 / x-- + --x;
+     {
+         that questions must be solved step by step you have to keep in mind that is java executes
+         left  to right
+         step 1: incrementing x and multiple with 5 y = 4 * 5 / ..... x = 4;
+         step 2: decrement x but first value uses in executing y=4*5/ 4 - 2 so decrement first operands showing in this process
+         so x real value is 3 if it predecrement show up you have to decrement that so result is 
+         y = 4 * 5 / 4 - 2 = 18
+     }
+
+ }
+ Using Additional Binary Operators:{
+     Compound Assignment Operators:{
+        int x = 2, z = 3; x = x * z;
+        // Simple assignment operator x *= z;
+        // Compound assignment operator
+        long x = 5; long y = (x=3);
+        System.out.println(x); // Outputs 3
+        System.out.println(y); // Also, outputs 3
+        /*
+        The key here is that (x=3) does two things. First, it sets the value of the variable x to be 3. 
+        Second, it returns a value of the assignment, which is also 3. The exam creators are fond of inserting
+        the assignment operator = in the middle of an expression and using the value of the assignment as part
+        of a more complex expression.
+        */
+     },
+     Relational Operators:{
+         < Strictly less than
+         <= Less than or equal to
+         > Strictly greater than
+         >= Greater than or equal to
+     },
+     Logical Operators:{
+         if(x != null && x.getValue() < 5) {  // Do something }
+        In this example, if x was null , then the short-circuit prevents a NullPointerException
+         from ever being thrown, since the evaluation of x.getValue() < 5 is never reached. Alternatively, 
+         if we used a logical &, then both sides would always be evaluated and when x was null this would
+         throw an exception:
+         int x = 6; boolean y = (x >= 6) || (++x <= 7); System.out.println(x); //output 6
+        Because x >= 6 is true, the increment operator on the right-hand side of the expression is never evaluated,
+        so the output is 6.
+     }
+ }
+ Understanding Java Statements:{
+     The if-then Statement:{
+         if(booleanExpression) ->left to right if keyword/expression paranthesis require/booleanExpression
+         {}-> if you statement single you have not to add this braces but if it multiple you have to
+     }
+     switch statement:{
+         Data types supported by switch statements include the following:
+          ■ int and Integer
+           ■ byte and Byte 
+           ■ short and Short 
+           ■ char and Character 
+           ■ int and Integer
+           ■ String 
+           ■ enum values
+    For the exam, we recommend you memorize this list. Note that boolean and long, and their associated wrapper classes,
+     are not supported by switch statements.
+     }
+
+ }
+
