@@ -12,7 +12,6 @@ import {
   Area
 } from "recharts";
 import Scatter from "recharts/lib/cartesian/Scatter";
-import * as A from "../playground/Utility";
 
 const data = [
   {
