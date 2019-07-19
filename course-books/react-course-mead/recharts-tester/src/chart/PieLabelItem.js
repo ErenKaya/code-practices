@@ -11,14 +11,20 @@ export default class PieLabelItem {
     this.textAnchor;
   }
 
-  static preparePieLabelPositionObject(midAngle, outerRadius, cx, cy, updated) {
+  static preparePieLabelPositionObject(
+    midAngle,
+    outerRadius,
+    cx,
+    cy,
+    fontSizeWithRatio
+  ) {
     const RADIAN = Math.PI / 180;
     this.sin = Math.sin(-RADIAN * midAngle);
     this.cos = Math.cos(-RADIAN * midAngle);
-    this.sx = cx + (outerRadius + 10) * this.cos;
-    this.sy = cy + (outerRadius + (updated ? 30 : 10)) * this.sin;
+    this.sx = cx + outerRadius * this.cos;
+    this.sy = cy + outerRadius * this.sin;
     this.mx = cx + (outerRadius + 30) * this.cos;
-    this.my = cy + (outerRadius + (updated ? 70 : 30)) * this.sin;
+    this.my = cy + (outerRadius + fontSizeWithRatio) * this.sin;
     this.ex = this.mx + (this.cos >= 0 ? 1 : -1) * 22;
     this.ey = this.my;
     this.textAnchor = this.cos >= 0 ? "start" : "end";

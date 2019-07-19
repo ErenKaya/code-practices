@@ -4,15 +4,16 @@ import PieLabelItem from "./PieLabelItem";
 
 const data = [
   { name: "Group C", value: 300 },
-  { name: "Group A", value: 8 },
-  { name: "Group A", value: 5 },
-  { name: "Group A", value: 15 },
+  { name: "Group A", value: 4 },
+  { name: "Group A", value: 3 },
+  { name: "Group A", value: 1 },
   { name: "Group B", value: 35 },
   { name: "Group B", value: 42 },
   { name: "Group C", value: 300 }
 ];
 
 const CustomizedPieLabel = props => {
+  console.log("*********************");
   const RADIAN = Math.PI / 180;
   const {
     cx,
@@ -32,7 +33,7 @@ const CustomizedPieLabel = props => {
     outerRadius,
     cx,
     cy,
-    false
+    30
   );
   let textItemXPosition =
     pieLabelItem.ex + (pieLabelItem.cos >= 0 ? 1 : -1) * 12;
@@ -55,17 +56,29 @@ const CustomizedPieLabel = props => {
         "pieCellValue",
         value
       );
+      console.log(
+        "pathDBeforeChange",
+        `M${pieLabelItem.sx},${pieLabelItem.sy}L${pieLabelItem.mx},${
+          pieLabelItem.my
+        }L${pieLabelItem.ex},${pieLabelItem.ey}`
+      );
       textItemYPosition += props.fontSize;
       pieLabelItem = PieLabelItem.preparePieLabelPositionObject(
         midAngle,
         outerRadius,
         cx,
         cy,
-        true
+        30 - props.fontSize * 1.7
       );
-      let textItemXPosition =
+      textItemXPosition =
         pieLabelItem.ex + (pieLabelItem.cos >= 0 ? 1 : -1) * 12;
-      let textItemYPosition = pieLabelItem.ey + props.fontSize / 2;
+      textItemYPosition = pieLabelItem.ey;
+      console.log(
+        "path d pieItem",
+        `M${pieLabelItem.sx},${pieLabelItem.sy}L${pieLabelItem.mx},${
+          pieLabelItem.my
+        }L${pieLabelItem.ex},${pieLabelItem.ey}`
+      );
     }
   }
   props.setLastRenderedPieTextItemPosition(
@@ -73,12 +86,7 @@ const CustomizedPieLabel = props => {
     textItemYPosition
   );
   console.log("lastRenderedPieItem", lastRenderedPieTextItemPosition);
-  console.log(
-    "path d pieItem",
-    `M${pieLabelItem.sx},${pieLabelItem.sy}L${pieLabelItem.mx},${
-      pieLabelItem.my
-    }L${pieLabelItem.ex},${pieLabelItem.ey}`
-  );
+
   return (
     <g>
       <text
@@ -103,7 +111,7 @@ const CustomizedPieLabel = props => {
         d={`M${pieLabelItem.sx},${pieLabelItem.sy}L${pieLabelItem.mx},${
           pieLabelItem.my
         }L${pieLabelItem.ex},${pieLabelItem.ey}`}
-        stroke={fill}
+        stroke={"red"}
         fill="none"
       />
       <circle
@@ -158,6 +166,7 @@ const TwoLevelPieChart = React.createClass({
             outerRadius={80}
             fill="#8884d8"
             onClick={this.onPieEnter}
+            labelLine={false}
             label={
               <CustomizedPieLabel
                 fontSize={9}
@@ -174,8 +183,9 @@ const TwoLevelPieChart = React.createClass({
         <svg width={400} height={400} viewBox={"0 0 800 400"}>
           <path
             d={
-              window.testD ? window.testD:
-              "M221.23183269567244,164.77989696752485L202.61668440582184,150.1544049557157L180.61668440582184,150.1544049557157"
+              window.testD
+                ? window.testD
+                : "M221.23183269567244,164.77989696752485L202.61668440582184,150.1544049557157L180.61668440582184,150.1544049557157"
             }
             stroke={"red"}
             fill="none"
