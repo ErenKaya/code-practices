@@ -12,6 +12,7 @@ public class App {
 		sb.append("ja").append("va");
 		
 		System.out.println(sb.toString() == java);
+		System.out.println(sb.toString());
 		System.out.println(java == java1);
 	}
 }

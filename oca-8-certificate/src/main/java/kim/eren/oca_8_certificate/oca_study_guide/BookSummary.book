@@ -224,4 +224,45 @@ because it runs inside a virtual machine
      }
 
  }
+Chapter 4:{
+    Working With Varargs{
+        varrags means that "..." 3 point operators have been be last element of parameters so if a method contains
+        multiple parameters and if varargs used that parameters have to be last element;
 
+        public void walk1(int... nums) { } //have only one element
+        public void walk2(int start, int... nums) { } // have two element but varargs last element of parameters
+        public void walk3(int... nums, int start) { } // DOES NOT COMPILE 
+        public void walk4(int... start, int... nums) { } // DOES NOT COMPILE
+    }
+    Applying Access Modifiers:{
+        You already saw that there are four access modifi ers: 
+        public, private, protected, and default access. 
+        We are going to discuss them in order from most restrictive to least restrictive:
+        ■ private: Only accessible within the same class 
+        ■ default (package private) access: private and other classes in the same package 
+        ■ protected: default access and child classes 
+        ■ public: protected and classes in the other packages
+
+    }
+    Calling a Static Variable or Method:{
+        if you call a static variable from a instance called variable showing properly then if you want to
+        instance value to null then call variable of instance you assuming that NullPointerException but 
+        variable is static you have to keep in mind Static variables loads once and if you program not die yet
+        thats value doesn't kill
+        public class Eren{
+            public static String name="Eren";
+        }
+
+        public class ErenTester{
+            public static void main(String... args){
+                Eren e = new Eren();
+                System.out.println(e.name); // outputs is "Eren"
+                e = null;
+                System.out.println(e.name); // outputs is "Eren" you assuming that there is an exception which is NullPointerException
+                // e.name is static so its loads only once.
+            }
+        }   
+    }
+    *Java is in language of passbyvalue
+    
+}

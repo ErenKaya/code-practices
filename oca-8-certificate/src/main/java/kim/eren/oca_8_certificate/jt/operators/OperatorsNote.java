@@ -15,6 +15,7 @@ package kim.eren.oca_8_certificate.jt.operators;
  *
  */
 public class OperatorsNote {
+	
 	public static void main(String[] args) {
 
 		int bitmask = 0x000F;

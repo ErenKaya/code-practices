@@ -56,28 +56,27 @@ const CustomizedPieLabel = props => {
         "pieCellValue",
         value
       );
-      console.log(
-        "pathDBeforeChange",
-        `M${pieLabelItem.sx},${pieLabelItem.sy}L${pieLabelItem.mx},${
-          pieLabelItem.my
-        }L${pieLabelItem.ex},${pieLabelItem.ey}`
-      );
+      console.log("isOverLayActiveCxAndCyValue", ":", "Cx:", cx, "Cy:", cy);
       textItemYPosition += props.fontSize;
       pieLabelItem = PieLabelItem.preparePieLabelPositionObject(
         midAngle,
         outerRadius,
         cx,
         cy,
-        30 - props.fontSize * 1.7
+        30 - props.fontSize
       );
       textItemXPosition =
         pieLabelItem.ex + (pieLabelItem.cos >= 0 ? 1 : -1) * 12;
       textItemYPosition = pieLabelItem.ey;
       console.log(
-        "path d pieItem",
-        `M${pieLabelItem.sx},${pieLabelItem.sy}L${pieLabelItem.mx},${
-          pieLabelItem.my
-        }L${pieLabelItem.ex},${pieLabelItem.ey}`
+        "textItemXPos true",
+        lastRenderedPieTextItemPosition,
+        "&&nowX",
+        textItemXPosition,
+        "nowY",
+        textItemYPosition,
+        "pieCellValue",
+        value
       );
     }
   }

@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - App",
+            "request": "launch",
+            "mainClass": "kim.eren.oca_8_certificate.App",
+            "projectName": "oca-8-certificate"
+        }
+    ]
+}
