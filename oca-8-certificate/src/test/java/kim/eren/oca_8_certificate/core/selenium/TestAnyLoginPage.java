@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class TestAnyLoginPage {
@@ -49,6 +50,8 @@ public class TestAnyLoginPage {
 			driver.get(url);
 			driver.findElement(By.xpath(USERNAME_INPUT)).sendKeys(username);
 			driver.findElement(By.xpath(PASSWORD_INPUT)).sendKeys(password);
+			((JavascriptExecutor) driver)
+					.executeScript("document.addEventListener(\"click\",(e)=>{console.log(e)});");
 			driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div[2]/div/div[3]/button")).click();
 			System.err.println();
 		}
