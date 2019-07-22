@@ -24,7 +24,4 @@ export default class PieLabelItem {
       this.textAnchor = this.cos >= 0 ? "start" : "end";
       return this;
    }
-   static getObject() {
-      return this ? this : new PieLabelItem();
-   }
 }
