@@ -1,6 +1,9 @@
 import React from "react";
 import CodeMirror from "codemirror";
-require("codemirror/mode/jsx/jsx");
+// require("./Dart");
+import "./Troia";
+import "../../node_modules/codemirror/theme/oceanic-next.css";
+// require("codemirror/mode/jsx/jsx");
 export default class CodeMirrorEditor extends React.Component {
    constructor() {
       super();
@@ -12,13 +15,13 @@ export default class CodeMirrorEditor extends React.Component {
       //     console.log("parserMode",parserMode);
       //   });
       CodeMirror(this.editorRef, {
-         value: "function myScript(){return 100;}\n",
-         mode: "jsx"
+         value: "main() {print('Hello, World!');}\n",
+         mode: "troia",
+         theme: "oceanic-next"
       });
    };
 
    render() {
-      console.log(this.codeMirror);
       return <div ref={ref => (this.editorRef = ref)} />;
    }
 }
