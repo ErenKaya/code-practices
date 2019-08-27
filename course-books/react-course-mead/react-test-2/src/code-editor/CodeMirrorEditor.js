@@ -2,8 +2,8 @@ import React from "react";
 import CodeMirror from "codemirror";
 // require("./Dart");
 import "./Troia";
-import "../../node_modules/codemirror/theme/oceanic-next.css";
-// require("codemirror/mode/jsx/jsx");
+// import "../../node_modules/codemirror/theme/duotone-light.css";
+// require("codemirror/mode/fortran/fortran");
 export default class CodeMirrorEditor extends React.Component {
    constructor() {
       super();
@@ -16,8 +16,7 @@ export default class CodeMirrorEditor extends React.Component {
       //   });
       CodeMirror(this.editorRef, {
          value: "main() {print('Hello, World!');}\n",
-         mode: "troia",
-         theme: "oceanic-next"
+         mode: "troia"
       });
    };
 

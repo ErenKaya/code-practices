@@ -19,6 +19,7 @@
     "codemirror": "^5.48.2",
     "css-loader": "0.28.4",
     "react": "15.6.1",
+    "react-ace": "^7.0.2",
     "react-dom": "15.6.1",
     "react-modal": "2.2.2",
     "style-loader": "0.18.2",
