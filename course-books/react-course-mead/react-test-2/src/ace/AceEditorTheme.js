@@ -77,9 +77,6 @@ ace.define("ace/theme/troia", ["require", "exports", "module", "ace/lib/dom"], f
     .ace-troia .ace_constant.ace_numeric {\
     color: #46A609\
     }\
-    .ace-troia .ace_globales {\
-      color: yellow;\
-      }\
     .ace-troia .ace_constant.ace_character.ace_entity {\
     color: #BF78CC\
     }\

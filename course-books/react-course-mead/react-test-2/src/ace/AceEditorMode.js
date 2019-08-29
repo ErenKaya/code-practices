@@ -46,11 +46,10 @@ ace.define("ace/mode/troia_highlight_rules", ["require", "exports", "module", "a
          {
             "commands.keywords": "OVERLAY",
             commands: "CLOSEPORT",
-            functions: "FOOTER SYSGLOBAL",
+            functions: "FOOTER",
             loopsconjuctions: "MAXIMIZEFRAME",
             "commands.deprecated": "GETPRINTERNAMES",
             "functions.deprecated": "GETSET1X"
-           
          },
          "text",
          true,

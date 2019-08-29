@@ -4,7 +4,7 @@ import AceEditor from "react-ace";
 import "./AceEditorMode";
 import "./AceEditorTheme";
 // import "brace/theme/clouds"
-// import "brace/mode/abap";
+
 // import "brace/mode/java"
 
 export default class AceEditorTest extends React.Component {
@@ -24,10 +24,7 @@ export default class AceEditorTest extends React.Component {
             <AceEditor
                mode="troia"
                theme="troia"
-               onSelectionChange={(val, e) => {
-                  console.log(e);
-                  console.log(val.getRange());
-               }}
+               onSelection={this.onChange}
                name="UNIQUE_ID_OF_DIV"
                editorProps={{ $blockScrolling: true }}
                value={`selamtroia /* troia'dan selamlar */ 
