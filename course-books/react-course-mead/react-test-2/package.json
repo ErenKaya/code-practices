@@ -18,6 +18,8 @@
     "babel-preset-react": "6.24.1",
     "codemirror": "^5.48.2",
     "css-loader": "0.28.4",
+    "diff-match-patch": "^1.0.4",
+    "merge-view-codemirror": "^1.0.1",
     "react": "15.6.1",
     "react-ace": "^7.0.2",
     "react-dom": "15.6.1",
