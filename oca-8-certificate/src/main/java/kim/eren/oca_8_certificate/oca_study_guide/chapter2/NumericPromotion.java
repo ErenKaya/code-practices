@@ -61,7 +61,7 @@ public class NumericPromotion {
 		byte val8 = 12;
 		Object val9 = val7 * val8;
 		/**
-		 * this result showing us that value will promote to long
+		 * this result showing us that value will promote to int
 		 */
 		System.out.println(val9 instanceof Integer); // result true
 
@@ -78,7 +78,7 @@ public class NumericPromotion {
 		double val14 = 4.0f;
 		Object val13 = val12 * val11 / val10 * val14;
 		/**
-		 * this result showing us that value will promote to long
+		 * this result showing us that value will promote to double
 		 */
 		System.out.println(val13 instanceof Double); // result true
 	}
