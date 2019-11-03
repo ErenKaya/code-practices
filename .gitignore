@@ -96,5 +96,8 @@ typings/
 !.vscode/tasks.json
 !.vscode/extensions.json
 
+oca-8-certificate/src/main/java/kim/eren/oca_8_certificate/oca_study_guide/*/.~lock*.odt#
+
+
 
 # End of https://www.gitignore.io/api/node,visualstudiocode
