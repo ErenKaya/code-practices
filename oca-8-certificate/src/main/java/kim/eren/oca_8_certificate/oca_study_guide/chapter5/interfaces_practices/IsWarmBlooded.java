@@ -10,7 +10,11 @@ public interface IsWarmBlooded{
     }
 }
 
-class Person implements IsWarmBlooded{
+interface WarmBlooded2 extends IsWarmBlooded{
+
+}
+
+class Person implements WarmBlooded2{
 
 }
 
