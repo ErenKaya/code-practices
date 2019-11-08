@@ -1,7 +1,7 @@
 package kim.eren.oca_8_certificate.oca_study_guide.chapter4.lambda;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.List;import java.util.List;
 import java.util.Random;
 
 public class TradionalSearch{
