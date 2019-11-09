@@ -35,7 +35,6 @@ public class TradionalSearch{
         System.out.print(animal + " ");
    
         }
-     
         System.out.println();
      
         }
