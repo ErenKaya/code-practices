@@ -17,9 +17,10 @@ public class StringBuilderTest {
 
 		StringBuilder a = new StringBuilder("abc");
 		StringBuilder b = a.append("de");
-		b = b.append("f").append("g");
+		b = b.append("f").append("g").insert(1,"s").insert(1, "t");
 		System.out.println("a=" + a);
 		System.out.println("b=" + b);
+		
 
 		/**
 		 * Notice that substring() returns a String rather than a StringBuilder . That
@@ -29,8 +30,11 @@ public class StringBuilderTest {
 
 		StringBuilder sb = new StringBuilder("animals");
 		String sub = sb.substring(sb.indexOf("a"), sb.indexOf("al"));
+		sub+=false;
+		sub+='s';
 		int len = sb.length();
 		char ch = sb.charAt(6);
+		if(sub.equals(sb)){}
 		System.out.println(sub + " " + len + " " + ch); // anim 7 s
 
 		StringBuilder sb2 = new StringBuilder("abcdef");
