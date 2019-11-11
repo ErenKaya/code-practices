@@ -27,7 +27,7 @@ public class TradionalSearch{
         print(animals, a->a.canSwim());
                 // pass class that does check
         }
-
+        
         private static void print(List<Animal> animals, Checker checker) {
         for (Animal animal : animals) {
         if (checker.test(animal))

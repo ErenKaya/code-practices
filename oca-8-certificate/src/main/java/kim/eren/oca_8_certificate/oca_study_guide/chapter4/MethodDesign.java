@@ -1,12 +1,46 @@
 package kim.eren.oca_8_certificate.oca_study_guide.chapter4;
-public class MethodDesign{
+public class MethodDesign extends MethodDesignParent{
+    public MethodDesign(){
+        System.out.println("child executed");
+    }
+
+    public MethodDesign(int a){
+        super(a);
+        System.out.println("child executed+"+a);
+    }
     public static void walk(int a, int... aList){
         System.out.println("aList length: "+aList.length);
     }
+
+    public void autoBoxing(int param){
+        System.out.println(param);
+    }
+
+    public void autoBoxing(Integer param){
+        System.out.println(param);
+    }
+
     public static void main(String[] args){
         walk(1);
         walk(1,2);
         walk(1,2,3);
         walk(1,new int[]{1,2});
+
+        int arg = 2;
+        MethodDesign md = new MethodDesign(1);
+        // actually you can not create one more same method
+        // because of java already autobox that primitive to wrapper class
+        md.autoBoxing(arg);
     }
+}
+
+class MethodDesignParent {
+    public MethodDesignParent(){
+        System.out.println("parent executed");
+    }
+
+    public MethodDesignParent(int a){
+        System.out.println("parent executed+"+a);
+    }
+
 }
