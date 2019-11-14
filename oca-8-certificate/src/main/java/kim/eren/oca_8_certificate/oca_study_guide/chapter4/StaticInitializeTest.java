@@ -6,7 +6,7 @@ public class StaticInitializeTest{
     }
 
    public static void main(String[] args) {
-        System.out.println(StaticInitialize.TEST_VARIABLE=5;);
+        System.out.println(StaticInitialize.TEST_VARIABLE);
         System.out.println(StaticInitialize.ASSIGN_AFTER);
    }
 }
