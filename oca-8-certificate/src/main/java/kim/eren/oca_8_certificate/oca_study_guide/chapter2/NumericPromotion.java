@@ -60,6 +60,14 @@ public class NumericPromotion {
 		short val7 = 5;
 		byte val8 = 12;
 		Object val9 = val7 * val8;
+		// if you use unary operators such as "++","--" small data types
+		// result is same data type with operated variable
+
+		short smallDataTypeWithUnary = 0;
+		// no compile error here. because of unary operators
+		short result = smallDataTypeWithUnary++;
+
+
 		/**
 		 * this result showing us that value will promote to int
 		 */

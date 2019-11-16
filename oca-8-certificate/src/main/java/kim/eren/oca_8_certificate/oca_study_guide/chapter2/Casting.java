@@ -14,6 +14,10 @@ public class Casting {
 	byte bbxx = (byte) (xx + yy);
 	// short z = x * y; // DOES NOT COMPILE
 
+// test is primitive byte automatically to do not cast any of parent class?
+//there is no compile error so you can not cast any of parent them
+	int bbxxContainer = bbxx;
+
 	/**
 	 * that line of 6 doesn't compile why ? because if you multiplicate two smaller
 	 * type that types promote to int so that result type will be int but we are

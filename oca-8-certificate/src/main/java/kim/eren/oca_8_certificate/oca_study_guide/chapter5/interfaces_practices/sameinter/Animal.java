@@ -18,7 +18,7 @@ public class Animal implements Runnable, Moveable {
 
 	public static void main(String[] args) {
 		Animal a = (Animal)new Animal();
-		a.a;
+		a.localMethodTriggerFromInstance();
 		Moveable m =  a;
 		Runnable r = a;
 
