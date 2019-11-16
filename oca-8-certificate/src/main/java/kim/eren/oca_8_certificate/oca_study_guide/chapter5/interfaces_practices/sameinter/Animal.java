@@ -5,14 +5,20 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 public class Animal implements Runnable, Moveable {
+	private String a = "20";
 
 	@Override
 	public void canRun() {
 		System.out.println("Moving around");
 	}
 
+	private void localMethodTriggerFromInstance(){
+		System.out.println("triggered");
+	}
+
 	public static void main(String[] args) {
-		Animal a = new Animal();
+		Animal a = (Animal)new Animal();
+		a.a;
 		Moveable m =  a;
 		Runnable r = a;
 
