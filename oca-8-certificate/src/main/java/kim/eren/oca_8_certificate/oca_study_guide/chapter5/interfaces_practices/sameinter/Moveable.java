@@ -7,4 +7,6 @@ public interface Moveable {
 	default void testMethod(){
 		System.out.println("test method");
 	}
+
+	abstract void selam();
 }
