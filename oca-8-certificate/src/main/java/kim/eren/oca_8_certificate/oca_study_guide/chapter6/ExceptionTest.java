@@ -8,6 +8,7 @@ public class ExceptionTest{
     public static  String exceptions() {
     String result = "";
     String v = null;
+    // before catch finally done
         try {
             try {
                 result += "before";
@@ -20,9 +21,11 @@ public class ExceptionTest{
                 result += "finally";
                 throw new Exception();
                 }
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
         result += "done";
-        }
+        }catch (Exception e) {
+            result += "done1";
+            }
    return result;
    }
 } 
