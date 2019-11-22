@@ -7,6 +7,7 @@ public class ExceptionTest{
 
     public static  String exceptions() {
     String result = "";
+    
     String v = null;
     // before catch finally done
         try {
