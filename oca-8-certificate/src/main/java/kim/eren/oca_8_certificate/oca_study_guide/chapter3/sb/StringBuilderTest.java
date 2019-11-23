@@ -29,6 +29,9 @@ public class StringBuilderTest {
 		 */
 
 		StringBuilder sb = new StringBuilder("animals");
+		String sbTest = sb.substring(sb.length()-1);
+		sbTest.replace(sb, "newChar");
+		System.out.println(sbTest);
 		String sub = sb.substring(sb.indexOf("a"), sb.indexOf("al"));
 		sub+=false;
 		sub+='s';

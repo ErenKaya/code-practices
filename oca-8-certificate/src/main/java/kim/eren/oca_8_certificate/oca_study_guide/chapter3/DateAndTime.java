@@ -20,9 +20,9 @@ public class DateAndTime {
         nearly as special, and clearly an hour after midnight isn’t as special either.
      */
     public static void main(String[] args) {
-        LocalDate date = LocalDate.of(2019,1,31);
+        LocalDate date = LocalDate.of(2019,1,20);
         Period period = Period.ofMonths(1);
-        LocalDate plussedDate = date.plus(period);
+        LocalDate plussedDate = date.plusDays(-1).plus(period);
         System.out.println(plussedDate);
         
     }
