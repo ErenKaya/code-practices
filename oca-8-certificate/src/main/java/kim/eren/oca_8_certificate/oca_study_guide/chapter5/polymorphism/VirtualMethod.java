@@ -1,6 +1,5 @@
 package kim.eren.oca_8_certificate.oca_study_guide.chapter5.polymorphism;
 
-import javax.activation.MailcapCommandMap;
 
 public class VirtualMethod extends VirtualMethodParent{
     // if you declare a method in parent class and uses overriden method 

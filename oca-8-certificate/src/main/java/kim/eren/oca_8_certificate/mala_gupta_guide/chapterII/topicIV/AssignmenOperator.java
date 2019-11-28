@@ -1,4 +1,4 @@
-package kim.eren.oca_8_certificate.mala_gupta_guide.java_data_types.chapterII_IV;
+package kim.eren.oca_8_certificate.mala_gupta_guide.chapterII.topicIV;
 
 public class AssignmenOperator{
     

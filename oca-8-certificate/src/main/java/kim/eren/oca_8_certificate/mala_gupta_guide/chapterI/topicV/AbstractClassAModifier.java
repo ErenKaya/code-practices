@@ -1,4 +1,4 @@
-package kim.eren.oca_8_certificate.mala_gupta_guide.java_basics.topicI_V;
+package kim.eren.oca_8_certificate.mala_gupta_guide.chapterI.topicV;
 
 public abstract class AbstractClassAModifier {
 
