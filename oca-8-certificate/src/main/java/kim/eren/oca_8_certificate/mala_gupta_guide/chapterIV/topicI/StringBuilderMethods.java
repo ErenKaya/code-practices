@@ -6,5 +6,6 @@ public class StringBuilderMethods{
         sb.append("eren");
         sb.insert(0, "s");
         System.out.println(sb.toString());
+        System.out.println(sb.toString());
     }
 }
