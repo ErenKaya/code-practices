@@ -42,4 +42,9 @@ public class Animal implements Runnable, Moveable {
 		m.canRun();
 	}
 
+	@Override
+	public void selam() {
+
+	}
+
 }
