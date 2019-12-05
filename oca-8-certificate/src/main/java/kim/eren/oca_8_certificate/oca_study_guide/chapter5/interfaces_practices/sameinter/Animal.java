@@ -5,21 +5,27 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 public class Animal implements Runnable, Moveable {
+	private String a = "20";
 
 	@Override
 	public void canRun() {
 		System.out.println("Moving around");
 	}
 
+	private void localMethodTriggerFromInstance(){
+		System.out.println("triggered");
+	}
+
 	public static void main(String[] args) {
-		Animal a = new Animal();
-		Moveable m = (Moveable) a;
+		Animal a = (Animal)new Animal();
+		a.localMethodTriggerFromInstance();
+		Moveable m =  a;
 		Runnable r = a;
 
 		// if you cast a object to parent interface you still seen object methods in
 		// reflection
 		// as you can see on the below java interface method default accessor is public
-		for (Method method : m.getClass().getDeclaredMethods()) {
+		for (Method method : m.getClass().getMethods()) {
 			System.out.print(method.getName() + " ");
 			System.out.println(Modifier.toString(method.getModifiers()));
 		}
@@ -36,6 +42,11 @@ public class Animal implements Runnable, Moveable {
 
 		r.canRun();
 		m.canRun();
+	}
+
+	@Override
+	public void selam() {
+
 	}
 
 }

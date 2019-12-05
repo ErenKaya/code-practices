@@ -6,7 +6,7 @@ public class OrExpression implements Expression {
 	private Expression exp2;
 
 	/**
-	 * Neighter exp1 nor exp2 cannot null! 
+	 * Neither exp1 nor exp2 cannot null! 
 	 * @param exp1
 	 * @param exp2
 	 */

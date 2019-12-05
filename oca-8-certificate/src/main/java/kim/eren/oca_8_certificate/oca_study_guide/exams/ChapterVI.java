@@ -1,8 +1,8 @@
 package kim.eren.oca_8_certificate.oca_study_guide.exams;
 
-public class ChapterIV {
+public class ChapterVI {
 /**
- * Test completed 24.25C 1 Blank 1W
+ * Test completed 14.75C 3 W
  * 
  * */	
 
