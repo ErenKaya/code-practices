@@ -1,6 +1,9 @@
 package kim.eren.code_practices;
 
+import org.apache.log4j.Logger;
+
 public class CodePracticeResult {
+	final static Logger logger = Logger.getLogger(CodePracticeResult.class);
 
 	private String resultId;
 	private String resultText;
@@ -24,6 +27,7 @@ public class CodePracticeResult {
 	}
 
 	public String getResultText() {
+		logger.debug("This is debug : " + resultText);
 		return resultText;
 	}
 
