@@ -29,6 +29,8 @@ public class Animal implements Runnable, Moveable {
 			System.out.print(method.getName() + " ");
 			System.out.println(Modifier.toString(method.getModifiers()));
 		}
+		
+		
 
 		// as you can see on the below java interface variables are default accessor
 		// public static final you can use interfaces as a constants but its not
