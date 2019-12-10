@@ -18,5 +18,10 @@ public class TestI{
     public static void main(String[] args) {
         // if your exception object have a message then to string method show it
         System.out.println(new Exception("selam"));
+        int i1 = 1;
+        int i2 = 1;
+        if(i1 == i2){
+            System.out.println("equal");
+        }
     }
 }
