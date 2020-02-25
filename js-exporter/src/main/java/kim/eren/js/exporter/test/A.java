@@ -33,7 +33,6 @@ public class A implements Predicate<Path> {
 	private static final String JS_BLANKS_CLAZZ_NAME = "<clazzname>";
 	private static final String JS_BLANKS_PARENT_CLAZZ_NAME = "<-parent clazz->";
 	private static final String JS_BLANKS_PROP_LIST = "<-proplist->";
-	private static final String[] PRIMITIVE_TYPES = { "Integer", "String", "List", "HashMap" };
 
 	@Override
 	public boolean test(Path p) {
@@ -278,11 +277,11 @@ public class A implements Predicate<Path> {
 	}
 
 	private void prepareJsClazzNameAndParent(String name, ClazzContainer parentClazzName, StringBuilder clazzAsString) {
-		int nameConstStartIndex = clazzAsString.indexOf("<clazzname>");
-		clazzAsString.replace(nameConstStartIndex, nameConstStartIndex + "<clazzname>".length(), name);
-		if (parentClazzName != null && !"".equals(parentClazzName)) {
-			int parentConstStartIndex = clazzAsString.indexOf("<-parent clazz->");
-			clazzAsString.replace(parentConstStartIndex, parentConstStartIndex + "<-parent clazz->".length(),
+		int nameConstStartIndex = clazzAsString.indexOf(JS_BLANKS_CLAZZ_NAME);
+		clazzAsString.replace(nameConstStartIndex, nameConstStartIndex + JS_BLANKS_CLAZZ_NAME.length(), name);
+		if (parentClazzName != null && !"".equals(parentClazzName.getName())) {
+			int parentConstStartIndex = clazzAsString.indexOf(JS_BLANKS_PARENT_CLAZZ_NAME);
+			clazzAsString.replace(parentConstStartIndex, parentConstStartIndex + JS_BLANKS_PARENT_CLAZZ_NAME.length(),
 					" extends " + parentClazzName.getName());
 		}
 
@@ -299,7 +298,9 @@ public class A implements Predicate<Path> {
 
 			}
 		}
-		clazzAsString.replace(0, 11, importAsString.toString());
+		int nameConstStartIndex = clazzAsString.indexOf(JS_BLANKS_IMPORT);
+		clazzAsString.replace(nameConstStartIndex, nameConstStartIndex + JS_BLANKS_IMPORT.length(),
+				importAsString.toString());
 
 	}
 
