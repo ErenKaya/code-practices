@@ -13,6 +13,7 @@ public class App {
 		a.setSerializerClazzName("Serializer");
 		a.prepareSerializerList();
 		a.prepareJsInfoList();
+		a.prepareJsInfoList2();
 		a.createJsFiles();
 	}
 

@@ -1,6 +1,10 @@
 package kim.eren.js.exporter.test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+import java.io.IOException;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -13,6 +17,12 @@ public class ATest {
 	@Before
 	public void init() {
 		aInstance = new A();
+	}
+
+	@Test
+	public void test_serializer_finder_method() throws IOException {
+		assertTrue(aInstance.findSerializer2(new File(
+				"../code-practices/oca-8-certificate/src/main/java/kim/eren/oca_8_certificate/core/gk/model/ParentModelObject.java")));
 	}
 
 	@Test
@@ -49,6 +59,7 @@ public class ATest {
 		assertEquals("Serializer",
 				aInstance.parseClazzNameFromImport("kim.eren.oca_8_certificate.core.gk.serializer.Serializer"));
 	}
+
 	@Test
 	public void test_js_import_path() {
 		assertEquals("import CustomProp from \"../kim.eren.oca_8_certificate.core.gk.prop/CustomProp.js\";",

@@ -2,6 +2,7 @@ package kim.eren.js.exporter.test;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -15,6 +16,17 @@ import java.util.Map;
 import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.github.javaparser.JavaParser;
+import com.github.javaparser.ParseException;
+import com.github.javaparser.ast.CompilationUnit;
+import com.github.javaparser.ast.ImportDeclaration;
+import com.github.javaparser.ast.body.BodyDeclaration;
+import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
+import com.github.javaparser.ast.body.InitializerDeclaration;
+import com.github.javaparser.ast.body.MethodDeclaration;
+import com.github.javaparser.ast.body.TypeDeclaration;
+import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 
 import kim.eren.js.exporter.ClazzContainer;
 import kim.eren.js.exporter.JsInfo;
@@ -33,21 +45,29 @@ public class A implements Predicate<Path> {
 	private static final String JS_BLANKS_CLAZZ_NAME = "<clazzname>";
 	private static final String JS_BLANKS_PARENT_CLAZZ_NAME = "<-parent clazz->";
 	private static final String JS_BLANKS_PROP_LIST = "<-proplist->";
+	private static Object SERIALIZER_FULL_PATH = null;
 
 	@Override
 	public boolean test(Path p) {
 		boolean fileExtensionCorrect = false, fileHasSerializer = false;
 		fileExtensionCorrect = p.toString().endsWith(".java");
-		fileHasSerializer = findSerializer(p);
+		try {
+			fileHasSerializer = findSerializer2(p.toFile());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return fileExtensionCorrect && fileHasSerializer;
+	}
+
+	public String getSerializerFullPath() {
+		return serializerPackageName + "." + serializerClazzName;
 	}
 
 	public void prepareSerializerList() throws IOException {
 		Files.walk(Paths.get(projectPath)).filter(this).forEach((e) -> clazzWhichContainsSerializer.add(e));
 	}
 
-	private boolean findSerializer(Path p) {
-		File f = p.toFile();
+	private boolean findSerializer(File f) {
 		BufferedReader br = getBufferedReader(f);
 		if (br != null) {
 			String st;
@@ -91,6 +111,62 @@ public class A implements Predicate<Path> {
 			// e.printStackTrace();
 		}
 		return null;
+	}
+
+	private static class MethodNamePrinter extends VoidVisitorAdapter<String> {
+		@Override
+		public void visit(ImportDeclaration md, String arg) {
+			super.visit(md, arg);
+			System.out.println("Method Name Printed: " + md.getName());
+			arg = md.getName().getName();
+		}
+
+	}
+
+	public boolean findSerializer2(File file) throws IOException {
+		if (!file.isDirectory()) {
+			CompilationUnit unit = getCompileUnit(file);
+			List<ImportDeclaration> importList = unit.getImports();
+			for (ImportDeclaration importDeclaration : importList) {
+				String importFullPath = importDeclaration.getName().toString();
+				if (importFullPath.equals(getSerializerFullPath())) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	public CompilationUnit getCompileUnit(File file) throws IOException {
+		FileInputStream fis = new FileInputStream(file);
+		CompilationUnit unit = null;
+		try {
+			unit = JavaParser.parse(fis);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		} finally {
+			fis.close();
+		}
+		return unit;
+	}
+
+	public void prepareJsInfoList2() throws IOException {
+		for (Path p : clazzWhichContainsSerializer) {
+			CompilationUnit unit = getCompileUnit(p.toFile());
+			List<TypeDeclaration> types = unit.getTypes();
+			for (TypeDeclaration type : types) {
+				List<BodyDeclaration> bodyDeclarations = type.getMembers();
+				for (BodyDeclaration bodyDeclaration : bodyDeclarations) {
+					if (bodyDeclaration instanceof MethodDeclaration) {
+						MethodDeclaration method = (MethodDeclaration) bodyDeclaration;
+						System.out.println("A.prepareJsInfoList2()");
+					}
+
+				}
+			}
+
+		}
+
 	}
 
 	public void prepareJsInfoList() {
