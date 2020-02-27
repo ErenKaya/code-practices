@@ -21,12 +21,20 @@ import com.github.javaparser.JavaParser;
 import com.github.javaparser.ParseException;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.ImportDeclaration;
+import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.body.BodyDeclaration;
-import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
-import com.github.javaparser.ast.body.InitializerDeclaration;
+import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.body.TypeDeclaration;
-import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
+import com.github.javaparser.ast.body.VariableDeclarator;
+import com.github.javaparser.ast.expr.Expression;
+import com.github.javaparser.ast.expr.MethodCallExpr;
+import com.github.javaparser.ast.expr.NameExpr;
+import com.github.javaparser.ast.expr.ObjectCreationExpr;
+import com.github.javaparser.ast.expr.QualifiedNameExpr;
+import com.github.javaparser.ast.stmt.BlockStmt;
+import com.github.javaparser.ast.type.Type;
+import com.github.javaparser.ast.visitor.GenericVisitorAdapter;
 
 import kim.eren.js.exporter.ClazzContainer;
 import kim.eren.js.exporter.JsInfo;
@@ -46,13 +54,14 @@ public class A implements Predicate<Path> {
 	private static final String JS_BLANKS_PARENT_CLAZZ_NAME = "<-parent clazz->";
 	private static final String JS_BLANKS_PROP_LIST = "<-proplist->";
 	private static Object SERIALIZER_FULL_PATH = null;
+	private static final String ANONYMOUS_CLAZZ_METHOD_NAME = "readInstance";
 
 	@Override
 	public boolean test(Path p) {
 		boolean fileExtensionCorrect = false, fileHasSerializer = false;
 		fileExtensionCorrect = p.toString().endsWith(".java");
 		try {
-			fileHasSerializer = findSerializer2(p.toFile());
+			fileHasSerializer = findSerializer(p.toFile());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -63,44 +72,12 @@ public class A implements Predicate<Path> {
 		return serializerPackageName + "." + serializerClazzName;
 	}
 
-	public void prepareSerializerList() throws IOException {
-		Files.walk(Paths.get(projectPath)).filter(this).forEach((e) -> clazzWhichContainsSerializer.add(e));
+	public String getSerializerPackageName() {
+		return serializerPackageName;
 	}
 
-	private boolean findSerializer(File f) {
-		BufferedReader br = getBufferedReader(f);
-		if (br != null) {
-			String st;
-			try {
-				while ((st = br.readLine()) != null) {
-					String[] strParts = st.split(" ");
-					if (strParts.length > 1) {
-						// we can add optimization here if not starts with imports count greater than 5
-						// can be return false;
-						Pattern pattern = Pattern.compile("import");
-						Matcher m = pattern.matcher(strParts[0]);
-						if (m.find()) {
-							pattern = Pattern.compile(serializerPackageName);
-							m = pattern.matcher(strParts[1]);
-							boolean mResult = m.find();
-							if (mResult) {
-								return mResult && !st.contains("//") && !st.contains("/*");
-							}
-
-						}
-					}
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				try {
-					br.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		return false;
+	public void prepareSerializerList() throws IOException {
+		Files.walk(Paths.get(projectPath)).filter(this).forEach((e) -> clazzWhichContainsSerializer.add(e));
 	}
 
 	private BufferedReader getBufferedReader(File f) {
@@ -113,28 +90,61 @@ public class A implements Predicate<Path> {
 		return null;
 	}
 
-	private static class MethodNamePrinter extends VoidVisitorAdapter<String> {
+	private static class AnonymousClazzExpressionVisitor extends GenericVisitorAdapter<List<BodyDeclaration>, Void> {
 		@Override
-		public void visit(ImportDeclaration md, String arg) {
-			super.visit(md, arg);
-			System.out.println("Method Name Printed: " + md.getName());
-			arg = md.getName().getName();
+		public List<BodyDeclaration> visit(ObjectCreationExpr n, Void arg) {
+			return n.getAnonymousClassBody();
 		}
-
 	}
 
-	public boolean findSerializer2(File file) throws IOException {
+	private static class BodyExpressionVisitor extends GenericVisitorAdapter<List<Expression>, Void> {
+		@Override
+		public List<Expression> visit(MethodCallExpr n, Void arg) {
+			return n.getArgs();
+		}
+	}
+
+	private static class QualifiedDeclarationVisitor extends GenericVisitorAdapter<String, Void> {
+		@Override
+		public String visit(QualifiedNameExpr n, Void arg) {
+			return n.toString();
+		}
+	}
+
+	private static class ImportDeclarationVisitor extends GenericVisitorAdapter<NameExpr, Void> {
+		@Override
+		public NameExpr visit(QualifiedNameExpr n, Void arg) {
+			return n.getQualifier();
+		}
+	}
+
+	public boolean findSerializer(File file) throws IOException {
 		if (!file.isDirectory()) {
 			CompilationUnit unit = getCompileUnit(file);
 			List<ImportDeclaration> importList = unit.getImports();
+			ImportDeclarationVisitor importDeclarationVisitor = new ImportDeclarationVisitor();
+			QualifiedDeclarationVisitor qdv = new QualifiedDeclarationVisitor();
 			for (ImportDeclaration importDeclaration : importList) {
-				String importFullPath = importDeclaration.getName().toString();
-				if (importFullPath.equals(getSerializerFullPath())) {
+				NameExpr importNameExpr = importDeclaration.getName().accept(importDeclarationVisitor, null);
+				String importPath = importNameExpr.accept(qdv, null);
+				if (importPath.equals(getSerializerPackageName())) {
 					return true;
 				}
 			}
 		}
 		return false;
+	}
+
+	public Map<String, String> getImportedPackageList(CompilationUnit unit) {
+		Map<String, String> importListAsString = new HashMap<String, String>();
+		List<ImportDeclaration> importList = unit.getImports();
+		ImportDeclarationVisitor importDeclarationVisitor = new ImportDeclarationVisitor();
+		for (ImportDeclaration importDeclaration : importList) {
+			NameExpr importNameExpr = importDeclaration.accept(importDeclarationVisitor, null);
+			String path = importNameExpr.toString();
+			importListAsString.put(importDeclaration.getName().getName(), path);
+		}
+		return importListAsString;
 	}
 
 	public CompilationUnit getCompileUnit(File file) throws IOException {
@@ -152,21 +162,67 @@ public class A implements Predicate<Path> {
 
 	public void prepareJsInfoList2() throws IOException {
 		for (Path p : clazzWhichContainsSerializer) {
+			JsInfo jsInfo = new JsInfo();
 			CompilationUnit unit = getCompileUnit(p.toFile());
-			List<TypeDeclaration> types = unit.getTypes();
-			for (TypeDeclaration type : types) {
-				List<BodyDeclaration> bodyDeclarations = type.getMembers();
-				for (BodyDeclaration bodyDeclaration : bodyDeclarations) {
-					if (bodyDeclaration instanceof MethodDeclaration) {
-						MethodDeclaration method = (MethodDeclaration) bodyDeclaration;
-						System.out.println("A.prepareJsInfoList2()");
-					}
-
-				}
-			}
+			Map<String, String> importedPackageMap = getImportedPackageList(unit);
+			String packageName = unit.getPackage().getName().toString();
+			String name = getClazzName(unit);
+			// that method must be get a importList
+			Map<String, ClazzContainer> propList = preparePropsList(unit);
+			jsInfo.setPropList(propList);
 
 		}
 
+	}
+
+	private String getClazzName(CompilationUnit unit) {
+		
+		return null;
+	}
+
+	private Map<String, ClazzContainer> preparePropsList(CompilationUnit unit) {
+		List<TypeDeclaration> types = unit.getTypes();
+		for (TypeDeclaration type : types) {
+			List<BodyDeclaration> bodyDeclarations = type.getMembers();
+			for (BodyDeclaration bodyDeclaration : bodyDeclarations) {
+				if (bodyDeclaration instanceof FieldDeclaration) {
+					FieldDeclaration field = (FieldDeclaration) bodyDeclaration;
+					Type fType = field.getType();
+					if (fType.toString().equals(serializerClazzName)) {
+						List<VariableDeclarator> vars = field.getVariables();
+						VariableDeclarator vDeclarator = vars.get(0);
+						Expression expression = vDeclarator.getInit();
+						AnonymousClazzExpressionVisitor namePrinter = new AnonymousClazzExpressionVisitor();
+						List<BodyDeclaration> anonymousClassBodys = expression.accept(namePrinter, null);
+						Map<String, String> propList = findPropList(anonymousClassBodys);
+					}
+				}
+
+			}
+		}
+		return null;
+	}
+
+	public Map<String, String> findPropList(List<BodyDeclaration> bodyDecList) {
+		Map<String, String> propList = new HashMap<>();
+		for (BodyDeclaration bodyDeclaration : bodyDecList) {
+			if (bodyDeclaration instanceof MethodDeclaration) {
+				MethodDeclaration method = (MethodDeclaration) bodyDeclaration;
+				if (ANONYMOUS_CLAZZ_METHOD_NAME.equals(method.getName())) {
+					BlockStmt body = method.getBody();
+					body.getChildrenNodes();
+					BodyExpressionVisitor bExpressionVisitor = new BodyExpressionVisitor();
+					for (Node node : body.getChildrenNodes()) {
+						List<Expression> bExpresionList = node.accept(bExpressionVisitor, null);
+						String key = bExpresionList.get(0).toString();
+						String value = bExpresionList.get(1).toString();
+						System.out.println("Method Name Printed: " + key + "value " + value);
+						propList.put(key, value);
+					}
+				}
+			}
+		}
+		return propList;
 	}
 
 	public void prepareJsInfoList() {

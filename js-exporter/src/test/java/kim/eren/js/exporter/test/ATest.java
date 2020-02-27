@@ -21,7 +21,7 @@ public class ATest {
 
 	@Test
 	public void test_serializer_finder_method() throws IOException {
-		assertTrue(aInstance.findSerializer2(new File(
+		assertTrue(aInstance.findSerializer(new File(
 				"../code-practices/oca-8-certificate/src/main/java/kim/eren/oca_8_certificate/core/gk/model/ParentModelObject.java")));
 	}
 
