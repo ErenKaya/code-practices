@@ -1,8 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import AppRouter from './routers/AppRouter';
+import React from "react";
+import ReactDOM from "react-dom";
+import KonvaVerticalCllynder from "./components/KonvaVerticalCllynder";
+import KonvaMessageShapeJs from "./components/KonvaMessageShape";
+import KonvaHorizontalCllynder from "./components/KonvaHorizontalCllynder";
 
-
-
-
-ReactDOM.render(<AppRouter />, document.getElementById('app'));
+ReactDOM.render(<KonvaHorizontalCllynder />, document.getElementById("app"));
