@@ -23,6 +23,7 @@ import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.ImportDeclaration;
 import com.github.javaparser.ast.Node;
 import com.github.javaparser.ast.body.BodyDeclaration;
+import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.body.TypeDeclaration;
@@ -33,6 +34,7 @@ import com.github.javaparser.ast.expr.NameExpr;
 import com.github.javaparser.ast.expr.ObjectCreationExpr;
 import com.github.javaparser.ast.expr.QualifiedNameExpr;
 import com.github.javaparser.ast.stmt.BlockStmt;
+import com.github.javaparser.ast.type.ClassOrInterfaceType;
 import com.github.javaparser.ast.type.Type;
 import com.github.javaparser.ast.visitor.GenericVisitorAdapter;
 
@@ -53,7 +55,6 @@ public class A implements Predicate<Path> {
 	private static final String JS_BLANKS_CLAZZ_NAME = "<clazzname>";
 	private static final String JS_BLANKS_PARENT_CLAZZ_NAME = "<-parent clazz->";
 	private static final String JS_BLANKS_PROP_LIST = "<-proplist->";
-	private static Object SERIALIZER_FULL_PATH = null;
 	private static final String ANONYMOUS_CLAZZ_METHOD_NAME = "readInstance";
 
 	@Override
@@ -78,16 +79,6 @@ public class A implements Predicate<Path> {
 
 	public void prepareSerializerList() throws IOException {
 		Files.walk(Paths.get(projectPath)).filter(this).forEach((e) -> clazzWhichContainsSerializer.add(e));
-	}
-
-	private BufferedReader getBufferedReader(File f) {
-		try {
-			return new BufferedReader(new FileReader(f));
-
-		} catch (FileNotFoundException e) {
-			// e.printStackTrace();
-		}
-		return null;
 	}
 
 	private static class AnonymousClazzExpressionVisitor extends GenericVisitorAdapter<List<BodyDeclaration>, Void> {
@@ -127,6 +118,7 @@ public class A implements Predicate<Path> {
 			for (ImportDeclaration importDeclaration : importList) {
 				NameExpr importNameExpr = importDeclaration.getName().accept(importDeclarationVisitor, null);
 				String importPath = importNameExpr.accept(qdv, null);
+				// can we add Serializer name check here
 				if (importPath.equals(getSerializerPackageName())) {
 					return true;
 				}
@@ -135,7 +127,7 @@ public class A implements Predicate<Path> {
 		return false;
 	}
 
-	public Map<String, String> getImportedPackageList(CompilationUnit unit) {
+	public Map<String, String> getListOfImport(CompilationUnit unit) {
 		Map<String, String> importListAsString = new HashMap<String, String>();
 		List<ImportDeclaration> importList = unit.getImports();
 		ImportDeclarationVisitor importDeclarationVisitor = new ImportDeclarationVisitor();
@@ -160,27 +152,77 @@ public class A implements Predicate<Path> {
 		return unit;
 	}
 
-	public void prepareJsInfoList2() throws IOException {
+	public void prepareJsInfoList() throws IOException {
 		for (Path p : clazzWhichContainsSerializer) {
 			JsInfo jsInfo = new JsInfo();
 			CompilationUnit unit = getCompileUnit(p.toFile());
-			Map<String, String> importedPackageMap = getImportedPackageList(unit);
 			String packageName = unit.getPackage().getName().toString();
-			String name = getClazzName(unit);
-			// that method must be get a importList
-			Map<String, ClazzContainer> propList = preparePropsList(unit);
+			jsInfo.setPackageName(packageName);
+			Map<String, String> importList = getListOfImport(unit);
+			extractClazzDeclarationLine(jsInfo, unit, importList);
+			Map<String, ClazzContainer> propList = preparePropsList(unit, importList);
 			jsInfo.setPropList(propList);
+			prepareImportList(jsInfo);
+			jsInfoList.add(jsInfo);
 
 		}
 
 	}
 
-	private String getClazzName(CompilationUnit unit) {
-		
+	private void prepareImportList(JsInfo jsInfo) {
+		if (jsInfo.getParentClazzName() != null) {
+			ClazzContainer parentClazzName = jsInfo.getParentClazzName();
+			// if parent package name null? must be in same package;
+			String packageName = parentClazzName.getPackageName();
+			if (packageName == null) {
+				packageName = jsInfo.getPackageName();
+			}
+			jsInfo.getImportList().put(parentClazzName.getName(), packageName);
+		}
+		if (!jsInfo.getPropList().isEmpty()) {
+			for (String s : jsInfo.getPropList().keySet()) {
+				ClazzContainer cContainer = jsInfo.getPropList().get(s);
+				String clazzName = cContainer.getName();
+				String packageName = cContainer.getPackageName();
+				jsInfo.getImportList().put(clazzName, packageName);
+			}
+		}
+
+	}
+
+	private void extractClazzDeclarationLine(JsInfo jsInfo, CompilationUnit unit, Map<String, String> importList) {
+		ClassOrInterfaceDeclaration type = getTypeDeclaration(unit);
+		String name = getClazzName(type);
+		jsInfo.setName(name);
+		String parentName = getParentClazzName(type);
+		ClazzContainer cContainer = new ClazzContainer();
+		cContainer.setPackageName(importList.get(parentName));
+		cContainer.setName(parentName);
+		jsInfo.setParentClazzName(cContainer);
+
+	}
+
+	private String getParentClazzName(ClassOrInterfaceDeclaration type) {
+		List<ClassOrInterfaceType> extendList = type.getExtends();
+		ClassOrInterfaceType clazzType = extendList.get(0);
+		return clazzType.getName();
+	}
+
+	private String getClazzName(ClassOrInterfaceDeclaration type) {
+		return type.getName();
+	}
+
+	private ClassOrInterfaceDeclaration getTypeDeclaration(CompilationUnit unit) {
+		List<TypeDeclaration> types = unit.getTypes();
+		for (TypeDeclaration type : types) {
+			if (type instanceof ClassOrInterfaceDeclaration) {
+				return (ClassOrInterfaceDeclaration) type;
+			}
+		}
 		return null;
 	}
 
-	private Map<String, ClazzContainer> preparePropsList(CompilationUnit unit) {
+	private Map<String, ClazzContainer> preparePropsList(CompilationUnit unit, Map<String, String> importList) {
 		List<TypeDeclaration> types = unit.getTypes();
 		for (TypeDeclaration type : types) {
 			List<BodyDeclaration> bodyDeclarations = type.getMembers();
@@ -194,7 +236,8 @@ public class A implements Predicate<Path> {
 						Expression expression = vDeclarator.getInit();
 						AnonymousClazzExpressionVisitor namePrinter = new AnonymousClazzExpressionVisitor();
 						List<BodyDeclaration> anonymousClassBodys = expression.accept(namePrinter, null);
-						Map<String, String> propList = findPropList(anonymousClassBodys);
+						Map<String, ClazzContainer> propList = findPropList(anonymousClassBodys, importList);
+						return propList;
 					}
 				}
 
@@ -203,21 +246,24 @@ public class A implements Predicate<Path> {
 		return null;
 	}
 
-	public Map<String, String> findPropList(List<BodyDeclaration> bodyDecList) {
-		Map<String, String> propList = new HashMap<>();
+	public Map<String, ClazzContainer> findPropList(List<BodyDeclaration> bodyDecList, Map<String, String> importList) {
+		Map<String, ClazzContainer> propList = new HashMap<>();
 		for (BodyDeclaration bodyDeclaration : bodyDecList) {
 			if (bodyDeclaration instanceof MethodDeclaration) {
 				MethodDeclaration method = (MethodDeclaration) bodyDeclaration;
 				if (ANONYMOUS_CLAZZ_METHOD_NAME.equals(method.getName())) {
 					BlockStmt body = method.getBody();
-					body.getChildrenNodes();
 					BodyExpressionVisitor bExpressionVisitor = new BodyExpressionVisitor();
 					for (Node node : body.getChildrenNodes()) {
 						List<Expression> bExpresionList = node.accept(bExpressionVisitor, null);
 						String key = bExpresionList.get(0).toString();
-						String value = bExpresionList.get(1).toString();
-						System.out.println("Method Name Printed: " + key + "value " + value);
-						propList.put(key, value);
+						String variableName = key.substring(key.indexOf(".") + 1, key.length());
+						String clazzName = bExpresionList.get(1).toString();
+						String type = clazzName.substring(0, clazzName.indexOf("."));
+						ClazzContainer cContainer = new ClazzContainer();
+						cContainer.setName(type);
+						cContainer.setPackageName(importList.get(type));
+						propList.put(variableName, cContainer);
 					}
 				}
 			}
@@ -225,172 +271,12 @@ public class A implements Predicate<Path> {
 		return propList;
 	}
 
-	public void prepareJsInfoList() {
-		for (Path p : clazzWhichContainsSerializer) {
-			File f = p.toFile();
-			JsInfo jsInfo = new JsInfo();
-			BufferedReader br = getBufferedReader(f);
-			String st;
-			Map<String, String> importList = new HashMap<String, String>();
-			try {
-				while ((st = br.readLine()) != null) {
-					if (jsInfo.getPackageName() == null) {
-						preparePackageName(st, jsInfo);
-					}
-					readImportLine(st, importList);
-					if (jsInfo.getName() == null) {
-						prepareName(st, jsInfo);
-					}
-					if (jsInfo.getParentClazzName() == null) {
-						prepareParentClazzName(st, jsInfo);
-					}
-					preparePropLines(st, jsInfo, br);
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				try {
-					br.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-			prepareClazzPackageNames(jsInfo, importList);
-			jsInfoList.add(jsInfo);
-		}
-	}
-
-	public void prepareClazzPackageNames(JsInfo jsInfo, Map<String, String> importList) {
-		if (jsInfo.getParentClazzName() != null) {
-			String parentClazzName = jsInfo.getParentClazzName().getName();
-			String packageName = importList.get(parentClazzName);
-			// if parent package name null? must be in same package;
-			if (packageName == null) {
-				packageName = jsInfo.getPackageName();
-			}
-			jsInfo.getImportList().put(parentClazzName, packageName);
-			jsInfo.getParentClazzName().setPackageName(packageName);
-		}
-		if (!jsInfo.getPropList().isEmpty()) {
-			for (String s : jsInfo.getPropList().keySet()) {
-				ClazzContainer cContainer = jsInfo.getPropList().get(s);
-				String clazzName = cContainer.getName().substring(0, cContainer.getName().indexOf("."));
-				String packageName = importList.get(clazzName);
-				jsInfo.getImportList().put(clazzName, packageName);
-				cContainer.setPackageName(packageName);
-			}
-		}
-
-	}
-
-	public void readImportLine(String st, Map<String, String> importList) {
-		Pattern p = Pattern.compile("import");
-		Matcher m = p.matcher(st);
-		if (m.find()) {
-			String fullPackageName = parseImportLine(st);
-			String clazzName = parseClazzNameFromImport(fullPackageName);
-			importList.put(clazzName, fullPackageName);
-		}
-	}
-
-	public String parseClazzNameFromImport(String fullPackageName) {
-		String clazzName = fullPackageName.substring(fullPackageName.lastIndexOf(".") + 1, fullPackageName.length());
-		return clazzName;
-	}
-
-	public String parseImportLine(String st) {
-		String importValue = st.substring(0, st.indexOf(";")).split(" ")[1];
-		return importValue;
-	}
-
-	private void prepareParentClazzName(String st, JsInfo jsInfo) {
-		Pattern pattern = Pattern.compile("extends");
-		Matcher m = pattern.matcher(st);
-		if (m.find()) {
-			String clazzName = findExtendedClazzName(st);
-			ClazzContainer cContainer = new ClazzContainer();
-			cContainer.setName(clazzName);
-			jsInfo.setParentClazzName(cContainer);
-		}
-	}
-
-	public String findExtendedClazzName(String st) {
-		String extendedClazzLine = st.substring(st.indexOf("extends"), st.length());
-		String[] extendedClazzLineParts = extendedClazzLine.split(" ");
-		String parentClazzName = extendedClazzLineParts[1];
-		return parentClazzName;
-
-	}
-
-	private void preparePropLines(String st, JsInfo jsInfo, BufferedReader br)
-			throws IOException, ClassNotFoundException {
-		Pattern pattern = Pattern.compile("new " + serializerClazzName);
-		Matcher m = pattern.matcher(st);
-		if (m.find()) {
-			while ((st = br.readLine()) != null) {
-				pattern = Pattern.compile("readInstance");
-				m = pattern.matcher(st);
-				if (m.find()) {
-					while ((st = br.readLine()) != null) {
-						pattern = Pattern.compile("\\((.*?)\\)");
-						m = pattern.matcher(st);
-						if (m.find()) {
-							pattern = Pattern.compile(".class");
-							m = pattern.matcher(st);
-							if (m.find()) {
-								setPropToList(st, jsInfo);
-							}
-						}
-					}
-				}
-			}
-		}
-
-	}
-
-	public void setPropToList(String st, JsInfo jsInfo) throws ClassNotFoundException {
-		String bracetsBody = st.substring(st.indexOf("(") + 1, st.lastIndexOf(")"));
-		String[] bracetsBodyParts = bracetsBody.split(",");
-		String name = bracetsBodyParts[0].trim();
-		String fullClazzName = bracetsBodyParts[1].trim();
-		ClazzContainer cContainer = new ClazzContainer();
-		cContainer.setName(fullClazzName);
-		jsInfo.addPropToList(name, cContainer);
-	}
-
-	private void prepareName(String st, JsInfo jsInfo) {
-		Pattern pattern = Pattern.compile(" class ");
-		Matcher m = pattern.matcher(st);
-		if (jsInfo.getName() == null && m.find()) {
-			String name = getNameFromLine(st);
-			jsInfo.setName(name);
-		}
-
-	}
-
-	private void preparePackageName(String st, JsInfo jsInfo) {
-		Pattern pattern = Pattern.compile("package");
-		Matcher m = pattern.matcher(st);
-		if (m.find()) {
-			String packageName = getPackageNameFromLine(st);
-			jsInfo.setPackageName(packageName);
-		}
-
-	}
-
-	public String getNameFromLine(String st) {
-		return st.substring(st.indexOf("class "), st.indexOf("{")).split(" ")[1];
-	}
-
-	public String getPackageNameFromLine(String st) {
-		String packageName = st.substring(0, st.indexOf(";")).split(" ")[1];
-		return packageName;
-	}
-
 	public void createJsFiles() {
 		for (JsInfo jsInfo : jsInfoList) {
 			// first create string files
 			String jsClazzAsString = prepareJsClazzAsString(jsInfo);
+			System.out.println("A.createJsFiles()" + jsClazzAsString);
+
 			//
 		}
 	}
