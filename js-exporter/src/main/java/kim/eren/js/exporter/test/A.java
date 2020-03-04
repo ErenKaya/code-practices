@@ -281,7 +281,7 @@ public class A {
 		for (JsInfo jsInfo : jsInfoList) {
 			// first create string files
 			String jsClazzAsString = prepareJsClazzAsString(jsInfo);
-			System.out.println("A.createJsFiles()" + jsClazzAsString);
+			System.out.println(jsClazzAsString);
 
 			//
 		}

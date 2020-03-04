@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import LinkComponent from "./components/LinkComponent";
+import DrawerContainerTest from "./components/DrawerContainerTest";
+import "./styles/base/index.scss"
 
-ReactDOM.render(<LinkComponent />, document.getElementById("app"));
+ReactDOM.render(<DrawerContainerTest />, document.getElementById("app"));
