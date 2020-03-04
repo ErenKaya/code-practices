@@ -1,10 +1,7 @@
 package kim.eren.js.exporter.test;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -13,9 +10,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Predicate;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ParseException;
@@ -41,12 +35,12 @@ import com.github.javaparser.ast.visitor.GenericVisitorAdapter;
 import kim.eren.js.exporter.ClazzContainer;
 import kim.eren.js.exporter.JsInfo;
 
-public class A implements Predicate<Path> {
+public class A {
 
 	List<Path> clazzWhichContainsSerializer = new ArrayList<Path>();
 	List<JsInfo> jsInfoList = new ArrayList<JsInfo>();
 	private String projectPath = null;
-	private String serializerPackageName = null;
+	private static String serializerPackageName = null;
 	private String serializerClazzName = null;
 	private static final String JS_CLAZZ_TEMPLATE = "<-imports->\n" + "\n"
 			+ "export default class <clazzname> <-parent clazz->{\n" + "    deSerializeProps(oParser){\n"
@@ -56,9 +50,27 @@ public class A implements Predicate<Path> {
 	private static final String JS_BLANKS_PARENT_CLAZZ_NAME = "<-parent clazz->";
 	private static final String JS_BLANKS_PROP_LIST = "<-proplist->";
 	private static final String ANONYMOUS_CLAZZ_METHOD_NAME = "readInstance";
+	private static final String[] PRIMITIVE_SERIALIZER_LIST = { "String", "Hashtable", "List", "ArrayList", "HashMap",
+			"Integer", "Short", "Boolean", "short", "boolean", "int", "Vector" };
+	private static Map<String, String> PS_JAVA_JS_TWIN = null;
+	private static final String JS_OBJECT = "OBJECT";
 
-	@Override
-	public boolean test(Path p) {
+	static {
+		PS_JAVA_JS_TWIN = new HashMap<>();
+		PS_JAVA_JS_TWIN.put("String", "STRING");
+		PS_JAVA_JS_TWIN.put("Hashtable", "HASHTABLE");
+		PS_JAVA_JS_TWIN.put("List", "VECTOR");
+		PS_JAVA_JS_TWIN.put("ArrayList", "VECTOR");
+		PS_JAVA_JS_TWIN.put("HashMap", "HASHTABLE");
+		PS_JAVA_JS_TWIN.put("Integer", "INTEGER");
+		PS_JAVA_JS_TWIN.put("Short", "INTEGER");
+		PS_JAVA_JS_TWIN.put("Boolean", "INTEGER");
+		PS_JAVA_JS_TWIN.put("short", "STRING");
+		PS_JAVA_JS_TWIN.put("int", "INTEGER");
+		PS_JAVA_JS_TWIN.put("Vector", "VECTOR");
+	}
+
+	public static boolean test(Path p) {
 		boolean fileExtensionCorrect = false, fileHasSerializer = false;
 		fileExtensionCorrect = p.toString().endsWith(".java");
 		try {
@@ -69,16 +81,10 @@ public class A implements Predicate<Path> {
 		return fileExtensionCorrect && fileHasSerializer;
 	}
 
-	public String getSerializerFullPath() {
-		return serializerPackageName + "." + serializerClazzName;
-	}
-
-	public String getSerializerPackageName() {
-		return serializerPackageName;
-	}
-
 	public void prepareSerializerList() throws IOException {
-		Files.walk(Paths.get(projectPath)).filter(this).forEach((e) -> clazzWhichContainsSerializer.add(e));
+		Files.walk(Paths.get(projectPath)).filter((e) -> {
+			return A.test(e);
+		}).forEach((e) -> clazzWhichContainsSerializer.add(e));
 	}
 
 	private static class AnonymousClazzExpressionVisitor extends GenericVisitorAdapter<List<BodyDeclaration>, Void> {
@@ -109,7 +115,7 @@ public class A implements Predicate<Path> {
 		}
 	}
 
-	public boolean findSerializer(File file) throws IOException {
+	public static boolean findSerializer(File file) throws IOException {
 		if (!file.isDirectory()) {
 			CompilationUnit unit = getCompileUnit(file);
 			List<ImportDeclaration> importList = unit.getImports();
@@ -127,7 +133,7 @@ public class A implements Predicate<Path> {
 		return false;
 	}
 
-	public Map<String, String> getListOfImport(CompilationUnit unit) {
+	public Map<String, String> getImportList(CompilationUnit unit) {
 		Map<String, String> importListAsString = new HashMap<String, String>();
 		List<ImportDeclaration> importList = unit.getImports();
 		ImportDeclarationVisitor importDeclarationVisitor = new ImportDeclarationVisitor();
@@ -139,7 +145,7 @@ public class A implements Predicate<Path> {
 		return importListAsString;
 	}
 
-	public CompilationUnit getCompileUnit(File file) throws IOException {
+	public static CompilationUnit getCompileUnit(File file) throws IOException {
 		FileInputStream fis = new FileInputStream(file);
 		CompilationUnit unit = null;
 		try {
@@ -158,7 +164,7 @@ public class A implements Predicate<Path> {
 			CompilationUnit unit = getCompileUnit(p.toFile());
 			String packageName = unit.getPackage().getName().toString();
 			jsInfo.setPackageName(packageName);
-			Map<String, String> importList = getListOfImport(unit);
+			Map<String, String> importList = getImportList(unit);
 			extractClazzDeclarationLine(jsInfo, unit, importList);
 			Map<String, ClazzContainer> propList = preparePropsList(unit, importList);
 			jsInfo.setPropList(propList);
@@ -290,8 +296,31 @@ public class A implements Predicate<Path> {
 	}
 
 	private void prepareJsClazzDeSerializeFunction(Map<String, ClazzContainer> propList, StringBuilder clazzAsString) {
-		// TODO Auto-generated method stub
+		StringBuilder sbPropList = new StringBuilder();
+		for (String key : propList.keySet()) {
+			String clazzName = propList.get(key).getName();
+			if (PS_JAVA_JS_TWIN.containsKey(clazzName)) {
+				String jsClazzName = PS_JAVA_JS_TWIN.get(clazzName);
+				sbPropList.append(getJsPropDeclarationLine(key, jsClazzName, null));
+			} else {
+				sbPropList.append(getJsPropDeclarationLine(key, JS_OBJECT, clazzName));
+			}
+		}
+		int blankStart = clazzAsString.indexOf(JS_BLANKS_PROP_LIST);
+		clazzAsString.replace(blankStart, blankStart + JS_BLANKS_PROP_LIST.length(), sbPropList.toString());
 
+	}
+
+	private String getJsPropDeclarationLine(String key, String jsClazzName, String customProp) {
+		return "this." + key + " = " + "oParser.get(PS." + jsClazzName + getDiamondDeclaration(customProp);
+	}
+
+	private String getDiamondDeclaration(String customProp) {
+		if (customProp == null) {
+			return "());\n";
+		} else {
+			return "(" + customProp + "));\n";
+		}
 	}
 
 	private void prepareJsClazzNameAndParent(String name, ClazzContainer parentClazzName, StringBuilder clazzAsString) {
@@ -338,12 +367,20 @@ public class A implements Predicate<Path> {
 	}
 
 	public void setSerializerPath(String serializerPath) {
-		this.serializerPackageName = serializerPath;
+		A.serializerPackageName = serializerPath;
 
 	}
 
 	public void setSerializerClazzName(String serializerClazzName) {
 		this.serializerClazzName = serializerClazzName;
+	}
+
+	public String getSerializerFullPath() {
+		return serializerPackageName + "." + serializerClazzName;
+	}
+
+	public static String getSerializerPackageName() {
+		return serializerPackageName;
 	}
 
 }
