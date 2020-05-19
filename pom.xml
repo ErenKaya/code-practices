@@ -21,6 +21,7 @@
 		<module>herbert-scjp6</module>
 		<module>refactoring</module>
     <module>js-exporter</module>
+    <module>ocp-8</module>
   </modules>
 	<dependencies>
 		<dependency>
