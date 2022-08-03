@@ -6,4 +6,17 @@
 
     <!-- bean definitions here -->
 
+    <bean id="renderer" class="io.erenkaya.akaldiroglu._01_example.domain.StandartOutputRenderer">
+        <property name="provider" ref="provider"></property>
+    </bean>
+    
+    <bean id="provider" class="io.erenkaya.akaldiroglu._01_example.domain.StandartOutputProvider"></bean>
+
+
+    <bean  id="renderer2" class="io.erenkaya.akaldiroglu._01_example.domain.ErrorOutputRenderer">
+        <property name="provider" ref="provider2"></property>
+    </bean>
+
+    <bean id="provider2" class="io.erenkaya.akaldiroglu._01_example.domain.ErrorOutputProvider"></bean>
+
 </beans>
