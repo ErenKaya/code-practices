@@ -1,4 +1,4 @@
-package io.erenkaya._01_restservice;
+package io.erenkaya.spring._01_restservice;
 
 public class Greetings {
     private final long id;

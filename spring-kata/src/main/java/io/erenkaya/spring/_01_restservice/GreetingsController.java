@@ -1,4 +1,4 @@
-package io.erenkaya._01_restservice;
+package io.erenkaya.spring._01_restservice;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
