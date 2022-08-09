@@ -6,6 +6,7 @@
 
 	<!-- bean definitions here -->
 
+
 	<bean id="renderer"
 		class="io.erenkaya.akaldiroglu._01_example.domain.StandartOutputRenderer">
 		<property name="provider" ref="provider"></property>
