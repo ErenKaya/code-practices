@@ -1,11 +1,13 @@
 package io.erenkaya.akaldiroglu._04_example.domain;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-@Component(value = "renderer2") 
+@Component(value = "renderer2")
 public class ErrorOutputRenderer implements GreetingRenderer {
 	@Autowired
+	@Qualifier("errorProvider")
 	private GreetingProvider provider;
 
 	@Override

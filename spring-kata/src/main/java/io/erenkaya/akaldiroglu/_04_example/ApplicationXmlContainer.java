@@ -10,7 +10,7 @@ public class ApplicationXmlContainer {
 	public static void main(String[] args) {
 		String path = "bean3.xml";
 		ApplicationContext factory = new ClassPathXmlApplicationContext(path);
-		GreetingRenderer renderer = (GreetingRenderer) factory.getBean("renderer2");
+		GreetingRenderer renderer = (GreetingRenderer) factory.getBean("renderer1");
 		renderer.render();
 
 	}
