@@ -1,10 +1,10 @@
-package io.erenkaya.akaldiroglu._06_example;
+package io.erenkaya.akaldiroglu._06_example.profile;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.env.AbstractEnvironment;
 
-import io.erenkaya.akaldiroglu._06_example.domain.Person;
+import io.erenkaya.akaldiroglu._06_example.profile.domain.Person;
 
 public class ApplicationXmlContainer {
 	public static void main(String[] args) {

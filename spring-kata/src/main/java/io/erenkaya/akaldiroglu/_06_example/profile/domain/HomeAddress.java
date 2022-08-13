@@ -1,4 +1,4 @@
-package io.erenkaya.akaldiroglu._06_example.domain;
+package io.erenkaya.akaldiroglu._06_example.profile.domain;
 
 public abstract class HomeAddress implements Address {
 
