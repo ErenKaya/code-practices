@@ -16,18 +16,18 @@ import io.erenkaya.akaldiroglu._07_example.ex.Sin;
 @Configuration
 public class Configuration1 {
 
-	@Bean
-	public MathFunction Sin() {
+	@Bean("Cos")
+	public MathFunction getCos() {
 		return new Cos();
 	}
 
-	@Bean
-	public MathFunction Cos() {
+	@Bean("Sin")
+	public MathFunction getSin() {
 		return new Sin();
 	}
 
-	@Bean
-	public MathFunction Log() {
+	@Bean("Log")
+	public MathFunction getLog() {
 		return new Log();
 	}
 
@@ -37,7 +37,7 @@ public class Configuration1 {
 	}
 
 	@Bean
-	public Map<String, MathFunction> getFunctionPair(MathFunction Cos, MathFunction Sin, MathFunction Log) {
+	public Map<String, MathFunction> getFunctionPair() {
 		return new HashMap<String, MathFunction>();
 	}
 }
