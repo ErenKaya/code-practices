@@ -4,6 +4,7 @@
 */.project
 */bin/
 .idea/
+.vscode/
 
 /.project
 /.classpath
