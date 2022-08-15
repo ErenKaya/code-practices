@@ -1,11 +1,11 @@
 package io.erenkaya.akaldiroglu._05_example;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
-import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 @Component("calculator")
 public class Calculator implements CalculatorI {
@@ -30,11 +30,10 @@ public class Calculator implements CalculatorI {
     }
 
     @PostConstruct
-    public void init(){
-        functionPair.put("Sin",sin );
-        functionPair.put("Log",log );
-        functionPair.put("Cos",cos );
+    public void init() {
+        functionPair.put("Sin", sin);
+        functionPair.put("Log", log);
+        functionPair.put("Cos", cos);
     }
-
 
 }
