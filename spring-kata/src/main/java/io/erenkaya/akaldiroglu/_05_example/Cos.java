@@ -2,7 +2,7 @@ package io.erenkaya.akaldiroglu._05_example;
 
 import org.springframework.stereotype.Component;
 
-@Component("cos")
+@Component("Cos")
 public class Cos implements MathFunction {
 
 	@Override

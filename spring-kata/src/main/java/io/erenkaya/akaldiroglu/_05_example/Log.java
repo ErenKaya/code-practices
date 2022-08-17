@@ -3,7 +3,7 @@ package io.erenkaya.akaldiroglu._05_example;
 
 import org.springframework.stereotype.Component;
 
-@Component("log")
+@Component("Log")
 public class Log implements MathFunction {
 
 	@Override

@@ -2,7 +2,7 @@ package io.erenkaya.akaldiroglu._05_example;
 
 import org.springframework.stereotype.Component;
 
-@Component("sin")
+@Component("Sin")
 public class Sin implements MathFunction {
 
 	@Override
