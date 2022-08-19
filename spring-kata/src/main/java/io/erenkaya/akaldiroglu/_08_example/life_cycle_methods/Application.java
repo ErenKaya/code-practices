@@ -21,6 +21,7 @@ public class Application {
 			context.removeBeanDefinition(beanName);
 		}
 		System.out.println(bean);
+		context.close();
 	}
 
 }
