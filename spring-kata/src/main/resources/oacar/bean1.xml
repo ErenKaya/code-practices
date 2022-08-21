@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- bean definitions here -->
+	<bean id="rentalService"
+		class="io.erenkaya.oacar._2_chapter._2_example.RentalServiceImpl">
+		<constructor-arg ref="customerRepository"></constructor-arg>
+		<constructor-arg ref="rentalRepository"></constructor-arg>
+	</bean>
+
+	<bean id="customerRepository"
+		class="io.erenkaya.oacar._2_chapter._2_example.CustomerRepositoryImpl"></bean>
+	<bean id="rentalRepository"
+		class="io.erenkaya.oacar._2_chapter._2_example.RentalRepositoryImpl"></bean>
+</beans>
