@@ -2,8 +2,6 @@ package io.erenkaya.oacar._2_chapter._2_example;
 
 import java.util.Date;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 public class RentalServiceImpl implements RentalService {
 	private CustomerRepository customerRepository;
 	private RentalRepository rentalRepository;
@@ -12,8 +10,8 @@ public class RentalServiceImpl implements RentalService {
 		super();
 	}
 
-	public RentalServiceImpl(@Autowired CustomerRepository customerRepository,
-			@Autowired RentalRepository rentalRepository) {
+	public RentalServiceImpl(CustomerRepository customerRepository,
+			 RentalRepository rentalRepository) {
 		super();
 		this.customerRepository = customerRepository;
 		this.rentalRepository = rentalRepository;
