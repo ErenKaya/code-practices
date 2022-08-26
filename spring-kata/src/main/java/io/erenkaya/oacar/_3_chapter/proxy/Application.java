@@ -15,9 +15,10 @@ public class Application {
 	public static void main(String[] args) throws ParseException {
 		Application test = new Application();
 		String path = "oacar\\bean2.xml";
-		ApplicationContext factory = new ClassPathXmlApplicationContext(path);
+		ClassPathXmlApplicationContext factory = new ClassPathXmlApplicationContext(path);
 //		test.add_new_car();
 		test.add_new_car(factory);
+		factory.close();
 	}
 
 	private void add_new_car(ApplicationContext context) throws ParseException {

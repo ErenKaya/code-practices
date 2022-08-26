@@ -3,6 +3,8 @@ package io.erenkaya.oacar._3_chapter.proxy.example;
 import java.lang.reflect.Proxy;
 import java.util.Date;
 
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 
@@ -56,6 +58,11 @@ public class RentalServiceImpl implements RentalService, BeanPostProcessor {
 
 	public void setCustomerRepository(CustomerRepository customerRepository) {
 		this.customerRepository = customerRepository;
+	}
+	
+	@PreDestroy
+	public void preDestroy() {
+		System.out.println("destroy method called");
 	}
 
 }
