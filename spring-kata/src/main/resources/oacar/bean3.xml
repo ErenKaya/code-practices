@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+	<bean id="abstractCar"
+		class="io.erenkaya.oacar._4_chapter.domain.AbstractCar"
+		abstract="true">
+		<property name="carType" value="CAR"></property>
+	</bean>
+
+	<bean id="clio" class="io.erenkaya.oacar._4_chapter.domain.Car"
+		parent="abstractCar">
+		<property name="brand" value="Renault"></property>
+		<property name="model" value="Clio"></property>
+	</bean>
+	
+	<bean id="focus" class="io.erenkaya.oacar._4_chapter.domain.Car"
+		parent="abstractCar">
+		<property name="brand" value="Ford"></property>
+		<property name="model" value="Focus"></property>
+	</bean>
+	
+	<bean id="a5" class="io.erenkaya.oacar._4_chapter.domain.Car"
+		parent="abstractCar">
+		<property name="brand" value="Audi"></property>
+		<property name="model" value="A5"></property>
+	</bean>
+
+
+</beans>
