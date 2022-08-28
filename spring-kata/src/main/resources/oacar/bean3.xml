@@ -4,13 +4,9 @@
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+	<import resource="bean3_service.xml"/>
 
-
-	<bean id="abstractCar"
-		class="io.erenkaya.oacar._4_chapter.domain.AbstractCar"
-		abstract="true">
-		<property name="carType" value="CAR"></property>
-	</bean>
+	
 
 	<bean id="clio" class="io.erenkaya.oacar._4_chapter.domain.Car"
 		parent="abstractCar">
