@@ -1,4 +1,4 @@
-package io.erenkaya.oacar._4_chapter.domain;
+package io.erenkaya.oacar._4_chapter.example1.domain;
 
 import com.google.common.base.MoreObjects;
 

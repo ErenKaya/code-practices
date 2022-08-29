@@ -1,8 +1,6 @@
-package io.erenkaya.oacar._4_chapter;
+package io.erenkaya.oacar._4_chapter.example1.domain;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import io.erenkaya.oacar._4_chapter.domain.Car;
 
 public class Application {
 	public static void main(String[] args) {
