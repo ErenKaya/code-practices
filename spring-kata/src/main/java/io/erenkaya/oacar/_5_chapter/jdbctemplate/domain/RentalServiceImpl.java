@@ -21,10 +21,10 @@ public class RentalServiceImpl implements RentalService {
 	public Rental rentACar(String name, Car car, Date rentDateBegin, Date rentDateEnd) {
 		Customer customer = customerRepository.getCustomerByName(name);
 
-		if (customer == null) {
-			customer = new Customer(name);
-			customerRepository.save(customer);
-		}
+//		if (customer == null) {
+//			customer = new Customer(name);
+//			customerRepository.save(customer);
+//		}
 		Rental rental = new Rental();
 		rental.setCar(car);
 		rental.setCustomer(customer);
