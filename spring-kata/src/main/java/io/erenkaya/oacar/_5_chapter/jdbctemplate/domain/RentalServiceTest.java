@@ -33,7 +33,7 @@ public class RentalServiceTest {
 		RentalService service = (RentalService) context.getBean("rentalService");
 		Date rentalBegin = new SimpleDateFormat("dd/MM/yy").parse("22/12/2013");
 		Date rentalEnd = new SimpleDateFormat("dd/MM/yy").parse("23/12/2013");
-		Rental rental = service.rentACar("Eren Kaya", car, rentalBegin, rentalEnd);
+		Rental rental = service.rentACar("Isik", car, rentalBegin, rentalEnd);
 		System.out.println("is rental rented? " + rental.isRented());
 	}
 

@@ -20,7 +20,7 @@ public class JDBCCustomerRepositoryImpl implements CustomerRepository {
 	public Customer getCustomerByName(String name) {
 		ResultSetExtractor<Customer> customerExtractor = new CustomerExtractor();
 		String sql = "select id,name,firstname,age from customer where name=?";
-		return template.query(sql, customerExtractor);
+		return template.query(sql, customerExtractor, name);
 	}
 
 	@Override
