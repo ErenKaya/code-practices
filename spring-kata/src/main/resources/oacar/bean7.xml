@@ -4,7 +4,14 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/ spring-jdbc-3.0.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc 
+	 http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd 
+	 http://www.springframework.org/schema/beans 
+	 http://www.springframework.org/schema/beans/spring-beans.xsd 
+	 http://www.springframework.org/schema/tx 
+	 http://www.springframework.org/schema/tx/spring-tx-3.1.xsd 
+	 http://www.springframework.org/schema/context 
+	 http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 	<context:annotation-config />
 	<context:component-scan
 		base-package="io.erenkaya.oacar._5_chapter." />
@@ -29,13 +36,13 @@
 	</bean>
 
 	<bean id="rentalService"
-		class="io.erenkaya.oacar._5_chapter.jdbctemplate.domain.RentalServiceImpl">
+		class="io.erenkaya.oacar._6_chapter.transaction.domain.RentalServiceImpl">
 		<constructor-arg ref="customerRepository"></constructor-arg>
 		<constructor-arg ref="rentalRepository"></constructor-arg>
 	</bean>
 
 	<bean id="customerRepository"
-		class="io.erenkaya.oacar._5_chapter.jdbctemplate.domain.JDBCCustomerRepositoryImpl"></bean>
+		class="io.erenkaya.oacar._6_chapter.transaction.domain.JDBCCustomerRepositoryImpl"></bean>
 	<bean id="rentalRepository"
-		class="io.erenkaya.oacar._5_chapter.jdbctemplate.domain.RentalRepositoryImpl"></bean>
+		class="io.erenkaya.oacar._6_chapter.transaction.domain.RentalRepositoryImpl"></bean>
 </beans>

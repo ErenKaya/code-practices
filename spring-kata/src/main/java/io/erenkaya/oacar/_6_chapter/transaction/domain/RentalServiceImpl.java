@@ -2,6 +2,8 @@ package io.erenkaya.oacar._6_chapter.transaction.domain;
 
 import java.util.Date;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import io.erenkaya.oacar.domain.Car;
 import io.erenkaya.oacar.domain.Customer;
 import io.erenkaya.oacar.domain.CustomerRepository;
@@ -24,6 +26,7 @@ public class RentalServiceImpl implements RentalService {
 	}
 
 	@Override
+	@Transactional
 	public Rental rentACar(Customer customer, Car car, Date rentDateBegin, Date rentDateEnd) {
 		Customer dbCustomer = customerRepository.getCustomerByName(customer.getName());
 
