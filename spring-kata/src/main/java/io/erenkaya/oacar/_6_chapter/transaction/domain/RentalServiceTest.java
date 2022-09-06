@@ -1,4 +1,4 @@
-package io.erenkaya.oacar._5_chapter.jdbctemplate.domain;
+package io.erenkaya.oacar._6_chapter.transaction.domain;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -17,7 +17,7 @@ public class RentalServiceTest {
 
 	public static void main(String[] args) throws ParseException {
 		RentalServiceTest test = new RentalServiceTest();
-		String path = "oacar\\bean5.xml";
+		String path = "oacar\\bean7.xml";
 		ApplicationContext factory = new ClassPathXmlApplicationContext(path);
 //		test.add_new_car();
 		test.add_new_car(factory);

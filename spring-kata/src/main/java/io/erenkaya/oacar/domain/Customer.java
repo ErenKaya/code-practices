@@ -1,4 +1,4 @@
-package io.erenkaya.oacar._5_chapter.jdbctemplate.domain;
+package io.erenkaya.oacar.domain;
 
 public class Customer {
 

@@ -1,4 +1,4 @@
-package io.erenkaya.oacar._5_chapter.jdbctemplate.domain;
+package io.erenkaya.oacar._6_chapter.transaction.domain;
 
 import io.erenkaya.oacar.domain.Rental;
 import io.erenkaya.oacar.domain.RentalRepository;
