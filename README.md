@@ -8,4 +8,9 @@ here you can follows john's exercises i have some trying this examples:)
 
 OCP-8
 this repo created for practice about Oracle exam there are lots of books and tutorial for practising
-i want to explain every module soon.
+
+Spring-Kata
+Created for to improve spring framework skills
+
+
+I want to explain every module soon.
