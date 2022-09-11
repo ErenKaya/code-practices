@@ -31,4 +31,10 @@ public class Customer {
 		return id;
 	}
 
+	@Override
+	public String toString() {
+		return String.format("Customer=[%s, %s, %d, %d]", this.getName(), this.getFirstname(), this.getAge(),
+				this.getId());
+	}
+
 }
