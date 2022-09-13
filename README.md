@@ -12,5 +12,8 @@ this repo created for practice about Oracle exam there are lots of books and tut
 Spring-Kata
 Created for to improve spring framework skills
 
+Design Pattern
+Basic practice for the understand design pattern
+
 
 I want to explain every module soon.
