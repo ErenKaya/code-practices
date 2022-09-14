@@ -6,7 +6,6 @@ import org.hibernate.query.Query;
 
 import io.erenkaya.oacar._8_chapter.anno_transaction.domain.entities.Customer;
 
-
 public class HibernateCustomerRepositoryImpl implements CustomerRepository {
 
 	private SessionFactory sessionFactory;

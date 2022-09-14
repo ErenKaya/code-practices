@@ -2,7 +2,7 @@ package io.erenkaya.oacar._8_chapter.anno_transaction.domain;
 
 import java.util.Date;
 
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 import io.erenkaya.oacar._8_chapter.anno_transaction.domain.entities.Car;
 import io.erenkaya.oacar._8_chapter.anno_transaction.domain.entities.Customer;

@@ -20,6 +20,7 @@ public class HibernateRentalRepositoryImpl implements RentalRepository {
 
 	public void save(Rental rental) {
 		this.getCurrentSession().save(rental);
+		rental.setRented(true);
 	}
 
 	public SessionFactory getSessionFactory() {

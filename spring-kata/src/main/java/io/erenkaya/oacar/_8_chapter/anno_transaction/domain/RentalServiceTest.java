@@ -30,9 +30,6 @@ public class RentalServiceTest {
 		Customer customer = new Customer("Kaya", 22, "Eren", ThreadLocalRandom.current().nextLong());
 		Rental rental = service.rentACar(customer, car, rentalBegin, rentalEnd);
 		System.out.println("is rental rented? " + rental.isRented());
-		CustomerRepository repo = (CustomerRepository) context.getBean("customerRepository");
-		Customer c = repo.getCustomerByName("Kaya");
-		System.out.println(c);
 	}
 
 }
