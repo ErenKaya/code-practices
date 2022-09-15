@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping
+	package="io.erenkaya.oacar._8_chapter.entities">
+	<class name="Rental" table="rental">
+		<id name="id" column="id" access="field">
+			<generator class="sequence" />
+		</id>
+		<one-to-one name="customer"
+			class="io.erenkaya.oacar._8_chapter.entities.Customer" />
+		<one-to-one name="car"
+			class="io.erenkaya.oacar._8_chapter.entities.Car" />
+		<property name="isRented" />
+	</class>
+</hibernate-mapping>

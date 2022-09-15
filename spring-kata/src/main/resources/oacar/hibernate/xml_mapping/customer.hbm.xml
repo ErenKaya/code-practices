@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping
+	package="io.erenkaya.oacar._8_chapter.entities">
+	<class name="Customer" table="customer">
+		<id name="id" column="id">
+			<generator class="sequence" />
+		</id>
+		<property name="name" />
+		<property name="firstname" />
+		<property name="age" />
+	</class>
+</hibernate-mapping>
