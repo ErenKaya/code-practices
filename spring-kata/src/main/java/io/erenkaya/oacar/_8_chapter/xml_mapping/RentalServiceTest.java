@@ -18,7 +18,6 @@ public class RentalServiceTest {
 		RentalServiceTest test = new RentalServiceTest();
 		String path = "oacar\\bean11.xml";
 		ApplicationContext factory = new ClassPathXmlApplicationContext(path);
-//		test.add_new_car();
 		test.add_new_car(factory);
 	}
 
