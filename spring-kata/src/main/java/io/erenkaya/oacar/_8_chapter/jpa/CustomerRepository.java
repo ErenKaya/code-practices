@@ -1,6 +1,6 @@
-package io.erenkaya.oacar._8_chapter.xml_mapping;
+package io.erenkaya.oacar._8_chapter.jpa;
 
-import io.erenkaya.oacar._8_chapter.xml_mapping.entities.Customer;
+import io.erenkaya.oacar._8_chapter.jpa.entities.Customer;
 
 public interface CustomerRepository {
 

@@ -4,7 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
-import io.erenkaya.oacar._8_chapter.entities.Customer;
+import io.erenkaya.oacar._8_chapter.xml_mapping.entities.Customer;
 
 
 public class HibernateCustomerRepositoryImpl implements CustomerRepository {

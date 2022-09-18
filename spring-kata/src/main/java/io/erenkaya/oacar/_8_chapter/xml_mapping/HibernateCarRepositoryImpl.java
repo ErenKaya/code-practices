@@ -4,7 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
-import io.erenkaya.oacar._8_chapter.entities.Car;
+import io.erenkaya.oacar._8_chapter.xml_mapping.entities.Car;
 
 
 public class HibernateCarRepositoryImpl implements CarRepository {

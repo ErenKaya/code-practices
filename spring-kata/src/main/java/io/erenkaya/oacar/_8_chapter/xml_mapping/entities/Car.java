@@ -1,4 +1,4 @@
-package io.erenkaya.oacar._8_chapter.entities;
+package io.erenkaya.oacar._8_chapter.xml_mapping.entities;
 
 public class Car {
 	private long id;

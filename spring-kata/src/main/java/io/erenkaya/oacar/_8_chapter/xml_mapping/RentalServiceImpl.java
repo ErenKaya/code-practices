@@ -8,9 +8,9 @@ import org.springframework.orm.hibernate5.HibernateCallback;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.transaction.annotation.Transactional;
 
-import io.erenkaya.oacar._8_chapter.entities.Car;
-import io.erenkaya.oacar._8_chapter.entities.Customer;
-import io.erenkaya.oacar._8_chapter.entities.Rental;
+import io.erenkaya.oacar._8_chapter.xml_mapping.entities.Car;
+import io.erenkaya.oacar._8_chapter.xml_mapping.entities.Customer;
+import io.erenkaya.oacar._8_chapter.xml_mapping.entities.Rental;
 
 public class RentalServiceImpl implements RentalService {
 

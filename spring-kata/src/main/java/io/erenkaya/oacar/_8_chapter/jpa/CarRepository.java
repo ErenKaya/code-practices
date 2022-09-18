@@ -1,6 +1,6 @@
-package io.erenkaya.oacar._8_chapter.xml_mapping;
+package io.erenkaya.oacar._8_chapter.jpa;
 
-import io.erenkaya.oacar._8_chapter.xml_mapping.entities.Car;
+import io.erenkaya.oacar._8_chapter.jpa.entities.Car;
 
 public interface CarRepository {
 

@@ -3,7 +3,7 @@ package io.erenkaya.oacar._8_chapter.xml_mapping;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import io.erenkaya.oacar._8_chapter.entities.Rental;
+import io.erenkaya.oacar._8_chapter.xml_mapping.entities.Rental;
 
 public class HibernateRentalRepositoryImpl implements RentalRepository {
 
