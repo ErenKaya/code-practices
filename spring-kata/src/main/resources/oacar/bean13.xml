@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc 
+	 http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+	 http://www.springframework.org/schema/aop/ 
+	 http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
+	 http://www.springframework.org/schema/beans 
+	 http://www.springframework.org/schema/beans/spring-beans.xsd 
+	 http://www.springframework.org/schema/tx 
+	 http://www.springframework.org/schema/tx/spring-tx-3.1.xsd 
+	 http://www.springframework.org/schema/context 
+	 http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	">
+	
+	<context:annotation-config />
+
+	<context:component-scan
+		base-package="io.erenkaya.oacar._9_chapter.aop" />
+
+	<jdbc:embedded-database id="dataSource"
+		type="HSQL" />
+
+	<tx:annotation-driven
+		transaction-manager="transactionManager" />
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="annotatedClasses">
+			<list>
+				<value>io.erenkaya.oacar._9_chapter.aop.domain.entities.Customer
+				</value>
+				<value>io.erenkaya.oacar._9_chapter.aop.domain.entities.Car
+				</value>
+				<value>io.erenkaya.oacar._9_chapter.aop.domain.entities.Rental
+				</value>
+			</list>
+
+		</property>
+		<property name="hibernateProperties">
+			<value>
+				hibernate.format_sql=true
+				hibernate.show_sql=true
+				hibernate.hbm2ddl.auto=create
+				hibernate.hbm2ddl.show=true
+			</value>
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+
+
+	<bean id="customerRepository"
+		class="io.erenkaya.oacar._9_chapter.aop.domain.HibernateCustomerRepositoryImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+
+	<bean id="rentalRepository"
+		class="io.erenkaya.oacar._9_chapter.aop.domain.HibernateRentalRepositoryImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="carRepository"
+		class="io.erenkaya.oacar._9_chapter.aop.domain.HibernateCarRepositoryImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+
+	<bean id="rentalService"
+		class="io.erenkaya.oacar._9_chapter.aop.domain.RentalServiceImpl">
+		<property name="customerRepository" ref="customerRepository" />
+		<property name="rentalRepository" ref="rentalRepository" />
+		<property name="carRepository" ref="carRepository" />
+	</bean>
+
+</beans>
