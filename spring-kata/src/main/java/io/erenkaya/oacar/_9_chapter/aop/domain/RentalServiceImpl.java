@@ -2,25 +2,23 @@ package io.erenkaya.oacar._9_chapter.aop.domain;
 
 import java.util.Date;
 
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import io.erenkaya.oacar._9_chapter.aop.domain.entities.Car;
-import io.erenkaya.oacar._9_chapter.aop.domain.entities.Customer;
-import io.erenkaya.oacar._9_chapter.aop.domain.entities.Rental;
-
+import io.erenkaya.oacar.domain.Car;
+import io.erenkaya.oacar.domain.CarRepository;
+import io.erenkaya.oacar.domain.Customer;
+import io.erenkaya.oacar.domain.CustomerRepository;
+import io.erenkaya.oacar.domain.Rental;
+import io.erenkaya.oacar.domain.RentalRepository;
+import io.erenkaya.oacar.domain.RentalService;
 
 public class RentalServiceImpl implements RentalService {
 
 	private CustomerRepository customerRepository;
-
 	private RentalRepository rentalRepository;
-
 	private CarRepository carRepository;
 
-	public RentalServiceImpl() {
-		super();
-	}
-
+	@Autowired
 	public RentalServiceImpl(CustomerRepository customerRepository, RentalRepository rentalRepository,
 			CarRepository carRepository) {
 		super();
@@ -30,7 +28,6 @@ public class RentalServiceImpl implements RentalService {
 	}
 
 	@Override
-	@Transactional
 	public Rental rentACar(Customer customer, Car car, Date rentDateBegin, Date rentDateEnd) {
 		Customer dbCustomer = customerRepository.getCustomerByName(customer.getName());
 		Car dbCar = carRepository.getCustomerByModel(car.getModel());
@@ -46,18 +43,6 @@ public class RentalServiceImpl implements RentalService {
 		rental.setCustomer(customer);
 		rentalRepository.save(rental);
 		return rental;
-	}
-
-	public void setCarRepository(CarRepository carRepository) {
-		this.carRepository = carRepository;
-	}
-
-	public void setCustomerRepository(CustomerRepository customerRepository) {
-		this.customerRepository = customerRepository;
-	}
-
-	public void setRentalRepository(RentalRepository rentalRepository) {
-		this.rentalRepository = rentalRepository;
 	}
 
 }

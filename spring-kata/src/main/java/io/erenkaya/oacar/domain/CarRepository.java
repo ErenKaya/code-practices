@@ -1,6 +1,4 @@
-package io.erenkaya.oacar._9_chapter.aop.domain;
-
-import io.erenkaya.oacar._9_chapter.aop.domain.entities.Car;
+package io.erenkaya.oacar.domain;
 
 public interface CarRepository {
 
