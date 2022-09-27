@@ -1,4 +1,4 @@
-package io.erenkaya.oacar._8_chapter.anno_transaction.domain.entities;
+package io.erenkaya.oacar.domain.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,6 +32,14 @@ public class Car {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public Car() {
+		super();
+	}
+
+	public void setModel(String model) {
+		this.model = model;
 	}
 
 }

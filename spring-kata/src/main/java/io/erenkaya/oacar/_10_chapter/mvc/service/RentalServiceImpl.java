@@ -1,9 +1,12 @@
-package io.erenkaya.oacar._8_chapter.anno_transaction.domain;
+package io.erenkaya.oacar._10_chapter.mvc.service;
 
 import java.util.Date;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import io.erenkaya.oacar._10_chapter.mvc.dao.CarRepository;
+import io.erenkaya.oacar._10_chapter.mvc.dao.CustomerRepository;
+import io.erenkaya.oacar._10_chapter.mvc.dao.RentalRepository;
 import io.erenkaya.oacar.domain.entities.Car;
 import io.erenkaya.oacar.domain.entities.Customer;
 import io.erenkaya.oacar.domain.entities.Rental;

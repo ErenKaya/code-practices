@@ -1,8 +1,9 @@
-package io.erenkaya.oacar._8_chapter.anno_transaction.domain;
+package io.erenkaya.oacar._10_chapter.mvc.dao.impl;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import io.erenkaya.oacar._10_chapter.mvc.dao.RentalRepository;
 import io.erenkaya.oacar.domain.entities.Rental;
 
 public class HibernateRentalRepositoryImpl implements RentalRepository {

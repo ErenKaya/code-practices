@@ -1,4 +1,4 @@
-package io.erenkaya.oacar._8_chapter.jpa.entities;
+package io.erenkaya.oacar.domain.entities;
 
 import javax.persistence.*;
 
@@ -49,5 +49,27 @@ public class Customer {
 		return String.format("Customer=[%s, %s, %d, %d]", this.getName(), this.getFirstname(), this.getAge(),
 				this.getId());
 	}
+
+	public Customer() {
+		super();
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
+	
 
 }

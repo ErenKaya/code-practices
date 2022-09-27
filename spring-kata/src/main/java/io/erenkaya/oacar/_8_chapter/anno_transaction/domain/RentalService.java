@@ -2,9 +2,9 @@ package io.erenkaya.oacar._8_chapter.anno_transaction.domain;
 
 import java.util.Date;
 
-import io.erenkaya.oacar._8_chapter.anno_transaction.domain.entities.Car;
-import io.erenkaya.oacar._8_chapter.anno_transaction.domain.entities.Customer;
-import io.erenkaya.oacar._8_chapter.anno_transaction.domain.entities.Rental;
+import io.erenkaya.oacar.domain.entities.Car;
+import io.erenkaya.oacar.domain.entities.Customer;
+import io.erenkaya.oacar.domain.entities.Rental;
 
 public interface RentalService {
 

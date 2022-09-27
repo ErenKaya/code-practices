@@ -4,7 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
-import io.erenkaya.oacar._8_chapter.jpa.entities.Car;
+import io.erenkaya.oacar.domain.entities.Car;
 
 
 public class JPACarRepositoryImpl implements CarRepository {

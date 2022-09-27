@@ -3,15 +3,15 @@
 "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping
-	package="io.erenkaya.oacar._8_chapter.entities">
+	package="io.erenkaya.oacar.domain.entities">
 	<class name="Rental" table="rental">
 		<id name="id" column="id" access="field">
 			<generator class="sequence" />
 		</id>
 		<one-to-one name="customer"
-			class="io.erenkaya.oacar._8_chapter.entities.Customer" />
+			class="io.erenkaya.oacar.domain.entities.Customer" />
 		<one-to-one name="car"
-			class="io.erenkaya.oacar._8_chapter.entities.Car" />
+			class="io.erenkaya.oacar.domain.entities.Car" />
 		<property name="isRented" />
 	</class>
 </hibernate-mapping>

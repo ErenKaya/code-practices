@@ -8,9 +8,9 @@ import java.util.concurrent.ThreadLocalRandom;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import io.erenkaya.oacar._8_chapter.anno_transaction.domain.entities.Car;
-import io.erenkaya.oacar._8_chapter.anno_transaction.domain.entities.Customer;
-import io.erenkaya.oacar._8_chapter.anno_transaction.domain.entities.Rental;
+import io.erenkaya.oacar.domain.entities.Car;
+import io.erenkaya.oacar.domain.entities.Customer;
+import io.erenkaya.oacar.domain.entities.Rental;
 
 public class RentalServiceTest {
 

@@ -1,6 +1,6 @@
 package io.erenkaya.oacar._8_chapter.anno_transaction.domain;
 
-import io.erenkaya.oacar._8_chapter.anno_transaction.domain.entities.Customer;
+import io.erenkaya.oacar.domain.entities.Customer;
 
 public interface CustomerRepository {
 

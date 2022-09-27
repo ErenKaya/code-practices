@@ -1,4 +1,4 @@
-package io.erenkaya.oacar._8_chapter.anno_transaction.domain.entities;
+package io.erenkaya.oacar.domain.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -48,7 +48,11 @@ public class Rental {
 		return isRented;
 	}
 
-	public void setRented(boolean isRented) {
+	public boolean getIsRented() {
+		return isRented;
+	}
+
+	public void setIsRented(boolean isRented) {
 		this.isRented = isRented;
 	}
 
@@ -58,6 +62,10 @@ public class Rental {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public Rental() {
+		super();
 	}
 
 }

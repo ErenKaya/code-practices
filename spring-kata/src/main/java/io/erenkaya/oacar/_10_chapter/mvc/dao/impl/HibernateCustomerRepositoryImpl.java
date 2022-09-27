@@ -1,10 +1,12 @@
-package io.erenkaya.oacar._8_chapter.anno_transaction.domain;
+package io.erenkaya.oacar._10_chapter.mvc.dao.impl;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
+import io.erenkaya.oacar._10_chapter.mvc.dao.CustomerRepository;
 import io.erenkaya.oacar.domain.entities.Customer;
+
 
 public class HibernateCustomerRepositoryImpl implements CustomerRepository {
 
