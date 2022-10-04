@@ -2,6 +2,8 @@ package io.erenkaya.oacar._10_chapter.mvc.service;
 
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import io.erenkaya.oacar._10_chapter.mvc.dao.CarRepository;
@@ -11,10 +13,11 @@ import io.erenkaya.oacar.domain.entities.Car;
 import io.erenkaya.oacar.domain.entities.Customer;
 import io.erenkaya.oacar.domain.entities.Rental;
 
+@Service
 public class RentalServiceImpl implements RentalService {
-
+	
 	private CustomerRepository customerRepository;
-
+	
 	private RentalRepository rentalRepository;
 
 	private CarRepository carRepository;
@@ -22,7 +25,7 @@ public class RentalServiceImpl implements RentalService {
 	public RentalServiceImpl() {
 		super();
 	}
-
+	@Autowired
 	public RentalServiceImpl(CustomerRepository customerRepository, RentalRepository rentalRepository,
 			CarRepository carRepository) {
 		super();
