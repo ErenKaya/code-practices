@@ -15,7 +15,6 @@ public class Application {
 		Car car = new Car("Ford Kuga");
 		CarRepository service = (CarRepository) context.getBean("carRepositoryImpl");
 		service.save(car);
-		Car car2 = service.getCustomerByModel("Ford Kuga");
 		context.close();
 	}
 }

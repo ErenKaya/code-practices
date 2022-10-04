@@ -2,6 +2,7 @@ package io.erenkaya.oacar._10_chapter.mvc.config;
 
 import java.util.Properties;
 
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,9 +36,9 @@ public class AppConfig {
 	}
 
 	@Bean
-	public JpaTransactionManager transactionManager() {
-		JpaTransactionManager manager = new JpaTransactionManager(
-				this.entityManagerFactory().getNativeEntityManagerFactory());
+	public JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
+		JpaTransactionManager manager = new JpaTransactionManager();
+		manager.setEntityManagerFactory(entityManagerFactory);
 		return manager;
 	}
 
