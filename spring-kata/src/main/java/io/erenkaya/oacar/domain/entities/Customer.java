@@ -21,11 +21,15 @@ public class Customer {
 	private long id;
 
 	public Customer(String name, int age, String firstname, long id) {
+		this(name, age, firstname);
+		this.id = id;
+	}
+
+	public Customer(String name, int age, String firstname) {
 		super();
 		this.name = name;
 		this.age = age;
 		this.firstname = firstname;
-		this.id = id;
 	}
 
 	public String getName() {
@@ -69,7 +73,5 @@ public class Customer {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	
-	
 
 }

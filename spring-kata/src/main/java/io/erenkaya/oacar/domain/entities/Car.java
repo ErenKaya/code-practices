@@ -42,4 +42,9 @@ public class Car {
 		this.model = model;
 	}
 
+	@Override
+	public String toString() {
+		return String.format("Car=[%s, %d]", this.getModel(), this.getId());
+	}
+
 }
