@@ -44,6 +44,10 @@ public class Application {
 	private static Customer getCustomer() {
 		return new Customer("Kaya", 22, "Eren");
 	}
+	
+	private static Customer getCustomer2() {
+		return new Customer("Kaya", 22, "Derya");
+	}
 
 	@SuppressWarnings("unused")
 	private static void test_car_persistence(AnnotationConfigApplicationContext context) {
